@@ -34,23 +34,23 @@ function Gallery() {
 
       {/* Gallery Header — Exact max-w-7xl px-5 lg:px-10 alignment with top nav */}
       <section className="mx-auto max-w-7xl px-5 pt-12 pb-8 lg:px-10 lg:pt-16">
-        <ScrollReveal direction="up" delay={50}>
+        {/* <ScrollReveal direction="up" delay={50}>
           <div className="flex items-center gap-2">
             <Sparkles className="size-4 text-[#D6B981]" />
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#8A6D00]">
               Installed Portfolio
             </span>
           </div>
-        </ScrollReveal>
+        </ScrollReveal> */}
 
         <ScrollReveal direction="up" delay={150}>
-          <h1 className="mt-2.5 max-w-3xl font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-stone-900">
-            Gallery Grid
+          <h1 className="mt-2.5 max-w-3xl font-display text-2xl  font-bold leading-relaxed text-stone-900">
+            Our Portfolio of Installed Name Boards & Signage
           </h1>
         </ScrollReveal>
 
         <ScrollReveal direction="up" delay={250}>
-          <p className="mt-3 max-w-2xl text-sm sm:text-base leading-relaxed text-stone-500">
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-stone-600">
             Handcrafted architectural name boards installed across Coimbatore and Tamil Nadu. Click any board to enlarge and view details.
           </p>
         </ScrollReveal>

@@ -93,15 +93,15 @@ function Contact() {
             <ScrollReveal direction="up" delay={50}>
               <div>
                 {/* Tag — Pure luxury minimalist typography */}
-                <div className="inline-flex items-center rounded-full border border-[#D6B981]/70 bg-[#D6B981]/20 px-3.5 py-1 text-[11px] font-bold tracking-widest text-[#8A6D00] uppercase animate-in fade-in duration-300">
+                {/* <div className="inline-flex items-center rounded-full border border-[#D6B981]/70 bg-[#D6B981]/20 px-3.5 py-1 text-[11px] font-bold tracking-widest text-[#8A6D00] uppercase animate-in fade-in duration-300">
                   Direct Consultation
-                </div>
+                </div> */}
 
-                <h1 className="mt-4 font-display text-4xl sm:text-5xl lg:text-4.5xl font-bold leading-[1.12] tracking-tight text-stone-950 text-balance">
+                <h1 className="mt-4 font-display text-2xl  font-bold  leading-relaxed  text-black">
                   Get in Touch with Our Kannan.
                 </h1>
 
-                <p className="mt-4 text-base sm:text-lg leading-relaxed text-stone-600">
+                <p className="mt-4 text-sm leading-relaxed text-stone-600">
                   Share your requirements, wall dimensions, or preferred style. Founder & Proprietor <strong>B. Kannan, MBA</strong> will personally review your project and prepare a tailored material recommendation and 3D digital design render within 24 hours.
                 </p>
 
@@ -116,7 +116,7 @@ function Contact() {
                         <Phone className="size-4.5 text-[#8A6D00]" />
                       </div>
                       <div>
-                        <p className="text-xs text-stone-500 font-medium">Direct Line (Proprietor Desk)</p>
+                        <p className="text-xs text-stone-500 font-medium">Direct Line </p>
                         <p className="text-sm sm:text-base font-bold text-stone-950 tracking-tight">{PHONE}</p>
                       </div>
                     </div>
@@ -148,7 +148,7 @@ function Contact() {
           {/* Right Column: Clean, Modern Form Card */}
           <div id="quote-form" className="lg:col-span-7 scroll-mt-24">
             <ScrollReveal direction="up" delay={150}>
-              <div className="rounded-3xl border border-stone-200 bg-stone-50/50 p-7 sm:p-10 shadow-sm">
+              <div className="rounded-3xl border border-stone-200 bg-white p-7 sm:p-10 ">
                 {submitted ? (
                   <div className="py-16 text-center animate-in fade-in">
                     <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
@@ -171,8 +171,8 @@ function Contact() {
                 ) : (
                   <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                     <div>
-                      <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-stone-950">
-                        Enquiry
+                      <h2 className="font-display text-2xl  font-bold leading-relaxed text-black">
+                        Contact Us for a Quote 
                       </h2>
                     </div>
 

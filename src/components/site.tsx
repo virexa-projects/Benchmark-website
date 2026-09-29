@@ -120,7 +120,7 @@ export function SiteHeader({ className }: { className?: string } = {}) {
                 <Link
                   key={item.to}
                   to={item.to}
-                  className={`rounded-full px-3.5 py-1.5 text-sm tracking-[0.08em] font-medium transition-all duration-200 ${
+                  className={`rounded-full px-3.5 py-1.5 text-sm leading-relaxed  font-medium transition-all duration-200 ${
                     isActive
                       ? "bg-secondary/80 font-bold text-foreground shadow-2xs"
                       : "text-muted-foreground hover:bg-secondary/40 hover:text-foreground"
@@ -268,7 +268,7 @@ export function SiteHeader({ className }: { className?: string } = {}) {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-stone-800 bg-[#16171B]  text-stone-300">
+    <footer className="border-t border-stone-200 bg-[#FFFDF4]  text-stone-300">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-10">
         <div className="grid gap-12 md:grid-cols-12">
           {/* Brand Column */}
@@ -277,11 +277,11 @@ export function SiteFooter() {
               <BenchmarkLogo showSubtitle />
             </Link>
 
-            <p className="mt-5 text-sm leading-relaxed text-stone-400">
+            {/* <p className="mt-5 text-sm leading-relaxed text-stone-400">
               Coimbatore&apos;s specialized atelier in premium customized name
               boards. Crafted in SS 304, PVD Gold, Copper, ACP and Cast Acrylic
               — with or without LED halo illumination.
-            </p>
+            </p> */}
 
         
 
@@ -296,7 +296,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={item.name}
-                    className="flex size-8.5 items-center justify-center text-stone-400 transition-all hover:text-[#D6B981] hover:scale-115 active:scale-95"
+                    className="flex size-8.5 items-center justify-center text-stone-500 transition-all hover:text-[#D6B981] hover:scale-115 active:scale-95"
                   >
                     <Icon className="size-4.5" />
                   </a>
@@ -307,16 +307,16 @@ export function SiteFooter() {
 
           {/* Quick Navigation */}
           <div className="md:col-span-2">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D6B981]">
+            <p className="text-base font-bold uppercase leading-relaxed  text-[#000000]">
               Explore
             </p>
 
-            <ul className="mt-4 flex flex-col gap-2.5 text-sm text-stone-400">
+            <ul className="mt-4 flex flex-col gap-2.5 text-sm text-stone-600">
               {NAV.map((item) => (
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="transition-colors hover:text-white"
+                    className="transition-colors font-medium hover:text-[#000000]"
                   >
                     {item.label}
                   </Link>
@@ -327,45 +327,43 @@ export function SiteFooter() {
 
           {/* Workshop Location */}
           <div className="md:col-span-3">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D6B981]">
-              Workshop &amp; Studio
+            <p className="text-base font-bold uppercase leading-relaxed  text-[#000000]">
+              Location
             </p>
 
-            <p className="mt-4 text-sm leading-relaxed text-stone-300">
+            <p className="mt-4 text-sm leading-relaxed font-medium text-stone-600">
               {ADDRESS}
             </p>
 
-            <p className="mt-2 text-xs font-semibold text-white">
-              Proprietor: B. Kannan, MBA
-            </p>
+            
 
             <a
               href={GOOGLE_MAPS_LINK}
               target="_blank"
               rel="noreferrer"
-              className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#D6B981] hover:underline"
+              className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#000000] hover:underline"
             >
               <MapPin className="size-3" />
-              <span>View on Google Maps →</span>
+              <span>Get Directions →</span>
             </a>
           </div>
 
           {/* Direct Contact */}
           <div className="md:col-span-3">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#D6B981]">
-              Direct Contact
+            <p className="text-base font-bold uppercase leading-relaxed  text-[#000000]">
+              Contact Us
             </p>
 
             <a
               href={PHONE_LINK}
-              className="mt-4 block whitespace-nowrap font-display text-xl font-bold tracking-tight text-white transition-colors hover:text-[#D6B981]"
+              className="mt-4 block whitespace-nowrap font-display text-base font-medium tracking-tight text-stone-500 transition-colors hover:text-[#000000]"
             >
               {PHONE}
             </a>
 
             <a
               href={`mailto:${EMAIL}`}
-              className="mt-1 block text-xs text-stone-400 transition-colors hover:text-white"
+              className="mt-2 block text-sm text-stone-500 font-medium transition-colors hover:text-black"
             >
               {EMAIL}
             </a>
@@ -386,7 +384,7 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom Credits */}
-        <div className="mt-16 flex flex-col gap-3 border-t border-stone-800 pt-6 text-xs text-stone-500  items-center justify-between">
+        <div className="mt-16 flex flex-col gap-3 border-t border-stone-200 pt-6 text-xs text-stone-500  items-center justify-between">
           <span>
             © {new Date().getFullYear()} Benchmark Name Boards. All rights
             reserved.

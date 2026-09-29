@@ -3,45 +3,11 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 
 export function ProprietorSection() {
   return (
-    <section className="section-rule bg-[#5D5D5D] text-white py-20 lg:py-28">
+    <section className=" bg-[#FFFDF4] text-[#000000] py-10 lg:py-10">
       {/* Exact max-w-7xl px-5 lg:px-10 container matching top nav */}
-      <div className="mx-auto max-w-7xl px-5 lg:px-10">
+      <div className="mx-auto max-w-7xl  ">
         <div className="grid items-center gap-12 lg:gap-16 lg:grid-cols-12">
-          {/* Left Column: Proprietor Narrative & Credentials */}
-          <div className="lg:col-span-6 xl:col-span-7">
-            <ScrollReveal direction="up" delay={50}>
-              <span className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#D6B981]">
-                About the Proprietor
-              </span>
-              <h2 className="mt-3 font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
-                B. Kannan, MBA
-              </h2>
-              <p className="text-sm font-semibold text-[#D6B981] mt-1">
-                Founder, Benchmark — Name Boards —
-              </p>
-
-              <p className="mt-6 text-sm sm:text-base leading-relaxed text-stone-300">
-                With over <strong>7 years of prior experience in the creative advertising industry</strong>, B. Kannan established Benchmark in 2015 with a vision to create premium-quality signage that combines creativity, durability, and modern aesthetics.
-              </p>
-
-              <p className="mt-4 text-sm sm:text-base leading-relaxed text-stone-300">
-                His expertise in creating customised name boards helps transform ordinary signboards into impactful identity solutions for homes and businesses. Under his leadership, Benchmark has built a reputation for elegant designs, quality craftsmanship, and customer-focused customization.
-              </p>
-
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6 border-t border-stone-800 pt-6 text-xs text-stone-300">
-                <div>
-                  <p className="font-bold text-white text-sm">Creative Advertising Roots</p>
-                  <p className="text-stone-400 mt-1">7+ years advertising background ensuring impactful visual identity.</p>
-                </div>
-                <div>
-                  <p className="font-bold text-white text-sm">Direct Proprietor Guidance</p>
-                  <p className="text-stone-400 mt-1">Consult directly with B. Kannan, MBA for customized 3D design proof.</p>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-
-          {/* Right Column: Single High-End Proprietor Image Showcase */}
+           {/* Right Column: Single High-End Proprietor Image Showcase */}
           <div className="lg:col-span-6 xl:col-span-5">
             <ScrollReveal direction="up" delay={150}>
               <div className="relative group overflow-hidden rounded-2xl sm:rounded-3xl border border-stone-800 bg-stone-900/60 shadow-2xl transition-all duration-300 hover:border-[#D6B981]/40">
@@ -64,6 +30,41 @@ export function ProprietorSection() {
               </div>
             </ScrollReveal>
           </div>
+          {/* Left Column: Proprietor Narrative & Credentials */}
+          <div className="lg:col-span-6 xl:col-span-7">
+            <ScrollReveal direction="up" delay={50}>
+              <span className="text-[11px] font-bold uppercase leading-relaxed text-stone-950 text-[#000000]">
+                About the Proprietor
+              </span>
+              <h2 className="mt-3 font-display text-2xl  font-bold leading-relaxed text-stone-950 text-[#000000]">
+                B. Kannan, MBA
+              </h2>
+              <p className="text-sm font-semibold leading-relaxed text-stone-950 text-[#000000] mt-1">
+                Founder, Benchmark — Name Boards 
+              </p>
+
+              <p className="mt-6 text-sm leading-relaxed text-stone-600">
+                With over <strong>7 years of prior experience in the creative advertising industry</strong>, B. Kannan established Benchmark in 2015 with a vision to create premium-quality signage that combines creativity, durability, and modern aesthetics.
+              </p>
+
+              <p className="mt-4 text-sm leading-relaxed text-stone-600">
+                His expertise in creating customised name boards helps transform ordinary signboards into impactful identity solutions for homes and businesses. Under his leadership, Benchmark has built a reputation for elegant designs, quality craftsmanship, and customer-focused customization.
+              </p>
+
+              {/* <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6 border-t border-stone-800 pt-6 text-xs text-stone-300">
+                <div>
+                  <p className="font-bold text-white text-sm">Creative Advertising Roots</p>
+                  <p className="text-stone-400 mt-1">7+ years advertising background ensuring impactful visual identity.</p>
+                </div>
+                <div>
+                  <p className="font-bold text-white text-sm">Direct Proprietor Guidance</p>
+                  <p className="text-stone-400 mt-1">Consult directly with B. Kannan, MBA for customized 3D design proof.</p>
+                </div>
+              </div> */}
+            </ScrollReveal>
+          </div>
+
+         
         </div>
       </div>
     </section>

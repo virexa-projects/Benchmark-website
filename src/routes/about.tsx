@@ -1,12 +1,37 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { FAQSection, SiteFooter, SiteHeader, WHATSAPP_LINK, PHONE, ADDRESS, GOOGLE_MAPS_LINK } from "@/components/site";
+import {
+  FAQSection,
+  SiteFooter,
+  SiteHeader,
+  WHATSAPP_LINK,
+  PHONE,
+  ADDRESS,
+  GOOGLE_MAPS_LINK,
+} from "@/components/site";
 import { MobileDock } from "@/components/mobile-dock";
 import { ProprietorSection } from "@/components/proprietor-section";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { Award, ShieldCheck, Shield, MapPin, Sparkles, CheckCircle2, ArrowRight, Clock, Target, Compass, Eye, Star, Users, Building2, UserCheck } from "lucide-react";
+import {
+  Award,
+  ShieldCheck,
+  Shield,
+  MapPin,
+  Sparkles,
+  CheckCircle2,
+  ArrowRight,
+  Clock,
+  Target,
+  Compass,
+  Eye,
+  Star,
+  Users,
+  Building2,
+  UserCheck,
+} from "lucide-react";
 
 import w4 from "@/assets/work/w4.jpg";
 import w5 from "@/assets/work/w5.jpg";
+import BM from "@/assets/work/BM.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -17,7 +42,10 @@ export const Route = createFileRoute("/about")({
         content:
           "Benchmark — Name Boards — founded in 2015 by B. Kannan, MBA in Coimbatore. Transforming ordinary signboards into impactful identity solutions for homes and businesses.",
       },
-      { property: "og:title", content: "About Benchmark Name Boards — The Standard for Signage" },
+      {
+        property: "og:title",
+        content: "About Benchmark Name Boards — The Standard for Signage",
+      },
       {
         property: "og:description",
         content:
@@ -83,28 +111,19 @@ const CRAFT_STEPS = [
 
 const ABOUT_STATS = [
   {
-    icon: Award,
     stat: "10+",
-    title: "Years of Craftsmanship",
-    desc: "Established atelier in Coimbatore since 2015",
+    title: "Years of experience in making premium quality signage only.",
+    desc: "",
   },
   {
-    icon: Building2,
-    stat: "500+",
-    title: "Bespoke Boards Installed",
-    desc: "Villas, clinics, corporates & showrooms",
+    stat: "1000+",
+    title: "Signages successfully installed.",
+    desc: "",
   },
   {
-    icon: Shield,
-    stat: "304",
-    title: "Marine Grade Alloy",
-    desc: "Authentic SS 304 & Titanium PVD Gold",
-  },
-  {
-    icon: UserCheck,
-    stat: "100%",
-    title: "In-House Master Build",
-    desc: "Direct consultation with B. Kannan, MBA",
+    stat: "0",
+    title: "Dissatisfied Customers in Benchmark.",
+    desc: "",
   },
 ];
 
@@ -115,43 +134,131 @@ function About() {
 
       {/* Hero: Centered About Us & Four Stat Cards Matching Image */}
       <section className="mx-auto max-w-7xl px-5 pt-16 pb-16 lg:px-10 lg:pt-22">
-        <div className="flex flex-col items-center text-center mx-auto max-w-3xl">
-          <ScrollReveal direction="up" delay={50}>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-stone-950">
-              About Us
-            </h1>
-          </ScrollReveal>
+        <div className="grid gap-12 md:grid-cols-12 md:items-center">
+          {/* Image - 8 Columns */}
+          <div className="overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-x md:col-span-8">
+            <img
+              src={BM}
+              alt="Benchmark workshop floor with 3D letters being fabricated"
+              className="aspect-[6/3] w-full object-fit transition-transform duration-700 hover:scale-105"
+              loading="lazy"
+            />
+          </div>
 
-          <ScrollReveal direction="up" delay={120}>
-            <div className="mt-4 max-w-2xl text-xs sm:text-sm text-stone-600 leading-relaxed space-y-1">
-              <p>
-                We&apos;re a passionate atelier combining design, durability, and innovation to craft bespoke signage that reflects your true value.
-              </p>
-              <p className="text-stone-500">
-                Serving architectural clients, homeowners, and brands with precision since 2015.
-              </p>
-            </div>
-          </ScrollReveal>
+          {/* Content - 4 Columns */}
+          <div className="flex flex-col items-start justify-center md:col-span-4">
+            <ScrollReveal direction="up" delay={50}>
+              <h1 className="font-display text-2xl font-bold leading-relaxed text-stone-950">
+                Benchmark-Name Boards
+              </h1>
+            </ScrollReveal>
+
+            <ScrollReveal direction="up" delay={120}>
+              <div className="mt-1 space-y-1 text-sm leading-relaxed text-stone-600">
+                <p>The Standard for Signage.</p>
+
+                <p>
+                  Every brand deserves signage that reflects its true value. Our
+                  work combines design, durability, and innovation to create
+                  signage that captures attention and builds trust.
+                </p>
+
+                <ul className="mt-3 list-inside list-disc space-y-4 text-sm leading-relaxed text-stone-600">
+                  <li>
+                    Using superior materials and modern finishes, each board is
+                    crafted to stand out with sophistication.
+                  </li>
+
+                  <li>
+                    Designed to enhance visibility, reflect your personal style,
+                    and ensure long-lasting durability.
+                  </li>
+                </ul>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+        <div className="grid gap-12 md:grid-cols-12 md:items-center pt-24">
+          {/* Image - 8 Columns */}
+
+          {/* Content - 4 Columns */}
+          <div className="flex flex-col items-start justify-center md:col-span-4">
+            <ScrollReveal direction="up" delay={120}>
+              <div className="mt-1 space-y-1 text-sm leading-relaxed text-stone-600">
+                <p>
+                  we offer both illuminated (LED) and non-lit signage making &
+                  installing for the following segments:
+                </p>
+                <ul className="mt-3 list-inside list-disc space-y-4 text-sm leading-relaxed text-stone-600">
+                  <li>
+                    Garment Showroom Signage 
+                  </li>
+                  <li>
+                    Hospitals Signage 
+                  </li>
+                  <li>
+                    Hotel Signage 
+
+                  </li>
+                  <li>
+                    Jewelry showroom Signage 
+                  </li>
+                  <li>
+                    Software Companies Signage
+
+                  </li>
+                  <li>
+                    Commercial shops Signage 
+
+                  </li>
+                  <li>
+                    Corporate Signage
+                  </li>
+                  <li>
+                    Temple Signage
+                  </li>
+                  <li>
+                    Residential & more
+                  </li>
+
+                </ul>
+              </div>
+            </ScrollReveal>
+          </div>
+          <div className="overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-x md:col-span-8">
+            <img
+              src={BM}
+              alt="Benchmark workshop floor with 3D letters being fabricated"
+              className="aspect-[6/3] w-full object-fit transition-transform duration-700 hover:scale-105"
+              loading="lazy"
+            />
+          </div>
         </div>
 
+         <ProprietorSection />
+
         {/* Four Cards Matching Image */}
-        <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {ABOUT_STATS.map((item, index) => {
-            const Icon = item.icon;
+            // const Icon = item.icon;
             return (
-              <ScrollReveal key={item.title} direction="up" delay={100 + index * 70}>
-                <div className="relative h-full rounded-3xl border border-stone-200/80 bg-white p-6 sm:p-7 shadow-[0_2px_12px_rgba(0,0,0,0.03)] flex flex-col justify-between transition-all hover:shadow-md hover:border-stone-300">
+              <ScrollReveal
+                key={item.title}
+                direction="up"
+                delay={100 + index * 70}
+              >
+                <div className="relative h-full rounded-3xl border border-stone-200/80 bg-white p-6 sm:p-7 shadow-[0_2px_12px_rgba(0,0,0,0.03)] flex flex-col justify-between transition-all hover:shadow-md hover:border-stone-200">
                   {/* Top-Right Small Icon Box */}
-                  <div className="absolute top-5 right-5 sm:top-6 sm:right-6 flex size-9 sm:size-10 items-center justify-center rounded-xl sm:rounded-2xl border border-stone-200/80 bg-stone-50/60 text-stone-500">
+                  {/* <div className="absolute top-5 right-5 sm:top-6 sm:right-6 flex size-9 sm:size-10 items-center justify-center rounded-xl sm:rounded-2xl border border-stone-200/80 bg-stone-50/60 text-stone-500">
                     <Icon className="size-4.5" />
-                  </div>
+                  </div> */}
 
                   {/* Left-Aligned Number, Title, and Description */}
                   <div className="pr-8 pt-1">
-                    <span className="font-display text-3xl sm:text-4xl font-extrabold text-stone-950 tracking-tight block">
+                    <span className="font-display text-2xl font-bold text-stone-950 leading-relaxed block">
                       {item.stat}
                     </span>
-                    <h2 className="mt-3 font-display text-sm sm:text-base font-bold text-stone-950 tracking-tight">
+                    <h2 className="mt-3 font-display text-sm font-bold text-stone-950 leading-relaxed leading-snug">
                       {item.title}
                     </h2>
                     <p className="mt-1.5 text-xs text-stone-500 leading-relaxed">
@@ -169,146 +276,43 @@ function About() {
       <section className="mx-auto max-w-7xl px-5 pb-16 lg:px-10">
         <div className="grid gap-6 md:grid-cols-2">
           <ScrollReveal direction="up" delay={100}>
-            <div className="h-full rounded-3xl border border-stone-200 bg-stone-50/70 p-8 lg:p-10 shadow-xs">
+            <div className="h-full rounded-3xl  bg-white p-8 lg:p-10 shadow-xs hover:shadow-xs">
               <div className="flex size-12 items-center justify-center rounded-2xl bg-[#D6B981]/20 text-[#8A6D00] mb-6">
                 <Eye className="size-6" />
               </div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8A6D00]">Our Vision</p>
-              <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-stone-950">
-                To be the most trusted name in premium signage.
+              <h3 className="font-display text-2xl font-bold leading-relaxed text-stone-950">
+                Our Vision
+              </h3>
+              <h2 className="mt-2 font-display text-sm font-bold text-stone-950 leading-relaxed leading-snug">
+                To be the most trusted name in premium signage, setting new
+                standards in quality, elegance, and visibility.
               </h2>
-              <p className="mt-4 text-sm sm:text-base leading-relaxed text-stone-600">
-                Setting new standards in quality, elegance, and visibility for residential and architectural name boards.
-              </p>
+              {/* <p className="mt-4 text-sm sm:text-base leading-relaxed text-stone-600">
+                Setting new standards in quality, elegance, and visibility for
+                residential and architectural name boards.
+              </p> */}
             </div>
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={200}>
-            <div className="h-full rounded-3xl border border-stone-200 bg-stone-50/70 p-8 lg:p-10 shadow-xs">
+            <div className="h-full rounded-3xl  bg-white p-8 lg:p-10 shadow-xs hover:shadow-xs">
               <div className="flex size-12 items-center justify-center rounded-2xl bg-[#D6B981]/20 text-[#8A6D00] mb-6">
                 <Target className="size-6" />
               </div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8A6D00]">Our Mission</p>
-              <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-stone-950">
-                Reflecting excellence and building lasting brand value.
-              </h2>
-              <p className="mt-4 text-sm sm:text-base leading-relaxed text-stone-600">
-                Creating signage that reflects excellence, enhances visibility, and builds lasting brand value for homes and enterprises.
+              <h3 className="font-display text-2xl font-bold leading-relaxed text-stone-950">
+                Our Mission
+              </h3>
+              <p className="mt-2 font-display text-sm font-bold text-stone-950 leading-relaxed leading-snug">
+                Creating signage that reflects excellence, enhances visibility,
+                and builds lasting brand value.
               </p>
             </div>
           </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Workshop Images */}
-      <section className="mx-auto max-w-7xl px-5 pb-20 lg:px-10">
-        <div className="grid gap-6 md:grid-cols-2">
-          <ScrollReveal direction="up" delay={100}>
-            <div className="overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-xs">
-              <img
-                src={w4}
-                alt="Benchmark workshop floor with 3D letters being fabricated"
-                className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-105"
-                loading="lazy"
-              />
-              <div className="p-6">
-                <p className="font-display font-bold text-stone-950">In-House Master Channel Fabrication</p>
-                <p className="text-xs text-stone-500 mt-1">Hand-bending deep returns for 3D illuminated letters at our Sowripalayam workshop in Coimbatore.</p>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal direction="up" delay={200}>
-            <div className="overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-xs">
-              <img
-                src={w5}
-                alt="Completed stainless steel name board"
-                className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-105"
-                loading="lazy"
-              />
-              <div className="p-6">
-                <p className="font-display font-bold text-stone-950">Finished SS 304 Satin Signage</p>
-                <p className="text-xs text-stone-500 mt-1">Hand-inspected for uniform hairline grain, smooth bevels, and zero weld blemishes.</p>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Principles */}
-      <section className="section-rule bg-stone-50/70 border-t border-stone-200 py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-5 lg:px-10">
-          <div className="grid gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-4">
-              <ScrollReveal direction="up" delay={50}>
-                <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8A6D00]">Our Code of Craft</p>
-                <h2 className="mt-3 font-display text-3xl sm:text-4xl font-bold tracking-tight text-stone-950">
-                  Four Principles We Never Break
-                </h2>
-                <p className="mt-4 text-sm leading-relaxed text-stone-600">
-                  Using superior materials and modern finishes, each board is crafted to stand out with sophistication, durability, and legibility.
-                </p>
-              </ScrollReveal>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2 lg:col-span-8">
-              {PRINCIPLES.map((p, idx) => (
-                <ScrollReveal key={p.n} direction="up" delay={idx * 100}>
-                  <div className="h-full rounded-2xl border border-stone-200 bg-white p-6 shadow-xs">
-                    <span className="font-mono text-xs font-bold text-[#8A6D00]">{p.n}</span>
-                    <h3 className="mt-3 font-display text-xl font-bold tracking-tight text-stone-950">
-                      {p.title}
-                    </h3>
-                    <p className="mt-2 text-xs sm:text-sm leading-relaxed text-stone-600">
-                      {p.desc}
-                    </p>
-                  </div>
-                </ScrollReveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5-Step Process */}
-      <section className="section-rule bg-[#FFFDF4] border-t border-stone-200 py-20 lg:py-28">
-        <div className="mx-auto max-w-7xl px-5 lg:px-10">
-          <ScrollReveal direction="up" delay={50}>
-            <div className="text-center max-w-2xl mx-auto">
-              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8A6D00]">How We Work</p>
-              <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold tracking-tight text-stone-950">
-                From Consultation to Installation
-              </h2>
-              <p className="mt-2 text-sm text-stone-600">
-                A transparent, step-by-step process designed for complete peace of mind.
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-            {CRAFT_STEPS.map((s, idx) => (
-              <ScrollReveal key={s.step} direction="up" delay={idx * 80}>
-                <div className="h-full rounded-2xl border border-stone-200 bg-stone-50/60 p-5 relative flex flex-col justify-between shadow-2xs">
-                  <div>
-                    <span className="flex size-8 items-center justify-center rounded-lg bg-[#D6B981]/20 text-xs font-bold text-[#8A6D00]">
-                      {s.step}
-                    </span>
-                    <h3 className="mt-4 font-display text-base font-bold text-stone-950">
-                      {s.title}
-                    </h3>
-                    <p className="mt-2 text-xs text-stone-600 leading-relaxed">
-                      {s.desc}
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* About the Proprietor: B. Kannan, MBA */}
-      <ProprietorSection />
+     
 
       {/* <FAQSection /> */}
       <SiteFooter />

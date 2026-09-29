@@ -386,10 +386,10 @@ function ProjectCard({
   return (
     <div
       onClick={() => onOpenModal(project, imgIndex)}
-      className="group relative cursor-pointer rounded-md bg-white p-2.5 sm:p-3 border border-stone-200/90 shadow-2xs transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-stone-300"
+      className="group relative cursor-pointer rounded-3xl bg-white p-2 sm:p-2 border border-stone-200/90 shadow-2xs transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-stone-300"
     >
       {/* Inner Image Container — rounded-sm like square with white card border framing */}
-      <div className="relative aspect-square w-full overflow-hidden rounded-sm bg-stone-100">
+      <div className="relative aspect-square w-full overflow-hidden rounded-3xl bg-stone-100">
         {/* High-Resolution Installation Photo */}
         <img
           src={currentImg}
@@ -488,7 +488,7 @@ export function PortfolioSection({ limit }: { limit?: number }) {
   const activeProject = activeProjectIndex !== null ? displayedProjects[activeProjectIndex] : null;
 
   const getWhatsAppForProject = (project: Project) => {
-    const text = `Hello Kannan B (Benchmark Name Boards),%0A%0AI would like to enquire about your installed name board in *${encodeURIComponent(project.location)}* seen on your gallery.`;
+    const text = `Hello Kannan B ,%0A%0AI would like to enquire about your installed name board in *${encodeURIComponent(project.location)}* seen on your gallery.`;
     return `https://wa.me/919842767222?text=${text}`;
   };
 
@@ -505,7 +505,7 @@ export function PortfolioSection({ limit }: { limit?: number }) {
                 setSelectedCategory(cat.id);
                 setActiveProjectIndex(null);
               }}
-              className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-all ${
+              className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-xs font-semibold leading-relaxed transition-all ${
                 selectedCategory === cat.id
                   ? "bg-stone-900 text-white shadow-sm"
                   : "bg-[#EFE8DC]/80 text-stone-700 hover:bg-[#E4DCCE] hover:text-stone-950 border border-stone-300/40 active:bg-[#DCD3C3]"
