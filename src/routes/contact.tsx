@@ -93,12 +93,12 @@ function Contact() {
             <ScrollReveal direction="up" delay={50}>
               <div>
                 {/* Tag — Pure luxury minimalist typography */}
-                <div className="inline-flex items-center rounded-full border border-[#FFCB00]/70 bg-[#FFCB00]/20 px-3.5 py-1 text-[11px] font-bold tracking-widest text-[#8A6D00] uppercase animate-in fade-in duration-300">
-                  Direct Atelier Consultation
+                <div className="inline-flex items-center rounded-full border border-[#D6B981]/70 bg-[#D6B981]/20 px-3.5 py-1 text-[11px] font-bold tracking-widest text-[#8A6D00] uppercase animate-in fade-in duration-300">
+                  Direct Consultation
                 </div>
 
                 <h1 className="mt-4 font-display text-4xl sm:text-5xl lg:text-4.5xl font-bold leading-[1.12] tracking-tight text-stone-950 text-balance">
-                  Get in Touch with Our Atelier.
+                  Get in Touch with Our Kannan.
                 </h1>
 
                 <p className="mt-4 text-base sm:text-lg leading-relaxed text-stone-600">
@@ -109,7 +109,7 @@ function Contact() {
                 <div className="mt-7 flex flex-col gap-3">
                   <a
                     href={PHONE_LINK}
-                    className="group flex items-center justify-between rounded-2xl border border-stone-200 bg-stone-50/70 p-4 transition-all hover:border-[#FFCB00] hover:bg-white hover:shadow-xs"
+                    className="group flex items-center justify-between rounded-2xl border border-stone-200 bg-stone-50/70 p-4 transition-all hover:border-[#D6B981] hover:bg-white hover:shadow-xs"
                   >
                     <div className="flex items-center gap-3.5">
                       <div className="flex size-11 items-center justify-center rounded-xl bg-white border border-stone-200 text-stone-900">
@@ -134,7 +134,7 @@ function Contact() {
                         <WhatsAppIcon className="size-5.5 fill-current" />
                       </div>
                       <div>
-                        <p className="text-xs text-stone-500 font-medium">WhatsApp Atelier Desk</p>
+                        <p className="text-xs text-stone-500 font-medium">WhatsApp Desk</p>
                         <p className="text-sm sm:text-base font-bold text-stone-950 tracking-tight">Chat with B. Kannan, MBA</p>
                       </div>
                     </div>
@@ -188,7 +188,7 @@ function Contact() {
                           value={firstName}
                           onChange={(e) => setFirstName(e.target.value)}
                           placeholder="e.g. Anand"
-                          className="rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 outline-none transition-all placeholder:text-stone-400 focus:border-[#FFCB00] focus:ring-1 focus:ring-[#FFCB00]"
+                          className="rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 outline-none transition-all placeholder:text-stone-400 focus:border-[#D6B981] focus:ring-1 focus:ring-[#D6B981]"
                         />
                       </div>
 
@@ -202,7 +202,7 @@ function Contact() {
                           value={lastName}
                           onChange={(e) => setLastName(e.target.value)}
                           placeholder="e.g. Kumar"
-                          className="rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 outline-none transition-all placeholder:text-stone-400 focus:border-[#FFCB00] focus:ring-1 focus:ring-[#FFCB00]"
+                          className="rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 outline-none transition-all placeholder:text-stone-400 focus:border-[#D6B981] focus:ring-1 focus:ring-[#D6B981]"
                         />
                       </div>
                     </div>
@@ -219,7 +219,7 @@ function Contact() {
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
                           placeholder="+91 98427 67222"
-                          className="rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 outline-none transition-all placeholder:text-stone-400 focus:border-[#FFCB00] focus:ring-1 focus:ring-[#FFCB00]"
+                          className="rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 outline-none transition-all placeholder:text-stone-400 focus:border-[#D6B981] focus:ring-1 focus:ring-[#D6B981]"
                         />
                       </div>
 
@@ -233,7 +233,7 @@ function Contact() {
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="anand@example.com"
-                          className="rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 outline-none transition-all placeholder:text-stone-400 focus:border-[#FFCB00] focus:ring-1 focus:ring-[#FFCB00]"
+                          className="rounded-xl border border-stone-200 bg-white px-4 py-3 text-sm text-stone-900 outline-none transition-all placeholder:text-stone-400 focus:border-[#D6B981] focus:ring-1 focus:ring-[#D6B981]"
                         />
                       </div>
                     </div>
@@ -249,7 +249,7 @@ function Contact() {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="e.g. 'The Kannan Villa', approx 2ft x 3ft, warm LED backlight on granite wall"
-                        className="rounded-xl border border-stone-200 bg-white p-4 text-sm text-stone-900 outline-none transition-all placeholder:text-stone-400 focus:border-[#FFCB00] focus:ring-1 focus:ring-[#FFCB00] resize-none"
+                        className="rounded-xl border border-stone-200 bg-white p-4 text-sm text-stone-900 outline-none transition-all placeholder:text-stone-400 focus:border-[#D6B981] focus:ring-1 focus:ring-[#D6B981] resize-none"
                       />
                     </div>
 
@@ -257,7 +257,7 @@ function Contact() {
                     <div className="flex flex-col gap-3 pt-2">
                       <button
                         type="submit"
-                        className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#FFCB00] hover:bg-[#E5B700] px-6 py-4 text-center text-sm font-bold text-stone-950 shadow-md shadow-[#FFCB00]/25 transition-all active:scale-[0.99]"
+                        className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#D6B981] hover:bg-[#E5B700] px-6 py-4 text-center text-sm font-bold text-stone-950 shadow-md shadow-[#D6B981]/25 transition-all active:scale-[0.99]"
                       >
                         <span>Submit Enquiry</span>
                         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
@@ -321,7 +321,7 @@ function Contact() {
                     className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-xs font-semibold text-stone-950 hover:bg-stone-100 transition-colors"
                   >
                     <Phone className="size-3.5 text-[#8A6D00]" />
-                    <span>Call Atelier Desk</span>
+                    <span>Call Desk</span>
                   </a>
                 </div>
               </ScrollReveal>
@@ -352,7 +352,7 @@ function Contact() {
       </section>
 
       {/* FAQ Section */}
-      <FAQSection />
+      {/* <FAQSection /> */}
 
       <SiteFooter />
       <MobileDock />

@@ -56,12 +56,12 @@ function Home() {
             {/* Left Column: Exactly Aligned with Logo */}
             <div className="lg:col-span-6 max-w-xl">
               {/* Top Eyebrow Badge */}
-              <div className="animate-hero-1 inline-flex items-center gap-2.5 rounded-full border border-[#FFCB00]/70 bg-[#FFCB00]/20 px-4 py-1.5 shadow-2xs backdrop-blur-md">
+              <div className="animate-hero-1 inline-flex items-center gap-2.5 rounded-full border border-[#D6B981]/70 bg-[#D6B981]/20 px-4 py-1.5 shadow-2xs backdrop-blur-md">
                 <span className="relative flex size-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FFCB00] opacity-75" />
-                  <span className="relative inline-flex size-2 rounded-full bg-[#FFCB00]" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D6B981] opacity-75" />
+                  <span className="relative inline-flex size-2 rounded-full bg-[#D6B981]" />
                 </span>
-                <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8A6D00] dark:text-[#FFCB00]">
+                <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8A6D00] dark:text-[#D6B981]">
                   The Standard for Signage · Est. 2015
                 </span>
               </div>
@@ -69,7 +69,7 @@ function Home() {
               {/* Main Headline */}
               <h1 className="animate-hero-2 mt-6 font-display text-3xl sm:text-4xl lg:text-[44px] font-bold leading-[1.15] tracking-tight text-balance text-stone-950 dark:text-white">
                 Every brand deserves signage that reflects its{" "}
-                <span className="text-[#FFCB00] font-extrabold">
+                <span className="text-[#D6B981] font-extrabold">
                   true value
                 </span>
                 .
@@ -80,21 +80,21 @@ function Home() {
                 Our work combines design, durability, and innovation to create signage that captures attention and builds trust. Using superior materials and modern finishes, each board is crafted to stand out with sophistication — offered in both illuminated (LED) and non-lit designs.
               </p>
 
-              {/* CTAs: Logo Yellow #FFCB00 Enquire Now & Ghost Gallery */}
+              {/* CTAs: Logo Yellow #D6B981 Enquire Now & Ghost Gallery */}
               <div className="animate-hero-4 mt-8 flex flex-wrap items-center gap-4">
                 <Link
                   to="/contact"
                   hash="quote-form"
-                  className="group relative inline-flex items-center justify-center rounded-full bg-[#FFCB00] hover:bg-[#E5B700] px-7 py-4 text-sm font-bold text-stone-950 shadow-md shadow-[#FFCB00]/30 transition-all hover:shadow-lg hover:shadow-[#FFCB00]/40 hover:scale-[1.02] active:scale-[0.98]"
+                  className="group relative inline-flex items-center justify-center rounded-full bg-[#D6B981] hover:bg-[#E5B700] px-7 py-4 text-sm font-bold text-stone-950 shadow-md shadow-[#D6B981]/30 transition-all hover:shadow-lg hover:shadow-[#D6B981]/40 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span>Enquire Now</span>
                 </Link>
 
                 <Link
-                  to="/gallery"
-                  className="group inline-flex items-center gap-2 rounded-full border border-stone-300 dark:border-stone-700 bg-white/90 dark:bg-stone-900/80 backdrop-blur-sm px-6 py-4 text-sm font-semibold text-stone-900 dark:text-white transition-all hover:bg-stone-50 dark:hover:bg-stone-800 hover:border-[#FFCB00] dark:hover:border-[#FFCB00] active:scale-[0.98]"
+                  to="/portfolio"
+                  className="group inline-flex items-center gap-2 rounded-full border border-stone-300 dark:border-stone-700 bg-white/90 dark:bg-stone-900/80 backdrop-blur-sm px-6 py-4 text-sm font-semibold text-stone-900 dark:text-white transition-all hover:bg-stone-50 dark:hover:bg-stone-800 hover:border-[#D6B981] dark:hover:border-[#D6B981] active:scale-[0.98]"
                 >
-                  <span>View Gallery</span>
+                  <span>View Portfolio</span>
                   <ArrowRight className="size-4 text-[#B38800] transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
@@ -106,7 +106,7 @@ function Home() {
                     Since 2015
                   </p>
                   <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">
-                    Coimbatore Atelier
+                    Coimbatore 
                   </p>
                 </div>
 

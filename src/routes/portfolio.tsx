@@ -5,7 +5,7 @@ import { MobileDock } from "@/components/mobile-dock";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Sparkles } from "lucide-react";
 
-export const Route = createFileRoute("/gallery")({
+export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
       { title: "Installed Gallery — Real Name Boards & Signage | Benchmark Coimbatore" },
@@ -36,7 +36,7 @@ function Gallery() {
       <section className="mx-auto max-w-7xl px-5 pt-12 pb-8 lg:px-10 lg:pt-16">
         <ScrollReveal direction="up" delay={50}>
           <div className="flex items-center gap-2">
-            <Sparkles className="size-4 text-[#FFCB00]" />
+            <Sparkles className="size-4 text-[#D6B981]" />
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.25em] text-[#8A6D00]">
               Installed Portfolio
             </span>

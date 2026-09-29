@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ChevronUp } from "lucide-react";
 import { WHATSAPP_LINK } from "./site";
+import { FaWhatsapp } from "react-icons/fa";
 
 export function WhatsAppIcon({ className = "size-5" }: { className?: string }) {
   return (
@@ -42,7 +43,23 @@ export function FloatingActions() {
   return (
     <div className="fixed right-4 sm:right-6 bottom-20 md:bottom-7 z-50 flex flex-col items-center gap-3 select-none">
       {/* Back to Top Floating Button */}
+       <a
+        href={WHATSAPP_LINK}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Chat on WhatsApp with Proprietor B. Kannan"
+        className="group relative hidden md:flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_25px_rgba(37,211,102,0.45)] transition-all hover:bg-[#20BD5A] hover:scale-110 active:scale-95 ring-4 ring-[#25D366]/20 cursor-pointer"
+      >
+        <FaWhatsapp className="h-7 w-7 text-white" />
+        {/* <WhatsAppIcon className="size-7 fill-white text-white" /> */}
+
+        {/* Hover Tooltip */}
+        <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-stone-900/90 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg backdrop-blur-sm transition-opacity group-hover:opacity-100">
+          Chat on WhatsApp
+        </span>
+      </a>
       {showTopBtn && (
+        
         <button
           type="button"
           aria-label="Back to top"
@@ -54,20 +71,7 @@ export function FloatingActions() {
       )}
 
       {/* Floating WhatsApp Action Button — Desktop Only */}
-      <a
-        href={WHATSAPP_LINK}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Chat on WhatsApp with Proprietor B. Kannan"
-        className="group relative hidden md:flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_10px_25px_rgba(37,211,102,0.45)] transition-all hover:bg-[#20BD5A] hover:scale-110 active:scale-95 ring-4 ring-[#25D366]/20 cursor-pointer"
-      >
-        <WhatsAppIcon className="size-7 fill-white text-white" />
-
-        {/* Hover Tooltip */}
-        <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-stone-900/90 px-3 py-1.5 text-xs font-medium text-white opacity-0 shadow-lg backdrop-blur-sm transition-opacity group-hover:opacity-100">
-          Chat on WhatsApp
-        </span>
-      </a>
+     
     </div>
   );
 }

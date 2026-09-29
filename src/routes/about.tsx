@@ -89,9 +89,9 @@ function About() {
       {/* Hero */}
       <section className="mx-auto max-w-7xl px-5 pt-14 pb-14 lg:px-10 lg:pt-20">
         <ScrollReveal direction="up" delay={50}>
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#FFCB00]/70 bg-[#FFCB00]/20 px-3.5 py-1 text-xs">
-            <Award className="size-3.5 text-[#8A6D00] dark:text-[#FFCB00]" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8A6D00] dark:text-[#FFCB00]">Our Heritage & Mission</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#D6B981]/70 bg-[#D6B981]/20 px-3.5 py-1 text-xs">
+            <Award className="size-3.5 text-[#8A6D00] dark:text-[#D6B981]" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8A6D00] dark:text-[#D6B981]">Our Heritage & Mission</span>
           </div>
         </ScrollReveal>
         <ScrollReveal direction="up" delay={150}>
@@ -101,7 +101,7 @@ function About() {
         </ScrollReveal>
         <ScrollReveal direction="up" delay={250}>
           <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-stone-600 font-normal">
-            Every brand deserves signage that reflects its <span className="text-[#FFCB00] font-bold">true value</span>. Our work combines design, durability, and innovation to create signage that captures attention and builds trust.
+            Every brand deserves signage that reflects its <span className="text-[#D6B981] font-bold">true value</span>. Our work combines design, durability, and innovation to create signage that captures attention and builds trust.
           </p>
         </ScrollReveal>
       </section>
@@ -111,7 +111,7 @@ function About() {
         <div className="grid gap-6 md:grid-cols-2">
           <ScrollReveal direction="up" delay={100}>
             <div className="h-full rounded-3xl border border-stone-200 bg-stone-50/70 p-8 lg:p-10 shadow-xs">
-              <div className="flex size-12 items-center justify-center rounded-2xl bg-[#FFCB00]/20 text-[#8A6D00] mb-6">
+              <div className="flex size-12 items-center justify-center rounded-2xl bg-[#D6B981]/20 text-[#8A6D00] mb-6">
                 <Eye className="size-6" />
               </div>
               <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8A6D00]">Our Vision</p>
@@ -126,7 +126,7 @@ function About() {
 
           <ScrollReveal direction="up" delay={200}>
             <div className="h-full rounded-3xl border border-stone-200 bg-stone-50/70 p-8 lg:p-10 shadow-xs">
-              <div className="flex size-12 items-center justify-center rounded-2xl bg-[#FFCB00]/20 text-[#8A6D00] mb-6">
+              <div className="flex size-12 items-center justify-center rounded-2xl bg-[#D6B981]/20 text-[#8A6D00] mb-6">
                 <Target className="size-6" />
               </div>
               <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8A6D00]">Our Mission</p>
@@ -231,7 +231,7 @@ function About() {
               <ScrollReveal key={s.step} direction="up" delay={idx * 80}>
                 <div className="h-full rounded-2xl border border-stone-200 bg-stone-50/60 p-5 relative flex flex-col justify-between shadow-2xs">
                   <div>
-                    <span className="flex size-8 items-center justify-center rounded-lg bg-[#FFCB00]/20 text-xs font-bold text-[#8A6D00]">
+                    <span className="flex size-8 items-center justify-center rounded-lg bg-[#D6B981]/20 text-xs font-bold text-[#8A6D00]">
                       {s.step}
                     </span>
                     <h3 className="mt-4 font-display text-base font-bold text-stone-950">
@@ -251,7 +251,7 @@ function About() {
       {/* About the Proprietor: B. Kannan, MBA */}
       <ProprietorSection />
 
-      <FAQSection />
+      {/* <FAQSection /> */}
       <SiteFooter />
       <MobileDock />
     </div>
