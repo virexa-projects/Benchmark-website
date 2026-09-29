@@ -29,7 +29,7 @@ export const Route = createFileRoute("/portfolio")({
 
 function Gallery() {
   return (
-    <div className="min-h-screen bg-white text-stone-900 pb-14 md:pb-0">
+    <div className="min-h-screen bg-[#FFFDF4] text-stone-900 pb-14 md:pb-0">
       <SiteHeader />
 
       {/* Gallery Header — Exact max-w-7xl px-5 lg:px-10 alignment with top nav */}
@@ -51,7 +51,7 @@ function Gallery() {
 
         <ScrollReveal direction="up" delay={250}>
           <p className="mt-3 max-w-2xl text-sm sm:text-base leading-relaxed text-stone-500">
-            Handcrafted architectural name boards installed across Coimbatore and Tamil Nadu. Hover over any board to view its installation location, or click to enlarge.
+            Handcrafted architectural name boards installed across Coimbatore and Tamil Nadu. Click any board to enlarge and view details.
           </p>
         </ScrollReveal>
       </section>

@@ -62,8 +62,8 @@
 :root {
   --radius: 0.5rem;
 
-  /* Benchmark Brand Palette — Pure White Background & Primary Yellow (#D6B981) */
-  --background: #FFFFFF;
+  /* Benchmark Brand Palette — Ivory Cream Background (#FFFDF4) */
+  --background: #FFFDF4;
   --foreground: oklch(0.20 0.02 60);
   --card: #FFFFFF;
   --card-foreground: oklch(0.20 0.02 60);

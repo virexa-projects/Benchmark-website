@@ -1,14 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 
-import w_vr_illam_day from "@/assets/work/w_vr_illam_day.jpg";
-import w_fliqzo from "@/assets/work/w_fliqzo.jpg";
-import w_vibhavari from "@/assets/work/w_vibhavari.jpg";
-import w_shanthi_villa from "@/assets/work/w_shanthi_villa.jpg";
-import w_struzon from "@/assets/work/w_struzon.jpg";
-import w_evs_illam from "@/assets/work/w_evs_illam.jpg";
-import w_vivalayam_night from "@/assets/work/w_vivalayam_night.jpg";
-import w_giripriya from "@/assets/work/w_giripriya.jpg";
+import slide1 from "@/assets/work/1000038064.jpg.jpeg";
+import slide2 from "@/assets/work/1000038071.jpg.jpeg";
+import slide3 from "@/assets/work/1000038073.jpg.jpeg";
+import slide4 from "@/assets/work/1000038085.jpg.jpeg";
+import slide5 from "@/assets/work/1000038090.jpg.jpeg";
+import slide6 from "@/assets/work/1000098713.jpg.jpeg";
+import slide7 from "@/assets/work/1000098716.jpg.jpeg";
+import slide8 from "@/assets/work/1000315704.jpg.jpeg";
+import slide9 from "@/assets/work/1000331144.jpg.jpeg";
+import slide10 from "@/assets/work/1000342891.jpg.jpeg";
 
 export interface SlideItem {
   id: string;
@@ -23,7 +25,7 @@ export interface SlideItem {
 export const SLIDES: SlideItem[] = [
   {
     id: "s1",
-    img: w_vr_illam_day,
+    img: slide1,
     title: "வாழ்க வளமுடன் — VR Illam",
     category: "Residential & Villas",
     materials: "3D Mirror Gold PVD",
@@ -32,7 +34,7 @@ export const SLIDES: SlideItem[] = [
   },
   {
     id: "s2",
-    img: w_fliqzo,
+    img: slide2,
     title: "Fliqzo Sign",
     category: "Retail & Showrooms",
     materials: "PVD Brass Gold Rim",
@@ -41,7 +43,7 @@ export const SLIDES: SlideItem[] = [
   },
   {
     id: "s3",
-    img: w_vibhavari,
+    img: slide3,
     title: "Dr. Vibhavari / The Pearl",
     category: "Residential & Villas",
     materials: "3D PVD Mirror Gold",
@@ -50,7 +52,7 @@ export const SLIDES: SlideItem[] = [
   },
   {
     id: "s4",
-    img: w_shanthi_villa,
+    img: slide4,
     title: "Shanthi Villa",
     category: "Residential & Villas",
     materials: "Matte Black Laser-Cut Metal",
@@ -59,7 +61,7 @@ export const SLIDES: SlideItem[] = [
   },
   {
     id: "s5",
-    img: w_struzon,
+    img: slide5,
     title: "STRUZON Technologies",
     category: "Corporate & Offices",
     materials: "3D Precision Channel Letters",
@@ -68,7 +70,7 @@ export const SLIDES: SlideItem[] = [
   },
   {
     id: "s6",
-    img: w_evs_illam,
+    img: slide6,
     title: "EVS Illam",
     category: "Residential & Villas",
     materials: "Cast Gloss White Acrylic",
@@ -77,7 +79,7 @@ export const SLIDES: SlideItem[] = [
   },
   {
     id: "s7",
-    img: w_vivalayam_night,
+    img: slide7,
     title: "Vivalayam",
     category: "Residential & Villas",
     materials: "Natural Walnut Finish",
@@ -86,12 +88,30 @@ export const SLIDES: SlideItem[] = [
   },
   {
     id: "s8",
-    img: w_giripriya,
+    img: slide8,
     title: "Giripriya",
     category: "Residential & Villas",
     materials: "Teakwood Finish",
     location: "Saibaba Colony, Coimbatore",
     lighting: "Non-Illuminated Daylight",
+  },
+  {
+    id: "s9",
+    img: slide9,
+    title: "அன்னை இல்லம் — Travertine Marble",
+    category: "Residential & Villas",
+    materials: "3D High-Gloss Jet Black Acrylic",
+    location: "Kalapatti, Coimbatore",
+    lighting: "Non-Illuminated Daylight",
+  },
+  {
+    id: "s10",
+    img: slide10,
+    title: "Sreelakam — Scalloped Wood & Gold",
+    category: "Residential & Villas",
+    materials: "3D Mirror Gold & Teakwood",
+    location: "Peelamedu, Coimbatore",
+    lighting: "Warm Ambient Daylight",
   },
 ];
 

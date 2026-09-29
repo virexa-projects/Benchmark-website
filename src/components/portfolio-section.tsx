@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { WHATSAPP_LINK } from "./site";
 import { WhatsAppIcon } from "./floating-actions";
+import { useProjects, useCategories } from "@/lib/content-store";
 
 import w1 from "@/assets/work/w1.jpg";
 import w2 from "@/assets/work/w2.jpg";
@@ -385,52 +386,44 @@ function ProjectCard({
   return (
     <div
       onClick={() => onOpenModal(project, imgIndex)}
-      className="group relative cursor-pointer overflow-hidden rounded-2xl sm:rounded-3xl bg-stone-900 shadow-sm transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 aspect-[4/3] sm:aspect-square"
+      className="group relative cursor-pointer rounded-md bg-white p-2.5 sm:p-3 border border-stone-200/90 shadow-2xs transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-stone-300"
     >
-      {/* High-Resolution Installation Photo */}
-      <img
-        src={currentImg}
-        alt={project.title}
-        className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-        loading="lazy"
-      />
+      {/* Inner Image Container — rounded-sm like square with white card border framing */}
+      <div className="relative aspect-square w-full overflow-hidden rounded-sm bg-stone-100">
+        {/* High-Resolution Installation Photo */}
+        <img
+          src={currentImg}
+          alt={project.title}
+          className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          loading="lazy"
+        />
 
-      {/* Clean Hover Overlay: Centered Location Display */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-black/60 backdrop-blur-[2px] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-        <div className="flex items-center gap-2 rounded-full bg-black/75 border border-white/20 px-4 py-2 text-white shadow-xl transform translate-y-2 transition-transform duration-300 group-hover:translate-y-0">
-          <MapPin className="size-4 text-[#EBB036] shrink-0" />
-          <span className="font-semibold text-sm sm:text-base text-white">
-            {project.location}
-          </span>
-        </div>
+
+        {/* Multi-Image Quick Navigation Arrows on Hover */}
+        {project.images.length > 1 && (
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
+            <button
+              type="button"
+              aria-label="Previous image"
+              onClick={prevImage}
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 flex size-8 items-center justify-center rounded-full bg-black/70 text-white backdrop-blur-md transition-all hover:bg-black hover:scale-110 active:scale-95 border border-white/30"
+            >
+              <ChevronLeft className="size-4" />
+            </button>
+            <button
+              type="button"
+              aria-label="Next image"
+              onClick={nextImage}
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 flex size-8 items-center justify-center rounded-full bg-black/70 text-white backdrop-blur-md transition-all hover:bg-black hover:scale-110 active:scale-95 border border-white/30"
+            >
+              <ChevronRight className="size-4" />
+            </button>
+          </div>
+        )}
       </div>
-
-      {/* Multi-Image Quick Navigation Arrows on Hover */}
-      {project.images.length > 1 && (
-        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto">
-          <button
-            type="button"
-            aria-label="Previous image"
-            onClick={prevImage}
-            className="absolute left-2.5 top-1/2 -translate-y-1/2 z-20 flex size-8 items-center justify-center rounded-full bg-black/70 text-white backdrop-blur-md transition-all hover:bg-black hover:scale-110 active:scale-95 border border-white/30"
-          >
-            <ChevronLeft className="size-4" />
-          </button>
-          <button
-            type="button"
-            aria-label="Next image"
-            onClick={nextImage}
-            className="absolute right-2.5 top-1/2 -translate-y-1/2 z-20 flex size-8 items-center justify-center rounded-full bg-black/70 text-white backdrop-blur-md transition-all hover:bg-black hover:scale-110 active:scale-95 border border-white/30"
-          >
-            <ChevronRight className="size-4" />
-          </button>
-        </div>
-      )}
     </div>
   );
 }
-
-import { useProjects, useCategories } from "@/lib/content-store";
 
 export function PortfolioSection({ limit }: { limit?: number }) {
   const [projects] = useProjects();
@@ -501,8 +494,8 @@ export function PortfolioSection({ limit }: { limit?: number }) {
 
   return (
     <div className="w-full">
-      {/* Sticky Filter Bar with Mobile Horizontal Scroll */}
-      <div className="sticky top-20 z-30 mb-8 w-full border-b border-stone-200/90 bg-white/95 backdrop-blur-md py-3 shadow-2xs transition-all">
+      {/* Sticky Filter Bar with Mobile Horizontal Scroll — matched to page bg #FFFDF4 */}
+      <div className="sticky top-20 z-30 mb-8 w-full border-b border-stone-200/80 bg-[#FFFDF4]/95 backdrop-blur-md py-3 shadow-2xs transition-all">
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth px-0.5 sm:flex-wrap sm:overflow-visible">
           {categories.map((cat) => (
             <button
@@ -515,7 +508,7 @@ export function PortfolioSection({ limit }: { limit?: number }) {
               className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-xs font-semibold tracking-wide transition-all ${
                 selectedCategory === cat.id
                   ? "bg-stone-900 text-white shadow-sm"
-                  : "bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-900 active:bg-stone-300"
+                  : "bg-[#EFE8DC]/80 text-stone-700 hover:bg-[#E4DCCE] hover:text-stone-950 border border-stone-300/40 active:bg-[#DCD3C3]"
               }`}
             >
               {cat.label}

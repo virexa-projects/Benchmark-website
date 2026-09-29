@@ -6,14 +6,13 @@ import {
   ShieldCheck,
   Sparkles,
   ChevronDown,
-  Instagram,
-  Youtube,
-  Facebook,
 } from "lucide-react";
+import { FaWhatsapp, FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 
 import { BenchmarkLogo } from "@/components/benchmark-logo";
 import { WhatsAppIcon } from "@/components/floating-actions";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { cn } from "@/lib/utils";
 
 // ============================================================
 // CONTACT DETAILS
@@ -57,11 +56,34 @@ const NAV = [
   },
 ] as const;
 
+export const SOCIAL_LINKS = [
+  {
+    name: "WhatsApp",
+    href: WHATSAPP_LINK,
+    icon: FaWhatsapp,
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com",
+    icon: FaInstagram,
+  },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com",
+    icon: FaFacebook,
+  },
+  {
+    name: "YouTube",
+    href: "https://www.youtube.com",
+    icon: FaYoutube,
+  },
+] as const;
+
 // ============================================================
 // SITE HEADER
 // ============================================================
 
-export function SiteHeader() {
+export function SiteHeader({ className }: { className?: string } = {}) {
   const [open, setOpen] = useState(false);
 
   const pathname = useRouterState({
@@ -69,7 +91,12 @@ export function SiteHeader() {
   });
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-background/90 backdrop-blur-md transition-all">
+    <header
+      className={cn(
+        "sticky top-0 z-50 shrink-0 border-b border-border/80 bg-[#FFFDF4]/90 backdrop-blur-md transition-all",
+        className
+      )}
+    >
       {/* Main Navigation */}
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-10">
         {/* Brand Logo */}
@@ -82,38 +109,50 @@ export function SiteHeader() {
           <BenchmarkLogo className="origin-left" />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-2 md:flex lg:gap-3">
-          {NAV.map((item) => {
-            const isActive = pathname === item.to;
+        {/* Right Section: Desktop Navigation + Social Icons + Mobile Menu Toggle */}
+        <div className="flex items-center gap-5 lg:gap-7">
+          {/* Desktop Navigation moved to right near social icons with letter spacing */}
+          <nav className="hidden items-center gap-1 md:flex lg:gap-2">
+            {NAV.map((item) => {
+              const isActive = pathname === item.to;
 
-            return (
-              <Link
-                key={item.to}
-                to={item.to}
-                className={`rounded-full px-3.5 py-1.5 text-sm tracking-tight transition-all duration-200 ${
-                  isActive
-                    ? "bg-secondary/80 font-semibold text-foreground shadow-2xs"
-                    : "font-medium text-muted-foreground hover:bg-secondary/40 hover:text-foreground"
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-        </nav>
+              return (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={`rounded-full px-3.5 py-1.5 text-sm tracking-[0.08em] font-medium transition-all duration-200 ${
+                    isActive
+                      ? "bg-secondary/80 font-bold text-foreground shadow-2xs"
+                      : "text-muted-foreground hover:bg-secondary/40 hover:text-foreground"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
 
-        {/* Action Buttons */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          {/* Phone */}
-          <a
-            href={PHONE_LINK}
-            className="hidden items-center gap-1.5 whitespace-nowrap rounded-full border border-border bg-card/80 px-3.5 py-2 text-xs font-semibold text-foreground transition-all hover:border-amber-400 hover:bg-secondary sm:flex"
-            aria-label={`Call ${PHONE}`}
-          >
-            <Phone className="size-3.5 shrink-0 text-amber-500" />
-            <span>{PHONE}</span>
-          </a>
+          {/* Divider between Nav and Social Icons */}
+          <div className="hidden h-5 w-px bg-border/80 md:block" />
+
+          {/* Social Icons without outline */}
+          <div className="hidden sm:flex items-center gap-3">
+            {SOCIAL_LINKS.map((item) => {
+              const Icon = item.icon;
+              return (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={item.name}
+                  className="flex size-8.5 items-center justify-center text-muted-foreground transition-all duration-200 hover:text-[#D6B981] hover:scale-115 active:scale-95"
+                >
+                  <Icon className="size-4.5" />
+                </a>
+              );
+            })}
+          </div>
 
           {/* Mobile Hamburger */}
           <button
@@ -154,7 +193,7 @@ export function SiteHeader() {
                   key={item.to}
                   to={item.to}
                   onClick={() => setOpen(false)}
-                  className={`rounded-lg px-3 py-2 font-display text-base font-semibold tracking-tight transition-colors ${
+                  className={`rounded-lg px-3 py-2 font-display text-base font-semibold tracking-[0.08em] transition-colors ${
                     isActive
                       ? "bg-secondary font-bold text-[#B38800]"
                       : "text-foreground hover:bg-secondary/50"
@@ -196,6 +235,25 @@ export function SiteHeader() {
               >
                 <span>Enquire Now</span>
               </Link>
+
+              {/* Mobile Social Links without outline */}
+              <div className="mt-2 flex items-center justify-center gap-5 pt-3 border-t border-border">
+                {SOCIAL_LINKS.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={item.name}
+                      className="flex size-9 items-center justify-center text-muted-foreground transition-all hover:text-[#D6B981] hover:scale-115 active:scale-95"
+                    >
+                      <Icon className="size-5" />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </nav>
@@ -228,39 +286,22 @@ export function SiteFooter() {
         
 
             {/* Social Media */}
-            <div className="mt-6 flex items-center gap-2.5">
-              {/* Instagram */}
-              <a
-                href="https://www.instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-                className="flex size-9 items-center justify-center rounded-xl border border-stone-800 bg-stone-900 text-stone-400 shadow-2xs transition-all hover:border-[#D6B981]/40 hover:text-[#D6B981] active:scale-95"
-              >
-                <Instagram className="size-4.5" />
-              </a>
-
-              {/* Facebook */}
-              <a
-                href="https://www.facebook.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Facebook"
-                className="flex size-9 items-center justify-center rounded-xl border border-stone-800 bg-stone-900 text-stone-400 shadow-2xs transition-all hover:border-[#D6B981]/40 hover:text-[#D6B981] active:scale-95"
-              >
-                <Facebook className="size-4.5" />
-              </a>
-
-              {/* YouTube */}
-              <a
-                href="https://www.youtube.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="YouTube"
-                className="flex size-9 items-center justify-center rounded-xl border border-stone-800 bg-stone-900 text-stone-400 shadow-2xs transition-all hover:border-[#D6B981]/40 hover:text-[#D6B981] active:scale-95"
-              >
-                <Youtube className="size-4.5" />
-              </a>
+            <div className="mt-6 flex items-center gap-3.5">
+              {SOCIAL_LINKS.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={item.name}
+                    className="flex size-8.5 items-center justify-center text-stone-400 transition-all hover:text-[#D6B981] hover:scale-115 active:scale-95"
+                  >
+                    <Icon className="size-4.5" />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -389,7 +430,7 @@ export function FAQSection() {
   ];
 
   return (
-    <section className="section-rule border-t border-stone-200 bg-white transition-colors duration-500 dark:border-stone-800 dark:bg-[#0E0F12]">
+    <section className="section-rule border-t border-stone-200 bg-[#FFFDF4] transition-colors duration-500 dark:border-stone-800 dark:bg-[#0E0F12]">
       <div className="mx-auto max-w-7xl px-5 py-20 lg:px-10">
         {/* Heading */}
         <ScrollReveal direction="up" delay={50}>

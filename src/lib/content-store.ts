@@ -3,7 +3,7 @@ import { ALL_PROJECTS as INITIAL_PROJECTS, type Project } from "@/components/por
 import { SLIDES as INITIAL_SLIDES, type SlideItem } from "@/components/hero-slideshow";
 
 const PROJECTS_STORAGE_KEY = "benchmark_custom_projects_v1";
-const SLIDES_STORAGE_KEY = "benchmark_custom_slides_v1";
+const SLIDES_STORAGE_KEY = "benchmark_custom_slides_v3";
 const CATEGORIES_STORAGE_KEY = "benchmark_custom_categories_v1";
 
 export interface CategoryItem {

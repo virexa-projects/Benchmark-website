@@ -182,6 +182,34 @@ var Award = createLucideIcon("award", [["path", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var Building2 = createLucideIcon("building-2", [
+	["path", {
+		d: "M10 12h4",
+		key: "a56b0p"
+	}],
+	["path", {
+		d: "M10 8h4",
+		key: "1sr2af"
+	}],
+	["path", {
+		d: "M14 21v-3a2 2 0 0 0-4 0v3",
+		key: "1rgiei"
+	}],
+	["path", {
+		d: "M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2",
+		key: "secmi2"
+	}],
+	["path", {
+		d: "M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16",
+		key: "16ra0t"
+	}]
+]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var ChevronLeft = createLucideIcon("chevron-left", [["path", {
 	d: "m15 18-6-6 6-6",
 	key: "1wnfg3"
@@ -329,16 +357,6 @@ var Eye = createLucideIcon("eye", [["path", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var Facebook = createLucideIcon("facebook", [["path", {
-	d: "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
-	key: "1jg4f8"
-}]]);
-/**
-* @license lucide-react v0.575.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
 var GripVertical = createLucideIcon("grip-vertical", [
 	["circle", {
 		cx: "9",
@@ -402,34 +420,6 @@ var Image = createLucideIcon("image", [
 	["path", {
 		d: "m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21",
 		key: "1xmnt7"
-	}]
-]);
-/**
-* @license lucide-react v0.575.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var Instagram = createLucideIcon("instagram", [
-	["rect", {
-		width: "20",
-		height: "20",
-		x: "2",
-		y: "2",
-		rx: "5",
-		ry: "5",
-		key: "2e1cvw"
-	}],
-	["path", {
-		d: "M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z",
-		key: "9exkf1"
-	}],
-	["line", {
-		x1: "17.5",
-		x2: "17.51",
-		y1: "6.5",
-		y2: "6.5",
-		key: "r4j83e"
 	}]
 ]);
 /**
@@ -615,6 +605,16 @@ var ShieldCheck = createLucideIcon("shield-check", [["path", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var Shield = createLucideIcon("shield", [["path", {
+	d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
+	key: "oel41y"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var SlidersHorizontal = createLucideIcon("sliders-horizontal", [
 	["path", {
 		d: "M10 5H3",
@@ -779,6 +779,28 @@ var Upload = createLucideIcon("upload", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var UserCheck = createLucideIcon("user-check", [
+	["path", {
+		d: "m16 11 2 2 4-4",
+		key: "9rsbq5"
+	}],
+	["path", {
+		d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2",
+		key: "1yyitq"
+	}],
+	["circle", {
+		cx: "9",
+		cy: "7",
+		r: "4",
+		key: "nufk8"
+	}]
+]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var X = createLucideIcon("x", [["path", {
 	d: "M18 6 6 18",
 	key: "1bl5f8"
@@ -786,18 +808,5 @@ var X = createLucideIcon("x", [["path", {
 	d: "m6 6 12 12",
 	key: "d8bk6v"
 }]]);
-/**
-* @license lucide-react v0.575.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
-var Youtube = createLucideIcon("youtube", [["path", {
-	d: "M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17",
-	key: "1q2vi4"
-}], ["path", {
-	d: "m10 15 5-3-5-3z",
-	key: "1jp15x"
-}]]);
 //#endregion
-export { CircleAlert as A, GripVertical as C, ExternalLink as D, EyeOff as E, ArrowUp as F, ArrowRight as I, ArrowLeft as L, ChevronRight as M, ChevronLeft as N, Clock as O, Award as P, ArrowDown as R, Image as S, Eye as T, Mail as _, Trash2 as a, Layers as b, SlidersHorizontal as c, RotateCcw as d, Plus as f, MapPin as g, Navigation as h, TriangleAlert as i, ChevronUp as j, CircleCheck as k, ShieldCheck as l, PenLine as m, X as n, Target as o, Phone as p, Upload as r, Sparkles as s, Youtube as t, Search as u, LogOut as v, Facebook as w, Instagram as x, Lock as y };
+export { ChevronUp as A, GripVertical as C, Clock as D, ExternalLink as E, ArrowUp as F, ArrowRight as I, ArrowLeft as L, ChevronLeft as M, Building2 as N, CircleCheck as O, Award as P, ArrowDown as R, Image as S, EyeOff as T, MapPin as _, Trash2 as a, Lock as b, SlidersHorizontal as c, Search as d, RotateCcw as f, Navigation as g, PenLine as h, TriangleAlert as i, ChevronRight as j, CircleAlert as k, Shield as l, Phone as m, UserCheck as n, Target as o, Plus as p, Upload as r, Sparkles as s, X as t, ShieldCheck as u, Mail as v, Eye as w, Layers as x, LogOut as y };

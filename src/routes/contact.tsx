@@ -82,7 +82,7 @@ function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-stone-900 antialiased pb-14 md:pb-0">
+    <div className="min-h-screen bg-[#FFFDF4] text-stone-900 antialiased pb-14 md:pb-0">
       <SiteHeader />
 
       {/* Main Hero & Form Section: Exact max-w-7xl px-5 lg:px-10 aligned with top nav */}

@@ -1,9 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute } from "@tanstack/react-router";
+import { useState, useEffect, useRef } from "react";
 import { SiteHeader } from "@/components/site";
-import { HeroSlideshow } from "@/components/hero-slideshow";
 import { MobileDock } from "@/components/mobile-dock";
-import { ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { SLIDES } from "@/components/hero-slideshow";
+import { useSlides } from "@/lib/content-store";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,119 +29,132 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const [isNight, setIsNight] = useState(false);
+  const [slides] = useSlides();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef<number | null>(null);
+
+  // Guarantee valid slides list with fallback
+  const rawList = slides && slides.length > 0 ? slides : SLIDES;
+  const activeSlides =
+    rawList.filter((s) => Boolean(s && s.img)).length > 0
+      ? rawList.filter((s) => Boolean(s && s.img))
+      : SLIDES;
+
+  const safeIndex = currentIndex >= activeSlides.length ? 0 : currentIndex;
+
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % activeSlides.length);
+  const prevSlide = () =>
+    setCurrentIndex((prev) => (prev - 1 + activeSlides.length) % activeSlides.length);
+
+  // Auto slide smoothly every 5.5s
+  useEffect(() => {
+    if (isPaused || activeSlides.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % activeSlides.length);
+    }, 5500);
+    return () => clearInterval(timer);
+  }, [isPaused, activeSlides.length]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") prevSlide();
+      if (e.key === "ArrowRight") nextSlide();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeSlides.length]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground antialiased selection:bg-amber-500 selection:text-stone-950 flex flex-col">
+    <div className="h-screen h-[100dvh] max-h-screen overflow-hidden bg-[#FFFDF4] text-foreground antialiased selection:bg-amber-500 selection:text-stone-950 flex flex-col">
       <SiteHeader />
 
-      {/* Hero Section — Perfectly Aligned with Top Nav & Full-Bleed Right Half */}
-      <section
-        className={`relative flex-1 flex flex-col justify-center overflow-hidden transition-colors duration-700 ease-in-out min-h-[calc(100vh-5rem)] ${
-          isNight
-            ? "bg-[#0E0F12] text-white"
-            : "bg-white text-stone-900"
-        }`}
-      >
-        {/* Soft Ambient Warm Lighting Radial Glow — only in night mode */}
-        {isNight && (
-          <>
-            <div className="absolute top-0 left-1/4 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none bg-amber-500/15 opacity-100" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full blur-3xl pointer-events-none bg-stone-800/30 opacity-100" />
-          </>
-        )}
-
-        {/* Content Container aligned identically with Top Nav */}
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-5 lg:px-10 py-10 lg:py-16 my-auto">
-          <div className="grid items-center gap-10 lg:grid-cols-12">
-            {/* Left Column: Exactly Aligned with Logo */}
-            <div className="lg:col-span-6 max-w-xl">
-              {/* Top Eyebrow Badge */}
-              <div className="animate-hero-1 inline-flex items-center gap-2.5 rounded-full border border-[#D6B981]/70 bg-[#D6B981]/20 px-4 py-1.5 shadow-2xs backdrop-blur-md">
-                <span className="relative flex size-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#D6B981] opacity-75" />
-                  <span className="relative inline-flex size-2 rounded-full bg-[#D6B981]" />
-                </span>
-                <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8A6D00] dark:text-[#D6B981]">
-                  The Standard for Signage · Est. 2015
-                </span>
-              </div>
-
-              {/* Main Headline */}
-              <h1 className="animate-hero-2 mt-6 font-display text-3xl sm:text-4xl lg:text-[44px] font-bold leading-[1.15] tracking-tight text-balance text-stone-950 dark:text-white">
-                Every brand deserves signage that reflects its{" "}
-                <span className="text-[#D6B981] font-extrabold">
-                  true value
-                </span>
-                .
-              </h1>
-
-              {/* Narrative Body Copy */}
-              <p className="animate-hero-3 mt-5 text-base sm:text-[17px] leading-[1.68] text-stone-600 dark:text-stone-300 font-normal">
-                Our work combines design, durability, and innovation to create signage that captures attention and builds trust. Using superior materials and modern finishes, each board is crafted to stand out with sophistication — offered in both illuminated (LED) and non-lit designs.
-              </p>
-
-              {/* CTAs: Logo Yellow #D6B981 Enquire Now & Ghost Gallery */}
-              <div className="animate-hero-4 mt-8 flex flex-wrap items-center gap-4">
-                <Link
-                  to="/contact"
-                  hash="quote-form"
-                  className="group relative inline-flex items-center justify-center rounded-full bg-[#D6B981] hover:bg-[#E5B700] px-7 py-4 text-sm font-bold text-stone-950 shadow-md shadow-[#D6B981]/30 transition-all hover:shadow-lg hover:shadow-[#D6B981]/40 hover:scale-[1.02] active:scale-[0.98]"
+      {/* Main Home Showcase Section — Matches header width with visible soft shadow */}
+      <main className="flex-1 flex flex-col items-center justify-center px-12 py-3 sm:py-4 min-h-0 overflow-hidden">
+        <div className="mx-auto w-full max-w-7xl flex flex-col items-center px-10 justify-center min-h-0 py-2">
+          {/* Rounded Showcase Image Card with #FEF644 golden glow & floating shadow */}
+          <div
+            className="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-[calc(100vh-7.5rem)] rounded-2xl sm:rounded-3xl lg:rounded-[32px] overflow-hidden bg-stone-950 border border-[#FEF644]/40 select-none group"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={(e) => {
+              const touch = e.touches[0];
+              if (touch) {
+                touchStartX.current = touch.clientX;
+              }
+            }}
+            onTouchEnd={(e) => {
+              const changedTouch = e.changedTouches[0];
+              if (touchStartX.current !== null && changedTouch) {
+                const diff = touchStartX.current - changedTouch.clientX;
+                if (diff > 50) nextSlide();
+                else if (diff < -50) prevSlide();
+              }
+              touchStartX.current = null;
+            }}
+          >
+            {/* Photographic Slides: Image fits completely to container without cropping */}
+            {activeSlides.map((slide, index) => {
+              const isActive = index === safeIndex;
+              return (
+                <div
+                  key={slide.id || index}
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${isActive
+                    ? "opacity-100 z-10 pointer-events-auto"
+                    : "opacity-0 z-0 pointer-events-none"
+                    }`}
                 >
-                  <span>Enquire Now</span>
-                </Link>
+                  {/* Subtle ambient blurred backdrop matching image colors */}
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                    <img
+                      src={slide.img}
+                      alt=""
+                      className="size-full object-cover blur-3xl opacity-35 scale-125"
+                      aria-hidden="true"
+                    />
+                  </div>
 
-                <Link
-                  to="/portfolio"
-                  className="group inline-flex items-center gap-2 rounded-full border border-stone-300 dark:border-stone-700 bg-white/90 dark:bg-stone-900/80 backdrop-blur-sm px-6 py-4 text-sm font-semibold text-stone-900 dark:text-white transition-all hover:bg-stone-50 dark:hover:bg-stone-800 hover:border-[#D6B981] dark:hover:border-[#D6B981] active:scale-[0.98]"
-                >
-                  <span>View Portfolio</span>
-                  <ArrowRight className="size-4 text-[#B38800] transition-transform group-hover:translate-x-1" />
-                </Link>
-              </div>
+                  {/* Main image fits container completely with no cropping */}
+                  <img
+                    src={slide.img}
+                    alt={slide.title || "Benchmark Signage"}
+                    className="relative z-10 size-full object-contain object-center"
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
 
-              {/* Luxury Stat Modules with Subtle Dividers */}
-              <div className="animate-hero-5 mt-12 grid grid-cols-3 gap-4 sm:gap-6 border-t border-stone-200/90 dark:border-stone-800 pt-7">
-                <div className="flex flex-col">
-                  <p className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-stone-950 dark:text-white">
-                    Since 2015
-                  </p>
-                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">
-                    Coimbatore 
-                  </p>
+                  {/* Gentle base gradient for contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none z-10" />
                 </div>
+              );
+            })}
 
-                <div className="flex flex-col border-l border-stone-200/80 dark:border-stone-800 pl-4 sm:pl-6">
-                  <p className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-stone-950 dark:text-white">
-                    500+
-                  </p>
-                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">
-                    Bespoke Boards
-                  </p>
-                </div>
+            {/* Prev and Next Buttons INSIDE slide show at the bottom center */}
+            <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center gap-3">
+              <button
+                type="button"
+                aria-label="Previous slide"
+                onClick={prevSlide}
+                className="flex size-11 sm:size-12 items-center justify-center rounded-full bg-black/85 text-white hover:bg-black border border-white/20 transition-all hover:scale-110 active:scale-95 shadow-2xl cursor-pointer backdrop-blur-md"
+              >
+                <ChevronLeft className="size-5 sm:size-6" />
+              </button>
 
-                <div className="flex flex-col border-l border-stone-200/80 dark:border-stone-800 pl-4 sm:pl-6">
-                  <p className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight text-stone-950 dark:text-white">
-                    100%
-                  </p>
-                  <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">
-                    In-House Craft
-                  </p>
-                </div>
-              </div>
+              <button
+                type="button"
+                aria-label="Next slide"
+                onClick={nextSlide}
+                className="flex size-11 sm:size-12 items-center justify-center rounded-full bg-black/85 text-white hover:bg-black border border-white/20 transition-all hover:scale-110 active:scale-95 shadow-2xl cursor-pointer backdrop-blur-md"
+              >
+                <ChevronRight className="size-5 sm:size-6" />
+              </button>
             </div>
           </div>
         </div>
-
-        {/* Right Column: Full-Bleed Edge-to-Edge Image on Desktop, seamlessly taking 50% */}
-        <div className="relative lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 min-h-[460px] sm:min-h-[560px] lg:min-h-full h-full overflow-hidden bg-stone-950 border-t lg:border-t-0 lg:border-l border-stone-200/80 dark:border-stone-800/80">
-          <HeroSlideshow isNight={isNight} setIsNight={setIsNight} />
-        </div>
-      </section>
+      </main>
 
       {/* Sticky Mobile Dock */}
       <MobileDock />
     </div>
   );
 }
-

@@ -3,7 +3,7 @@ import { FAQSection, SiteFooter, SiteHeader, WHATSAPP_LINK, PHONE, ADDRESS, GOOG
 import { MobileDock } from "@/components/mobile-dock";
 import { ProprietorSection } from "@/components/proprietor-section";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { Award, ShieldCheck, MapPin, Sparkles, CheckCircle2, ArrowRight, Clock, Target, Compass, Eye, Star } from "lucide-react";
+import { Award, ShieldCheck, Shield, MapPin, Sparkles, CheckCircle2, ArrowRight, Clock, Target, Compass, Eye, Star, Users, Building2, UserCheck } from "lucide-react";
 
 import w4 from "@/assets/work/w4.jpg";
 import w5 from "@/assets/work/w5.jpg";
@@ -81,29 +81,88 @@ const CRAFT_STEPS = [
   },
 ];
 
+const ABOUT_STATS = [
+  {
+    icon: Award,
+    stat: "10+",
+    title: "Years of Craftsmanship",
+    desc: "Established atelier in Coimbatore since 2015",
+  },
+  {
+    icon: Building2,
+    stat: "500+",
+    title: "Bespoke Boards Installed",
+    desc: "Villas, clinics, corporates & showrooms",
+  },
+  {
+    icon: Shield,
+    stat: "304",
+    title: "Marine Grade Alloy",
+    desc: "Authentic SS 304 & Titanium PVD Gold",
+  },
+  {
+    icon: UserCheck,
+    stat: "100%",
+    title: "In-House Master Build",
+    desc: "Direct consultation with B. Kannan, MBA",
+  },
+];
+
 function About() {
   return (
-    <div className="min-h-screen bg-white text-stone-900 pb-14 md:pb-0">
+    <div className="min-h-screen bg-[#FFFDF4] text-stone-900 pb-14 md:pb-0">
       <SiteHeader />
 
-      {/* Hero */}
-      <section className="mx-auto max-w-7xl px-5 pt-14 pb-14 lg:px-10 lg:pt-20">
-        <ScrollReveal direction="up" delay={50}>
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#D6B981]/70 bg-[#D6B981]/20 px-3.5 py-1 text-xs">
-            <Award className="size-3.5 text-[#8A6D00] dark:text-[#D6B981]" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#8A6D00] dark:text-[#D6B981]">Our Heritage & Mission</span>
-          </div>
-        </ScrollReveal>
-        <ScrollReveal direction="up" delay={150}>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-balance text-stone-950">
-            The Standard for Signage.
-          </h1>
-        </ScrollReveal>
-        <ScrollReveal direction="up" delay={250}>
-          <p className="mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-stone-600 font-normal">
-            Every brand deserves signage that reflects its <span className="text-[#D6B981] font-bold">true value</span>. Our work combines design, durability, and innovation to create signage that captures attention and builds trust.
-          </p>
-        </ScrollReveal>
+      {/* Hero: Centered About Us & Four Stat Cards Matching Image */}
+      <section className="mx-auto max-w-7xl px-5 pt-16 pb-16 lg:px-10 lg:pt-22">
+        <div className="flex flex-col items-center text-center mx-auto max-w-3xl">
+          <ScrollReveal direction="up" delay={50}>
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-stone-950">
+              About Us
+            </h1>
+          </ScrollReveal>
+
+          <ScrollReveal direction="up" delay={120}>
+            <div className="mt-4 max-w-2xl text-xs sm:text-sm text-stone-600 leading-relaxed space-y-1">
+              <p>
+                We&apos;re a passionate atelier combining design, durability, and innovation to craft bespoke signage that reflects your true value.
+              </p>
+              <p className="text-stone-500">
+                Serving architectural clients, homeowners, and brands with precision since 2015.
+              </p>
+            </div>
+          </ScrollReveal>
+        </div>
+
+        {/* Four Cards Matching Image */}
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+          {ABOUT_STATS.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <ScrollReveal key={item.title} direction="up" delay={100 + index * 70}>
+                <div className="relative h-full rounded-3xl border border-stone-200/80 bg-white p-6 sm:p-7 shadow-[0_2px_12px_rgba(0,0,0,0.03)] flex flex-col justify-between transition-all hover:shadow-md hover:border-stone-300">
+                  {/* Top-Right Small Icon Box */}
+                  <div className="absolute top-5 right-5 sm:top-6 sm:right-6 flex size-9 sm:size-10 items-center justify-center rounded-xl sm:rounded-2xl border border-stone-200/80 bg-stone-50/60 text-stone-500">
+                    <Icon className="size-4.5" />
+                  </div>
+
+                  {/* Left-Aligned Number, Title, and Description */}
+                  <div className="pr-8 pt-1">
+                    <span className="font-display text-3xl sm:text-4xl font-extrabold text-stone-950 tracking-tight block">
+                      {item.stat}
+                    </span>
+                    <h2 className="mt-3 font-display text-sm sm:text-base font-bold text-stone-950 tracking-tight">
+                      {item.title}
+                    </h2>
+                    <p className="mt-1.5 text-xs text-stone-500 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            );
+          })}
+        </div>
       </section>
 
       {/* Vision & Mission Cards */}
@@ -212,7 +271,7 @@ function About() {
       </section>
 
       {/* 5-Step Process */}
-      <section className="section-rule bg-white border-t border-stone-200 py-20 lg:py-28">
+      <section className="section-rule bg-[#FFFDF4] border-t border-stone-200 py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 lg:px-10">
           <ScrollReveal direction="up" delay={50}>
             <div className="text-center max-w-2xl mx-auto">
