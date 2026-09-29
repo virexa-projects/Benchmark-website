@@ -37,6 +37,7 @@ import {
   AlertTriangle,
   GripVertical,
   SlidersHorizontal,
+  MapPin,
 } from "lucide-react";
 
 export const Route = createFileRoute("/admin")({
@@ -118,11 +119,11 @@ function AdminStudio() {
     isOpen: boolean;
     title: string;
     message: string;
-    detail?: string;
-    itemPreview?: string;
-    confirmText?: string;
-    cancelText?: string;
-    badge?: string;
+    detail?: string | undefined;
+    itemPreview?: string | undefined;
+    confirmText?: string | undefined;
+    cancelText?: string | undefined;
+    badge?: string | undefined;
     onConfirm: () => void;
   }>({
     isOpen: false,
@@ -186,6 +187,7 @@ function AdminStudio() {
     if (targetIdx < 0 || targetIdx >= categories.length) return;
     const newCats = [...categories];
     const [moved] = newCats.splice(index, 1);
+    if (!moved) return;
     newCats.splice(targetIdx, 0, moved);
     setCategories(newCats);
   };
@@ -198,6 +200,7 @@ function AdminStudio() {
     if (draggedCatIdx === null || draggedCatIdx === dropIndex) return;
     const newCats = [...categories];
     const [moved] = newCats.splice(draggedCatIdx, 1);
+    if (!moved) return;
     newCats.splice(dropIndex, 0, moved);
     setCategories(newCats);
     setDraggedCatIdx(null);
@@ -291,6 +294,7 @@ function AdminStudio() {
     if (targetIdx < 0 || targetIdx >= slides.length) return;
     const newSlides = [...slides];
     const [moved] = newSlides.splice(index, 1);
+    if (!moved) return;
     newSlides.splice(targetIdx, 0, moved);
     setSlides(newSlides);
   };
@@ -390,6 +394,7 @@ function AdminStudio() {
       const dataUrls: string[] = [];
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
+        if (!file) continue;
         const dataUrl = await fileToDataUrl(file);
         dataUrls.push(dataUrl);
       }
