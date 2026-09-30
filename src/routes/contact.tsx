@@ -98,12 +98,16 @@ function Contact() {
                 </div> */}
 
                 <h1 className="mt-4 font-display text-2xl  font-bold  leading-relaxed  text-black">
-                  Get in Touch with Our Kannan.
+                  "Share your signage or Name Board requirements"
                 </h1>
 
                 <p className="mt-4 text-sm leading-relaxed text-stone-600">
-                  Share your requirements, wall dimensions, or preferred style. Founder & Proprietor <strong>B. Kannan, MBA</strong> will personally review your project and prepare a tailored material recommendation and 3D digital design render within 24 hours.
+                  Kindly send us your site photo, design or content, and available space dimensions.
                 </p>
+                <p className="mt-4 text-sm leading-relaxed text-stone-600">
+                  Founder B. Kannan, MBA, will personally review your requirements and get in touch with you within 24 hours.
+                </p>
+                
 
                 {/* Minimalist Contact Direct Cards */}
                 <div className="mt-7 flex flex-col gap-3">
@@ -158,7 +162,7 @@ function Contact() {
                       Thank You! Request Dispatched.
                     </h3>
                     <p className="mx-auto mt-2 max-w-sm text-sm text-stone-600">
-                      WhatsApp has opened with your inquiry. Proprietor B. Kannan, MBA will review your details and reply shortly.
+                      WhatsApp has opened with your inquiry. Founder B. Kannan, MBA will review your details and reply shortly.
                     </p>
                     <button
                       type="button"
@@ -172,7 +176,7 @@ function Contact() {
                   <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                     <div>
                       <h2 className="font-display text-2xl  font-bold leading-relaxed text-black">
-                        Contact Us for a Quote 
+                        Contact Us 
                       </h2>
                     </div>
 
@@ -241,7 +245,7 @@ function Contact() {
                     {/* Message / Board text */}
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="project-notes" className="text-xs font-medium text-stone-700">
-                        Wording, Approximate Size, or Wall Style Notes
+                        Message 
                       </label>
                       <textarea
                         id="project-notes"
@@ -257,7 +261,7 @@ function Contact() {
                     <div className="flex flex-col gap-3 pt-2">
                       <button
                         type="submit"
-                        className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#D6B981] hover:bg-[#E5B700] px-6 py-4 text-center text-sm font-bold text-stone-950 shadow-md shadow-[#D6B981]/25 transition-all active:scale-[0.99]"
+                        className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#5d5d5d] px-6 py-4 text-center text-sm font-bold text-[#ffffff] shadow-md shadow-[#D6B981]/25 transition-all active:scale-[0.99]"
                       >
                         <span>Submit Enquiry</span>
                         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
@@ -278,14 +282,13 @@ function Contact() {
             {/* Left Description */}
             <div className="lg:col-span-5">
               <ScrollReveal direction="up" delay={50}>
-                <span className="text-[11px] font-bold uppercase tracking-widest text-[#8A6D00]">
-                  Coimbatore Workshop & Design Studio
-                </span>
+               
                 <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-stone-950">
-                  Visit Us in Ramanathapuram
+                  
+                  Benchmark
                 </h2>
                 <p className="mt-3 text-sm text-stone-600 leading-relaxed">
-                  Experience tactile material swatches in person — including 304 Marine Stainless Steel, PVD Titanium Brass & Rose Gold, Cast Acrylic, and Natural Hardwoods.
+                  Explore our premium collection of architectural signage at our showroom.
                 </p>
 
                 <div className="mt-6 flex flex-col gap-3">
@@ -300,8 +303,8 @@ function Contact() {
                   <div className="flex items-center gap-3 rounded-2xl border border-stone-200 bg-white p-3.5 shadow-2xs text-xs">
                     <Clock className="size-4 text-[#8A6D00] shrink-0" />
                     <div>
-                      <span className="font-semibold text-stone-950">Visiting Hours: </span>
-                      <span className="text-stone-600">Mon – Sat: 9:30 AM – 8:00 PM</span>
+                      <span className="font-semibold text-stone-950">Business Hours: </span>
+                      <span className="text-stone-600">Mon – Sat: 10AM – 6PM</span>
                     </div>
                   </div>
                 </div>
@@ -314,14 +317,14 @@ function Contact() {
                     className="inline-flex items-center gap-2 rounded-xl bg-stone-950 px-5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-stone-800 transition-all active:scale-95"
                   >
                     <Navigation className="size-3.5" />
-                    <span>Open in Google Maps</span>
+                    <span>Get Directions</span>
                   </a>
                   <a
                     href={PHONE_LINK}
                     className="inline-flex items-center gap-2 rounded-xl border border-stone-300 bg-white px-4 py-2.5 text-xs font-semibold text-stone-950 hover:bg-stone-100 transition-colors"
                   >
                     <Phone className="size-3.5 text-[#8A6D00]" />
-                    <span>Call Desk</span>
+                    <span>Call Now</span>
                   </a>
                 </div>
               </ScrollReveal>

@@ -45,13 +45,13 @@ function Gallery() {
 
         <ScrollReveal direction="up" delay={150}>
           <h1 className="mt-2.5 max-w-3xl font-display text-2xl  font-bold leading-relaxed text-stone-900">
-            Our Portfolio of Installed Name Boards & Signage
+            Crafted Signage. Distinctive Spaces.
           </h1>
         </ScrollReveal>
 
         <ScrollReveal direction="up" delay={250}>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-stone-600">
-            Handcrafted architectural name boards installed across Coimbatore and Tamil Nadu. Click any board to enlarge and view details.
+          <p className="mt-2  text-sm leading-relaxed text-stone-600">
+            Explore our collection of premium custom architectural signage, thoughtfully designed to elevate every space.
           </p>
         </ScrollReveal>
       </section>

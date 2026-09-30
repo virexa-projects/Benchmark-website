@@ -30,7 +30,7 @@ import {
 } from "lucide-react";
 
 import w4 from "@/assets/work/w4.jpg";
-import w5 from "@/assets/work/w5.jpg";
+import Shop from "@/assets/work/optimal.png";
 import BM from "@/assets/work/BM.jpg";
 
 export const Route = createFileRoute("/about")({
@@ -149,13 +149,13 @@ function About() {
           <div className="flex flex-col items-start justify-center md:col-span-4">
             <ScrollReveal direction="up" delay={50}>
               <h1 className="font-display text-2xl font-bold leading-relaxed text-stone-950">
-                Benchmark-Name Boards
+                Benchmark
               </h1>
             </ScrollReveal>
 
             <ScrollReveal direction="up" delay={120}>
-              <div className="mt-1 space-y-1 text-sm leading-relaxed text-stone-600">
-                <p>The Standard for Signage.</p>
+              <div className=" space-y-1 text-sm leading-relaxed text-stone-600">
+                <p className="mb-3 font-semibold text-black">The Standard for Signage.</p>
 
                 <p>
                   Every brand deserves signage that reflects its true value. Our
@@ -163,15 +163,21 @@ function About() {
                   signage that captures attention and builds trust.
                 </p>
 
-                <ul className="mt-3 list-inside list-disc space-y-4 text-sm leading-relaxed text-stone-600">
-                  <li>
-                    Using superior materials and modern finishes, each board is
-                    crafted to stand out with sophistication.
+                <ul className="mt-3 space-y-4 text-sm leading-relaxed text-stone-600">
+                  <li className="flex items-start gap-3">
+                    <span className="font-bold text-stone-600">—</span>
+                    <span>
+                      Using superior materials and modern finishes, each board
+                      is crafted to stand out with sophistication.
+                    </span>
                   </li>
 
-                  <li>
-                    Designed to enhance visibility, reflect your personal style,
-                    and ensure long-lasting durability.
+                  <li className="flex items-start gap-3">
+                    <span className="font-bold text-stone-600">—</span>
+                    <span>
+                      Designed to enhance visibility, reflect your personal
+                      style, and ensure long-lasting durability.
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -185,57 +191,68 @@ function About() {
           <div className="flex flex-col items-start justify-center md:col-span-4">
             <ScrollReveal direction="up" delay={120}>
               <div className="mt-1 space-y-1 text-sm leading-relaxed text-stone-600">
+                <h1 className="font-display text-2xl font-bold leading-relaxed text-stone-950">
+                Benchmark's Showroom
+              </h1>
                 <p>
-                  we offer both illuminated (LED) and non-lit signage making &
+                  We offer both illuminated (LED) and non-lit signage making &
                   installing for the following segments:
                 </p>
-                <ul className="mt-3 list-inside list-disc space-y-4 text-sm leading-relaxed text-stone-600">
-                  <li>
-                    Garment Showroom Signage 
-                  </li>
-                  <li>
-                    Hospitals Signage 
-                  </li>
-                  <li>
-                    Hotel Signage 
-
-                  </li>
-                  <li>
-                    Jewelry showroom Signage 
-                  </li>
-                  <li>
-                    Software Companies Signage
-
-                  </li>
-                  <li>
-                    Commercial shops Signage 
-
-                  </li>
-                  <li>
-                    Corporate Signage
-                  </li>
-                  <li>
-                    Temple Signage
-                  </li>
-                  <li>
-                    Residential & more
+                <ul className="mt-3 space-y-4 text-sm leading-relaxed text-stone-600">
+                  <li className="flex items-start gap-3">
+                    <span className="font-bold text-stone-600">—</span>
+                    <span>Garment Showroom Signage</span>
                   </li>
 
+                  <li className="flex items-start gap-3">
+                    <span className="font-bold text-stone-600">—</span>
+                    <span>Hospital Signage</span>
+                  </li>
+
+                  <li className="flex items-start gap-3">
+                    <span className="font-bold text-stone-600">—</span>
+                    <span>Hotel Signage</span>
+                  </li>
+
+                  <li className="flex items-start gap-3">
+                    <span className="font-bold text-stone-600">—</span>
+                    <span>Jewellery Showroom Signage</span>
+                  </li>
+
+                  <li className="flex items-start gap-3">
+                    <span className="font-bold text-stone-600">—</span>
+                    <span>IT Companies Signage</span>
+                  </li>
+
+                  <li className="flex items-start gap-3">
+                    <span className="font-bold text-stone-600">—</span>
+                    <span>Corporate Signage</span>
+                  </li>
+
+                  <li className="flex items-start gap-3">
+                    <span className="font-bold text-stone-600">—</span>
+                    <span>Temple Signage</span>
+                  </li>
+
+                  <li className="flex items-start gap-3">
+                    <span className="font-bold text-stone-600">—</span>
+                    <span>Residential &amp; more</span>
+                  </li>
                 </ul>
               </div>
             </ScrollReveal>
           </div>
           <div className="overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-x md:col-span-8">
             <img
-              src={BM}
+              src={Shop}
               alt="Benchmark workshop floor with 3D letters being fabricated"
-              className="aspect-[6/3] w-full object-fit transition-transform duration-700 hover:scale-105"
+              className="aspect-[6/3] w-full object-cover transition-transform duration-700 hover:scale-105"
               loading="lazy"
             />
           </div>
         </div>
 
-         <ProprietorSection />
+        <ProprietorSection />
 
         {/* Four Cards Matching Image */}
         <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
@@ -284,8 +301,8 @@ function About() {
                 Our Vision
               </h3>
               <h2 className="mt-2 font-display text-sm font-bold text-stone-950 leading-relaxed leading-snug">
-                To be the most trusted name in premium signage, setting new
-                standards in quality, elegance, and visibility.
+                To be the most trusted name in signage Industry, setting new
+                standards in quality, elegance and visibility.
               </h2>
               {/* <p className="mt-4 text-sm sm:text-base leading-relaxed text-stone-600">
                 Setting new standards in quality, elegance, and visibility for
@@ -303,7 +320,7 @@ function About() {
                 Our Mission
               </h3>
               <p className="mt-2 font-display text-sm font-bold text-stone-950 leading-relaxed leading-snug">
-                Creating signage that reflects excellence, enhances visibility,
+                Creating signage that reflects excellence, enhances visibility
                 and builds lasting brand value.
               </p>
             </div>
@@ -312,7 +329,6 @@ function About() {
       </section>
 
       {/* About the Proprietor: B. Kannan, MBA */}
-     
 
       {/* <FAQSection /> */}
       <SiteFooter />

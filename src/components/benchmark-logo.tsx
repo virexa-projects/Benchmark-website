@@ -8,7 +8,7 @@ interface BenchmarkLogoProps {
 
 export function BenchmarkLogo({
   className = "",
-  imgClassName = "h-11 sm:h-13 md:h-14 w-auto object-contain rounded-md shadow-sm border border-stone-700/40",
+  imgClassName = "h-11 sm:h-13 md:h-14 w-auto object-contain rounded-md  ",
 }: BenchmarkLogoProps) {
   return (
     <div className={`inline-flex items-center justify-center select-none ${className}`}>

@@ -64,17 +64,17 @@ export const SOCIAL_LINKS = [
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com",
+    href: "https://www.instagram.com/benchmark_coimbatore/",
     icon: FaInstagram,
   },
   {
     name: "Facebook",
-    href: "https://www.facebook.com",
+    href: "https://www.facebook.com/benchmark.coimbatore",
     icon: FaFacebook,
   },
   {
     name: "YouTube",
-    href: "https://www.youtube.com",
+    href: "https://www.youtube.com/@benchmark5974",
     icon: FaYoutube,
   },
 ] as const;
@@ -268,7 +268,7 @@ export function SiteHeader({ className }: { className?: string } = {}) {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-stone-200 bg-[#FFFDF4]  text-stone-300">
+    <footer className="border-t border-stone-200 bg-[#5D5D5D]  text-stone-300">
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-10">
         <div className="grid gap-12 md:grid-cols-12">
           {/* Brand Column */}
@@ -296,7 +296,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={item.name}
-                    className="flex size-8.5 items-center justify-center text-stone-500 transition-all hover:text-[#D6B981] hover:scale-115 active:scale-95"
+                    className="flex size-8.5 items-center justify-center text-[#FFFFFF] transition-all hover:text-[#ffffff] hover:scale-115 active:scale-95"
                   >
                     <Icon className="size-4.5" />
                   </a>
@@ -307,16 +307,16 @@ export function SiteFooter() {
 
           {/* Quick Navigation */}
           <div className="md:col-span-2">
-            <p className="text-base font-bold uppercase leading-relaxed  text-[#000000]">
+            <p className="text-base font-bold uppercase leading-relaxed  text-[#FFFFFF]">
               Explore
             </p>
 
-            <ul className="mt-4 flex flex-col gap-2.5 text-sm text-stone-600">
+            <ul className="mt-4 flex flex-col gap-2.5 text-sm text-[#FFFFFF]">
               {NAV.map((item) => (
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="transition-colors font-medium hover:text-[#000000]"
+                    className="transition-colors font-medium hover:text-[#FFFFFF]"
                   >
                     {item.label}
                   </Link>
@@ -327,11 +327,11 @@ export function SiteFooter() {
 
           {/* Workshop Location */}
           <div className="md:col-span-3">
-            <p className="text-base font-bold uppercase leading-relaxed  text-[#000000]">
+            <p className="text-base font-bold uppercase leading-relaxed  text-[#FFFFFF]">
               Location
             </p>
 
-            <p className="mt-4 text-sm leading-relaxed font-medium text-stone-600">
+            <p className="mt-4 text-sm leading-relaxed font-medium text-[#FFFFFF]">
               {ADDRESS}
             </p>
 
@@ -341,7 +341,7 @@ export function SiteFooter() {
               href={GOOGLE_MAPS_LINK}
               target="_blank"
               rel="noreferrer"
-              className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#000000] hover:underline"
+              className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#FFFFFF] hover:underline"
             >
               <MapPin className="size-3" />
               <span>Get Directions →</span>
@@ -350,20 +350,20 @@ export function SiteFooter() {
 
           {/* Direct Contact */}
           <div className="md:col-span-3">
-            <p className="text-base font-bold uppercase leading-relaxed  text-[#000000]">
+            <p className="text-base font-bold uppercase leading-relaxed  text-[#FFFFFF]">
               Contact Us
             </p>
 
             <a
               href={PHONE_LINK}
-              className="mt-4 block whitespace-nowrap font-display text-base font-medium tracking-tight text-stone-500 transition-colors hover:text-[#000000]"
+              className="mt-4 block whitespace-nowrap font-display text-sm font-medium tracking-tight text-[#FFFFFF] transition-colors hover:text-[#FFFFFF]"
             >
               {PHONE}
             </a>
 
             <a
               href={`mailto:${EMAIL}`}
-              className="mt-2 block text-sm text-stone-500 font-medium transition-colors hover:text-black"
+              className="mt-2 block text-sm text-[#FFFFFF] font-medium transition-colors hover:text-black"
             >
               {EMAIL}
             </a>
@@ -384,7 +384,7 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom Credits */}
-        <div className="mt-16 flex flex-col gap-3 border-t border-stone-200 pt-6 text-xs text-stone-500  items-center justify-between">
+        <div className="mt-16 flex flex-col gap-3 border-t border-stone-200 pt-6 text-sm  text-[#FFFFFF]  items-center justify-between">
           <span>
             © {new Date().getFullYear()} Benchmark Name Boards. All rights
             reserved.
