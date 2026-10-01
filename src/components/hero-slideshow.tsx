@@ -14,7 +14,8 @@ import slide10 from "@/assets/work/1000342891.jpg.jpeg";
 
 export interface SlideItem {
   id: string;
-  img: string;
+  img: string; // Desktop / Primary photo
+  mobileImg?: string; // Dedicated Mobile photo (optional)
   title: string;
   category: string;
   materials: string;

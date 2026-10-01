@@ -37,6 +37,7 @@ import {
   AlertTriangle,
   GripVertical,
   SlidersHorizontal,
+  ChevronDown,
 } from "lucide-react";
 
 export const Route = createFileRoute("/admin")({
@@ -108,21 +109,6 @@ function AdminStudio() {
   const [slides, setSlides, resetSlides] = useSlides();
   const [categories, setCategories, resetCategories] = useCategories();
 
-  const [heroFitMode, setHeroFitMode] = useState<"cover" | "contain" | "fill">(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("benchmark_hero_fit_mode");
-      if (saved === "cover" || saved === "contain" || saved === "fill") return saved;
-    }
-    return "cover";
-  });
-
-  const handleUpdateHeroFitMode = (mode: "cover" | "contain" | "fill") => {
-    setHeroFitMode(mode);
-    if (typeof window !== "undefined") {
-      localStorage.setItem("benchmark_hero_fit_mode", mode);
-    }
-    showToast(`Hero display mode set to: ${mode === "cover" ? "Fit to Layout" : mode === "contain" ? "Contain" : "Stretch"}`);
-  };
 
   // Category Manager State
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
@@ -227,12 +213,14 @@ function AdminStudio() {
   // -------------------------------------------------------------
   const [editingSlide, setEditingSlide] = useState<SlideItem | null>(null);
   const [isNewSlide, setIsNewSlide] = useState(false);
-  const slideFileRef = useRef<HTMLInputElement>(null);
+  const slideDesktopFileRef = useRef<HTMLInputElement>(null);
+  const slideMobileFileRef = useRef<HTMLInputElement>(null);
 
   const handleOpenNewSlide = () => {
     setEditingSlide({
       id: "slide-" + Date.now(),
       img: "",
+      mobileImg: "",
       title: "",
       category: "Residential & Villas",
       materials: "SS 304 · PVD Gold · Acrylic",
@@ -246,14 +234,19 @@ function AdminStudio() {
     e.preventDefault();
     if (!editingSlide) return;
 
-    if (!editingSlide.img) {
-      alert("Please upload or provide an image for the slide.");
+    const desktopImg = editingSlide.img?.trim() || "";
+    const mobileImg = editingSlide.mobileImg?.trim() || "";
+
+    if (!desktopImg && !mobileImg) {
+      alert("Please upload or provide at least one photo (desktop or mobile) for the slide.");
       return;
     }
 
     const cleanedLocation = editingSlide.location?.trim() || "Coimbatore";
     const slideToSave: SlideItem = {
       ...editingSlide,
+      img: desktopImg || mobileImg,
+      mobileImg: (mobileImg && mobileImg !== desktopImg) ? mobileImg : undefined,
       location: cleanedLocation,
       title: editingSlide.title?.trim() || cleanedLocation,
       category: editingSlide.category || "Name Boards",
@@ -277,7 +270,7 @@ function AdminStudio() {
       title: "Delete Hero Slide?",
       message: `Are you sure you want to remove this slide from the showcase?`,
       detail: slide.title ? `"${slide.title}"` : "This slide will no longer rotate on the homepage hero.",
-      itemPreview: slide.img,
+      itemPreview: slide.img || slide.mobileImg,
       confirmText: "Yes, Delete Slide",
       badge: "Hero Slide",
       onConfirm: () => {
@@ -287,21 +280,16 @@ function AdminStudio() {
     });
   };
 
-  const requestClearSlidePhoto = () => {
+  const requestClearSlideDesktopPhoto = () => {
     if (!editingSlide) return;
-    setConfirmDialog({
-      isOpen: true,
-      title: "Clear Slide Photo?",
-      message: "Are you sure you want to remove the current image from this slide?",
-      detail: "You will need to upload or paste a new image before saving.",
-      itemPreview: editingSlide.img,
-      confirmText: "Yes, Clear Photo",
-      badge: "Photography",
-      onConfirm: () => {
-        setEditingSlide({ ...editingSlide, img: "" });
-        showToast("Photo cleared from slide editor.");
-      },
-    });
+    setEditingSlide({ ...editingSlide, img: "" });
+    showToast("Desktop photo cleared.");
+  };
+
+  const requestClearSlideMobilePhoto = () => {
+    if (!editingSlide) return;
+    setEditingSlide({ ...editingSlide, mobileImg: "" });
+    showToast("Mobile photo cleared.");
   };
 
   const handleMoveSlide = (index: number, direction: "up" | "down") => {
@@ -314,14 +302,25 @@ function AdminStudio() {
     setSlides(newSlides);
   };
 
-  const handleSlideImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSlideDesktopUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file || !editingSlide) return;
     try {
-      const dataUrl = await fileToDataUrl(file);
+      const dataUrl = await fileToDataUrl(file, 1600, 0.82);
       setEditingSlide({ ...editingSlide, img: dataUrl });
     } catch {
-      alert("Failed to process image file.");
+      alert("Failed to process desktop image file.");
+    }
+  };
+
+  const handleSlideMobileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !editingSlide) return;
+    try {
+      const dataUrl = await fileToDataUrl(file, 1080, 0.82);
+      setEditingSlide({ ...editingSlide, mobileImg: dataUrl });
+    } catch {
+      alert("Failed to process mobile image file.");
     }
   };
 
@@ -335,12 +334,17 @@ function AdminStudio() {
   const projectFilesRef = useRef<HTMLInputElement>(null);
 
   const handleOpenNewProject = () => {
+    const availableCats = categories.filter((c) => c.id !== "all");
+    const currentFilterCat = availableCats.find((c) => c.id === galleryFilter);
+    const defaultCat = currentFilterCat ? currentFilterCat.id : (availableCats[0]?.id || "residential");
+    const defaultCatLabel = availableCats.find((c) => c.id === defaultCat)?.label || "Residential";
+
     setEditingProject({
       id: "p-" + Date.now(),
       images: [],
       title: "",
-      category: "residential",
-      categoryLabel: "Residential & Villas",
+      category: defaultCat,
+      categoryLabel: defaultCatLabel,
       materials: ["SS 304 Satin", "PVD Gold", "Cast Acrylic"],
       lighting: "Non-Illuminated Daylight",
       hasLED: false,
@@ -369,7 +373,7 @@ function AdminStudio() {
       ...editingProject,
       location: cleanedLocation,
       title: editingProject.title?.trim() || cleanedLocation,
-      categoryLabel: catOption ? catOption.label : editingProject.category,
+      categoryLabel: catOption ? catOption.label : (editingProject.categoryLabel || editingProject.category),
       materials: editingProject.materials?.length ? editingProject.materials : ["Custom Architectural Signage"],
       lighting: editingProject.lighting || "Custom Finish",
       dimensions: editingProject.dimensions || "Custom Size",
@@ -707,61 +711,11 @@ function AdminStudio() {
         {/* ============================================================= */}
         {activeTab === "slides" && (
           <div>
-            <div className="mb-4">
+            <div className="mb-6">
               <h2 className="text-lg font-bold text-stone-900">Hero Crystal Glass Showcase</h2>
               <p className="text-xs text-stone-500">
-                These slides rotate automatically on the right side of the homepage hero. Upload photos or edit specifications below.
+                These slides rotate automatically on the homepage hero showcase. Upload separate desktop and mobile photos below.
               </p>
-            </div>
-
-            {/* Showcase Fit Mode Selector */}
-            <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-amber-50/70 border border-amber-200/80">
-              <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider text-stone-900">
-                  Homepage Image Display Mode
-                </h3>
-                <p className="text-[11px] text-stone-600 mt-0.5">
-                  Choose how photos fit the hero showcase on desktop and mobile.
-                </p>
-              </div>
-              <div className="flex items-center gap-1.5 p-1 rounded-xl bg-white border border-stone-200 shadow-2xs">
-                <button
-                  type="button"
-                  onClick={() => handleUpdateHeroFitMode("cover")}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    heroFitMode === "cover"
-                      ? "bg-stone-900 text-white shadow-xs"
-                      : "text-stone-600 hover:text-stone-900 hover:bg-stone-100"
-                  }`}
-                  title="Fills frame completely edge-to-edge without empty space"
-                >
-                  Fit to Layout
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleUpdateHeroFitMode("contain")}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    heroFitMode === "contain"
-                      ? "bg-stone-900 text-white shadow-xs"
-                      : "text-stone-600 hover:text-stone-900 hover:bg-stone-100"
-                  }`}
-                  title="Shows full uncropped photo with ambient glow"
-                >
-                  Contain
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleUpdateHeroFitMode("fill")}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    heroFitMode === "fill"
-                      ? "bg-stone-900 text-white shadow-xs"
-                      : "text-stone-600 hover:text-stone-900 hover:bg-stone-100"
-                  }`}
-                  title="Stretches photo to fill exact dimensions"
-                >
-                  Stretch
-                </button>
-              </div>
             </div>
 
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -774,13 +728,18 @@ function AdminStudio() {
                     {/* Slide Image Preview */}
                     <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-stone-950 border border-stone-100">
                       <img
-                        src={slide.img}
+                        src={slide.img || slide.mobileImg}
                         alt={slide.title}
                         className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       <span className="absolute top-2.5 left-2.5 rounded-md bg-stone-900/85 backdrop-blur-md px-2 py-0.5 text-[10px] font-bold text-amber-300">
                         Slide #{idx + 1}
                       </span>
+                      {slide.mobileImg && (
+                        <span className="absolute top-2.5 right-2.5 rounded-md bg-emerald-600/90 backdrop-blur-md px-2 py-0.5 text-[10px] font-bold text-white shadow-xs">
+                          Mobile Active
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -908,6 +867,9 @@ function AdminStudio() {
                         alt={proj.title}
                         className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
+                      <span className="absolute top-2.5 left-2.5 rounded-md bg-stone-900/85 backdrop-blur-md px-2 py-0.5 text-[10px] font-bold text-amber-300 capitalize">
+                        {categories.find((c) => c.id === proj.category)?.label || proj.categoryLabel || proj.category}
+                      </span>
                       <span className="absolute top-2.5 right-2.5 rounded-md bg-stone-900/85 backdrop-blur-md px-2 py-0.5 text-[10px] font-semibold text-white">
                         {proj.images.length} {proj.images.length === 1 ? "Photo" : "Photos"}
                       </span>
@@ -975,24 +937,30 @@ function AdminStudio() {
             </div>
 
             <form onSubmit={handleSaveSlide} className="mt-6 flex flex-col gap-5">
-              {/* Image Preview & Upload / Replace / Delete Controls */}
+              {/* SECTION 1: DESKTOP SLIDE IMAGE (LANDSCAPE) */}
               <div className="rounded-2xl border border-stone-200/90 bg-[#FAF9F6] p-4.5">
-                <label className="text-xs font-bold uppercase tracking-wider text-stone-700 block mb-2">
-                  Slide Photography
-                </label>
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-xs font-bold uppercase tracking-wider text-stone-800 flex items-center gap-1.5">
+                    <span>1. Desktop Slide Image</span>
+                    <span className="text-[10px] font-normal lowercase text-stone-500">(horizontal / landscape)</span>
+                  </label>
+                  <span className="text-[10px] font-semibold text-amber-800 bg-amber-100/80 border border-amber-200 px-2 py-0.5 rounded-full">
+                    PC, Laptop &amp; Tablet
+                  </span>
+                </div>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                   {/* Photo Thumbnail */}
                   {editingSlide.img ? (
                     <div className="relative aspect-[16/10] w-full sm:w-40 shrink-0 overflow-hidden rounded-xl border border-stone-200 bg-stone-950 shadow-sm">
-                      <img src={editingSlide.img} alt="Preview" className="size-full object-cover" />
+                      <img src={editingSlide.img} alt="Desktop Preview" className="size-full object-cover" />
                       <span className="absolute bottom-1.5 left-1.5 rounded bg-black/75 px-1.5 py-0.5 text-[9px] font-bold text-emerald-400">
-                        Active Photo
+                        Desktop Active
                       </span>
                     </div>
                   ) : (
                     <div className="flex aspect-[16/10] w-full sm:w-40 shrink-0 flex-col items-center justify-center rounded-xl border-2 border-dashed border-stone-300 bg-white text-stone-400">
                       <ImageIcon className="size-7" />
-                      <span className="text-[10px] mt-1 font-medium">No photo set</span>
+                      <span className="text-[10px] mt-1 font-medium">No desktop photo</span>
                     </div>
                   )}
 
@@ -1001,28 +969,28 @@ function AdminStudio() {
                     <div className="flex flex-wrap items-center gap-2">
                       <input
                         type="file"
-                        ref={slideFileRef}
+                        ref={slideDesktopFileRef}
                         accept="image/*"
-                        onChange={handleSlideImageUpload}
+                        onChange={handleSlideDesktopUpload}
                         className="hidden"
                       />
                       <button
                         type="button"
-                        onClick={() => slideFileRef.current?.click()}
-                        className="flex items-center gap-2 rounded-xl bg-stone-900 hover:bg-stone-800 text-white px-4 py-2.5 text-xs font-semibold shadow-xs transition-all active:scale-95"
+                        onClick={() => slideDesktopFileRef.current?.click()}
+                        className="flex items-center gap-2 rounded-xl bg-stone-900 hover:bg-stone-800 text-white px-4 py-2 text-xs font-semibold shadow-xs transition-all active:scale-95"
                       >
                         <Upload className="size-3.5 text-amber-400" />
-                        <span>{editingSlide.img ? "Replace Photo" : "Upload Photo from Device"}</span>
+                        <span>{editingSlide.img ? "Replace Desktop Photo" : "Upload Desktop Photo"}</span>
                       </button>
 
                       {editingSlide.img && (
                         <button
                           type="button"
-                          onClick={requestClearSlidePhoto}
+                          onClick={requestClearSlideDesktopPhoto}
                           className="flex items-center gap-1.5 rounded-xl border border-rose-200 bg-white hover:bg-rose-50 text-rose-600 px-3 py-2 text-xs font-semibold transition-colors"
                         >
                           <Trash2 className="size-3.5" />
-                          <span>Clear Photo</span>
+                          <span>Clear</span>
                         </button>
                       )}
                     </div>
@@ -1032,10 +1000,84 @@ function AdminStudio() {
                         type="text"
                         value={editingSlide.img}
                         onChange={(e) => setEditingSlide({ ...editingSlide, img: e.target.value })}
-                        placeholder="or paste direct image URL (e.g. https://... or /src/...)"
+                        placeholder="or paste direct desktop image URL"
                         className="w-full rounded-xl border border-stone-300/80 bg-white px-3.5 py-2 text-xs text-stone-900 placeholder:text-stone-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 font-mono"
                       />
                     </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* SECTION 2: MOBILE SLIDE IMAGE (PORTRAIT) */}
+              <div className="rounded-2xl border border-stone-200/90 bg-[#FAF9F6] p-4.5">
+                <div className="flex items-center justify-between mb-2">
+                  <label className="text-xs font-bold uppercase tracking-wider text-stone-800 flex items-center gap-1.5">
+                    <span>2. Mobile Slide Image</span>
+                    <span className="text-[10px] font-normal lowercase text-stone-500">(vertical / portrait)</span>
+                  </label>
+                  <span className="text-[10px] font-semibold text-emerald-800 bg-emerald-100/80 border border-emerald-200 px-2 py-0.5 rounded-full">
+                    Mobile Phones
+                  </span>
+                </div>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  {/* Photo Thumbnail */}
+                  {editingSlide.mobileImg ? (
+                    <div className="relative aspect-[3/4] w-28 sm:w-28 shrink-0 overflow-hidden rounded-xl border border-stone-200 bg-stone-950 shadow-sm mx-auto sm:mx-0">
+                      <img src={editingSlide.mobileImg} alt="Mobile Preview" className="size-full object-cover" />
+                      <span className="absolute bottom-1.5 left-1.5 rounded bg-black/75 px-1.5 py-0.5 text-[9px] font-bold text-emerald-400">
+                        Mobile Active
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex aspect-[3/4] w-28 sm:w-28 shrink-0 flex-col items-center justify-center rounded-xl border-2 border-dashed border-stone-300 bg-white text-stone-400 mx-auto sm:mx-0">
+                      <ImageIcon className="size-6" />
+                      <span className="text-[10px] mt-1 font-medium text-center px-1">No mobile photo</span>
+                    </div>
+                  )}
+
+                  {/* Actions & URL Input */}
+                  <div className="flex flex-col gap-2.5 flex-1 w-full">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <input
+                        type="file"
+                        ref={slideMobileFileRef}
+                        accept="image/*"
+                        onChange={handleSlideMobileUpload}
+                        className="hidden"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => slideMobileFileRef.current?.click()}
+                        className="flex items-center gap-2 rounded-xl bg-stone-900 hover:bg-stone-800 text-white px-4 py-2 text-xs font-semibold shadow-xs transition-all active:scale-95"
+                      >
+                        <Upload className="size-3.5 text-emerald-400" />
+                        <span>{editingSlide.mobileImg ? "Replace Mobile Photo" : "Upload Mobile Photo"}</span>
+                      </button>
+
+                      {editingSlide.mobileImg && (
+                        <button
+                          type="button"
+                          onClick={requestClearSlideMobilePhoto}
+                          className="flex items-center gap-1.5 rounded-xl border border-rose-200 bg-white hover:bg-rose-50 text-rose-600 px-3 py-2 text-xs font-semibold transition-colors"
+                        >
+                          <Trash2 className="size-3.5" />
+                          <span>Clear</span>
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        value={editingSlide.mobileImg || ""}
+                        onChange={(e) => setEditingSlide({ ...editingSlide, mobileImg: e.target.value })}
+                        placeholder="or paste direct mobile image URL (optional)"
+                        className="w-full rounded-xl border border-stone-300/80 bg-white px-3.5 py-2 text-xs text-stone-900 placeholder:text-stone-400 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 font-mono"
+                      />
+                    </div>
+                    <p className="text-[11px] text-stone-500 italic">
+                      Tip: If not uploaded, the desktop image will automatically be used on mobile devices too.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -1087,6 +1129,52 @@ function AdminStudio() {
             </div>
 
             <form onSubmit={handleSaveProject} className="mt-6 flex flex-col gap-5">
+              {/* Category Dropdown */}
+              <div className="rounded-2xl border border-stone-200/90 bg-[#FAF9F6] p-4.5">
+                <div className="flex items-center justify-between mb-2">
+                  <label htmlFor="project-category-select" className="text-xs font-bold uppercase tracking-wider text-stone-800 flex items-center gap-1.5">
+                    <span>Project Category</span>
+                  </label>
+                  <span className="text-[10px] font-semibold text-amber-800 bg-amber-100/80 border border-amber-200 px-2 py-0.5 rounded-full">
+                    Gallery Filter
+                  </span>
+                </div>
+                <div className="relative">
+                  <select
+                    id="project-category-select"
+                    value={editingProject.category}
+                    onChange={(e) => {
+                      const selected = categories.find((c) => c.id === e.target.value);
+                      setEditingProject({
+                        ...editingProject,
+                        category: e.target.value,
+                        categoryLabel: selected ? selected.label : e.target.value,
+                      });
+                    }}
+                    className="w-full appearance-none rounded-xl border border-stone-300/80 bg-white px-3.5 py-2.5 pr-10 text-xs font-semibold text-stone-900 outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/10 transition-all cursor-pointer shadow-2xs"
+                  >
+                    {categories
+                      .filter((c) => c.id !== "all")
+                      .map((c) => (
+                        <option key={c.id} value={c.id}>
+                          {c.label}
+                        </option>
+                      ))}
+                    {!categories.some((c) => c.id !== "all" && c.id === editingProject.category) && editingProject.category && (
+                      <option value={editingProject.category}>
+                        {editingProject.categoryLabel || editingProject.category}
+                      </option>
+                    )}
+                  </select>
+                  <div className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-stone-400">
+                    <ChevronDown className="size-4" />
+                  </div>
+                </div>
+                <p className="text-[11px] text-stone-500 mt-2">
+                  Choose which category tab this project belongs to (e.g. Garments, Hospital, Residential).
+                </p>
+              </div>
+
               {/* Multi-Image Upload & Management */}
               <div className="rounded-2xl border border-stone-200/90 bg-[#FAF9F6] p-4.5">
                 <div className="flex items-center justify-between mb-3">

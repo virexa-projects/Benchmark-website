@@ -167,6 +167,16 @@ var ArrowUp = createLucideIcon("arrow-up", [["path", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var ChevronDown = createLucideIcon("chevron-down", [["path", {
+	d: "m6 9 6 6 6-6",
+	key: "qrunsl"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var ChevronLeft = createLucideIcon("chevron-left", [["path", {
 	d: "m15 18-6-6 6-6",
 	key: "1wnfg3"
@@ -754,4 +764,4 @@ var X = createLucideIcon("x", [["path", {
 	key: "d8bk6v"
 }]]);
 //#endregion
-export { ChevronRight as A, Eye as C, CircleCheck as D, Clock as E, ArrowDown as F, ArrowUp as M, ArrowRight as N, CircleAlert as O, ArrowLeft as P, GripVertical as S, ExternalLink as T, Mail as _, Target as a, Layers as b, ShieldCheck as c, Plus as d, Phone as f, MapPin as g, Menu as h, Trash2 as i, ChevronLeft as j, ChevronUp as k, Search as l, Navigation as m, Upload as n, Sparkles as o, PenLine as p, TriangleAlert as r, SlidersHorizontal as s, X as t, RotateCcw as u, LogOut as v, EyeOff as w, Image as x, Lock as y };
+export { ChevronRight as A, Eye as C, CircleCheck as D, Clock as E, ArrowLeft as F, ArrowDown as I, ChevronDown as M, ArrowUp as N, CircleAlert as O, ArrowRight as P, GripVertical as S, ExternalLink as T, Mail as _, Target as a, Layers as b, ShieldCheck as c, Plus as d, Phone as f, MapPin as g, Menu as h, Trash2 as i, ChevronLeft as j, ChevronUp as k, Search as l, Navigation as m, Upload as n, Sparkles as o, PenLine as p, TriangleAlert as r, SlidersHorizontal as s, X as t, RotateCcw as u, LogOut as v, EyeOff as w, Image as x, Lock as y };

@@ -86,6 +86,75 @@ export function useCategories(): [CategoryItem[], (cats: CategoryItem[]) => void
   return [categories, update, reset];
 }
 
+// -------------------------------------------------------------
+// INDEXEDDB ENGINE (High Quota Storage for High-Resolution Photography)
+// -------------------------------------------------------------
+const DB_NAME = "benchmark_studio_storage";
+const DB_VERSION = 1;
+const STORE_NAME = "content_store";
+
+function openDB(): Promise<IDBDatabase> {
+  return new Promise((resolve, reject) => {
+    if (typeof window === "undefined" || !window.indexedDB) {
+      return reject(new Error("IndexedDB unavailable"));
+    }
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = () => {
+      const db = req.result;
+      if (!db.objectStoreNames.contains(STORE_NAME)) {
+        db.createObjectStore(STORE_NAME);
+      }
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+export async function idbGet<T>(key: string): Promise<T | null> {
+  try {
+    const db = await openDB();
+    return new Promise((resolve) => {
+      const tx = db.transaction(STORE_NAME, "readonly");
+      const store = tx.objectStore(STORE_NAME);
+      const req = store.get(key);
+      req.onsuccess = () => resolve((req.result as T) ?? null);
+      req.onerror = () => resolve(null);
+    });
+  } catch {
+    return null;
+  }
+}
+
+export async function idbSet<T>(key: string, value: T): Promise<void> {
+  try {
+    const db = await openDB();
+    return new Promise((resolve) => {
+      const tx = db.transaction(STORE_NAME, "readwrite");
+      const store = tx.objectStore(STORE_NAME);
+      store.put(value, key);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => resolve();
+    });
+  } catch {
+    // ignore
+  }
+}
+
+export async function idbDelete(key: string): Promise<void> {
+  try {
+    const db = await openDB();
+    return new Promise((resolve) => {
+      const tx = db.transaction(STORE_NAME, "readwrite");
+      const store = tx.objectStore(STORE_NAME);
+      store.delete(key);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => resolve();
+    });
+  } catch {
+    // ignore
+  }
+}
+
 export function getStoredProjects(): Project[] {
   if (typeof window === "undefined") return INITIAL_PROJECTS;
   try {
@@ -100,13 +169,25 @@ export function getStoredProjects(): Project[] {
 
 export function setStoredProjects(projects: Project[]) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(PROJECTS_STORAGE_KEY, JSON.stringify(projects));
+  // Always persist to IndexedDB (virtually unlimited quota)
+  void idbSet(PROJECTS_STORAGE_KEY, projects);
+  // Also try localStorage with QuotaExceededError protection
+  try {
+    localStorage.setItem(PROJECTS_STORAGE_KEY, JSON.stringify(projects));
+  } catch (err) {
+    console.warn("Storage quota limit reached in localStorage; saved in IndexedDB instead.", err);
+  }
   emitContentChange();
 }
 
 export function resetStoredProjects() {
   if (typeof window === "undefined") return;
-  localStorage.removeItem(PROJECTS_STORAGE_KEY);
+  void idbDelete(PROJECTS_STORAGE_KEY);
+  try {
+    localStorage.removeItem(PROJECTS_STORAGE_KEY);
+  } catch {
+    // ignore
+  }
   emitContentChange();
 }
 
@@ -124,13 +205,25 @@ export function getStoredSlides(): SlideItem[] {
 
 export function setStoredSlides(slides: SlideItem[]) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(SLIDES_STORAGE_KEY, JSON.stringify(slides));
+  // Always persist to IndexedDB (virtually unlimited quota)
+  void idbSet(SLIDES_STORAGE_KEY, slides);
+  // Also try localStorage with QuotaExceededError protection
+  try {
+    localStorage.setItem(SLIDES_STORAGE_KEY, JSON.stringify(slides));
+  } catch (err) {
+    console.warn("Storage quota limit reached in localStorage; saved in IndexedDB instead.", err);
+  }
   emitContentChange();
 }
 
 export function resetStoredSlides() {
   if (typeof window === "undefined") return;
-  localStorage.removeItem(SLIDES_STORAGE_KEY);
+  void idbDelete(SLIDES_STORAGE_KEY);
+  try {
+    localStorage.removeItem(SLIDES_STORAGE_KEY);
+  } catch {
+    // ignore
+  }
   emitContentChange();
 }
 
@@ -138,10 +231,24 @@ export function useProjects(): [Project[], (projects: Project[]) => void, () => 
   const [projects, setProjectsState] = useState<Project[]>(INITIAL_PROJECTS);
 
   useEffect(() => {
+    // Synchronous initial read from localStorage/fallback
     setProjectsState(getStoredProjects());
 
+    // Asynchronously hydrate from IndexedDB for high-capacity storage
+    void idbGet<Project[]>(PROJECTS_STORAGE_KEY).then((idbProjects) => {
+      if (idbProjects && Array.isArray(idbProjects) && idbProjects.length > 0) {
+        setProjectsState(idbProjects);
+      }
+    });
+
     const handleChange = () => {
-      setProjectsState(getStoredProjects());
+      void idbGet<Project[]>(PROJECTS_STORAGE_KEY).then((idbProjects) => {
+        if (idbProjects && Array.isArray(idbProjects) && idbProjects.length > 0) {
+          setProjectsState(idbProjects);
+        } else {
+          setProjectsState(getStoredProjects());
+        }
+      });
     };
 
     window.addEventListener("benchmark_content_updated", handleChange);
@@ -169,10 +276,24 @@ export function useSlides(): [SlideItem[], (slides: SlideItem[]) => void, () => 
   const [slides, setSlidesState] = useState<SlideItem[]>(INITIAL_SLIDES);
 
   useEffect(() => {
+    // Synchronous initial read from localStorage/fallback
     setSlidesState(getStoredSlides());
 
+    // Asynchronously hydrate from IndexedDB for high-capacity storage
+    void idbGet<SlideItem[]>(SLIDES_STORAGE_KEY).then((idbSlides) => {
+      if (idbSlides && Array.isArray(idbSlides) && idbSlides.length > 0) {
+        setSlidesState(idbSlides);
+      }
+    });
+
     const handleChange = () => {
-      setSlidesState(getStoredSlides());
+      void idbGet<SlideItem[]>(SLIDES_STORAGE_KEY).then((idbSlides) => {
+        if (idbSlides && Array.isArray(idbSlides) && idbSlides.length > 0) {
+          setSlidesState(idbSlides);
+        } else {
+          setSlidesState(getStoredSlides());
+        }
+      });
     };
 
     window.addEventListener("benchmark_content_updated", handleChange);
@@ -196,12 +317,82 @@ export function useSlides(): [SlideItem[], (slides: SlideItem[]) => void, () => 
   return [slides, update, reset];
 }
 
-// Convert uploaded browser file to persistent base64 Data URL
-export function fileToDataUrl(file: File): Promise<string> {
+// Convert uploaded browser file to compressed, optimized base64 Data URL
+export function fileToDataUrl(
+  file: File,
+  maxDimension = 1600,
+  quality = 0.82
+): Promise<string> {
   return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
+    if (
+      !file.type.startsWith("image/") ||
+      file.type === "image/gif" ||
+      file.type === "image/svg+xml"
+    ) {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+      return;
+    }
+
+    const img = new Image();
+    const objectUrl = URL.createObjectURL(file);
+
+    img.onload = () => {
+      URL.revokeObjectURL(objectUrl);
+      let { width, height } = img;
+
+      if (width > maxDimension || height > maxDimension) {
+        if (width > height) {
+          height = Math.round((height * maxDimension) / width);
+          width = maxDimension;
+        } else {
+          width = Math.round((width * maxDimension) / height);
+          height = maxDimension;
+        }
+      }
+
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+
+      if (!ctx) {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+        return;
+      }
+
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
+      ctx.drawImage(img, 0, 0, width, height);
+
+      // Try WebP first for optimal compression
+      try {
+        const webp = canvas.toDataURL("image/webp", quality);
+        if (webp && webp.startsWith("data:image/webp")) {
+          resolve(webp);
+          return;
+        }
+      } catch {
+        // fallback to jpeg
+      }
+
+      resolve(canvas.toDataURL("image/jpeg", quality));
+    };
+
+    img.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    };
+
+    img.src = objectUrl;
   });
 }
+

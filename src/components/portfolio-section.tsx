@@ -49,7 +49,7 @@ export interface Project {
   id: string;
   images: string[];
   title: string;
-  category: "residential" | "corporate" | "retail" | "healthcare" | "banking" | "bespoke";
+  category: string;
   categoryLabel: string;
   materials: string[];
   lighting: string;
