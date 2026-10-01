@@ -33,7 +33,7 @@ function Gallery() {
       <SiteHeader />
 
       {/* Gallery Header — Exact max-w-7xl px-5 lg:px-10 alignment with top nav */}
-      <section className="mx-auto max-w-7xl px-5 pt-12 pb-8 lg:px-10 lg:pt-16">
+      <section className="mx-auto max-w-7xl px-5 pt-8 pb-8 lg:px-10 lg:pt-10">
         {/* <ScrollReveal direction="up" delay={50}>
           <div className="flex items-center gap-2">
             <Sparkles className="size-4 text-[#D6B981]" />

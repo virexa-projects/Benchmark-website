@@ -15,12 +15,13 @@ export const MAX_CUSTOM_CATEGORIES = 8;
 
 export const DEFAULT_CATEGORIES: CategoryItem[] = [
   { id: "all", label: "All Works" },
-  { id: "residential", label: "Residential" },
+  { id: "garments", label: "Garments" },
+  { id: "hospital", label: "Hospital" },
+  { id: "hotel", label: "Hotel" },
   { id: "corporate", label: "Corporate" },
-  { id: "retail", label: "Retail & Showrooms" },
-  { id: "healthcare", label: "Healthcare" },
-  { id: "banking", label: "Banking & Institutional" },
-  { id: "bespoke", label: "Workshop Craft" },
+  { id: "commercial", label: "Commercial" },
+  { id: "temple", label: "Temple" },
+  { id: "residential", label: "Residential" },
 ];
 
 // Helper to notify listeners across tabs / components

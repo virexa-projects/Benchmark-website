@@ -94,7 +94,7 @@ function Contact() {
       <SiteHeader />
 
       {/* Main Hero & Form Section: Exact max-w-7xl px-5 lg:px-10 aligned with top nav */}
-      <section className="mx-auto max-w-7xl px-5 pt-12 pb-20 lg:px-10 lg:pt-16 lg:pb-24">
+      <section className="mx-auto max-w-7xl px-5 pt-6 pb-20 lg:px-10 lg:pt-16 lg:pb-24">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
           {/* Left Column: Typography, Sticky Scroll Atelier Direct Cards */}
           <div className="flex flex-col justify-between lg:col-span-5 lg:sticky lg:top-28 lg:self-start transition-all duration-300">
@@ -330,7 +330,7 @@ function Contact() {
                     href={GOOGLE_MAPS_LINK}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-xl bg-stone-950 px-5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-stone-800 transition-all active:scale-95"
+                    className="inline-flex items-center gap-2 rounded-xl bg-[#5D5D5D] px-5 py-2.5 text-xs font-bold text-white shadow-sm hover:bg-[#4E4E4E] transition-all active:scale-95"
                   >
                     <Navigation className="size-3.5" />
                     <span>Get Directions</span>

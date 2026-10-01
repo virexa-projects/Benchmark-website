@@ -133,7 +133,7 @@ function About() {
       <SiteHeader />
 
       {/* Hero: Centered About Us & Four Stat Cards Matching Image */}
-      <section className="mx-auto max-w-7xl px-5 pt-16 pb-16 lg:px-10 lg:pt-22">
+      <section className="mx-auto max-w-7xl px-5 pt-8 pb-10 lg:px-10 lg:pt-16 lg:pb-12">
         <div className="grid gap-12 md:grid-cols-12 md:items-center">
           {/* Hero Image - 8 Columns with white border framing */}
           <div className="rounded-2xl sm:rounded-3xl bg-white p-2 sm:p-2.5 border border-stone-200/90 shadow-2xs md:col-span-8">
@@ -141,7 +141,7 @@ function About() {
               <img
                 src={BM}
                 alt="Benchmark workshop floor with 3D letters being fabricated"
-                className="aspect-[6/3] w-full object-cover transition-transform duration-700 hover:scale-105"
+                className="aspect-[16/11] sm:aspect-[16/10] md:aspect-[6/3] w-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
             </div>
@@ -192,8 +192,8 @@ function About() {
             <ScrollReveal direction="up" delay={120}>
               <div className="mt-1 space-y-1 text-sm leading-relaxed text-stone-600">
                 <h1 className="font-display text-2xl font-bold leading-relaxed text-stone-950">
-                Benchmark's Showroom
-              </h1>
+                  Benchmark's Showroom
+                </h1>
                 <p>
                   We offer both illuminated (LED) and non-lit signage making &
                   installing for the following segments:
@@ -248,7 +248,7 @@ function About() {
               <img
                 src={Shop}
                 alt="Benchmark showroom floor with signage displays"
-                className="aspect-[6/3] w-full object-cover transition-transform duration-700 hover:scale-105"
+                className="aspect-[16/11] sm:aspect-[16/10] md:aspect-[6/3] w-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
             </div>
@@ -258,7 +258,7 @@ function About() {
         <ProprietorSection />
 
         {/* Four Cards Matching Image */}
-        <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="mt-12 sm:mt-16 lg:mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {ABOUT_STATS.map((item, index) => {
             // const Icon = item.icon;
             return (

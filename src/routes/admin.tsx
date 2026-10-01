@@ -37,7 +37,6 @@ import {
   AlertTriangle,
   GripVertical,
   SlidersHorizontal,
-  MapPin,
 } from "lucide-react";
 
 export const Route = createFileRoute("/admin")({
@@ -109,6 +108,22 @@ function AdminStudio() {
   const [slides, setSlides, resetSlides] = useSlides();
   const [categories, setCategories, resetCategories] = useCategories();
 
+  const [heroFitMode, setHeroFitMode] = useState<"cover" | "contain" | "fill">(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("benchmark_hero_fit_mode");
+      if (saved === "cover" || saved === "contain" || saved === "fill") return saved;
+    }
+    return "cover";
+  });
+
+  const handleUpdateHeroFitMode = (mode: "cover" | "contain" | "fill") => {
+    setHeroFitMode(mode);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("benchmark_hero_fit_mode", mode);
+    }
+    showToast(`Hero display mode set to: ${mode === "cover" ? "Fit to Layout" : mode === "contain" ? "Contain" : "Stretch"}`);
+  };
+
   // Category Manager State
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
   const [newCatLabel, setNewCatLabel] = useState("");
@@ -129,7 +144,7 @@ function AdminStudio() {
     isOpen: false,
     title: "",
     message: "",
-    onConfirm: () => {},
+    onConfirm: () => { },
   });
 
   // Notification toast
@@ -519,7 +534,6 @@ function AdminStudio() {
               <div className="flex flex-col gap-1.5">
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-semibold text-stone-700">Password</label>
-                  <span className="text-[11px] text-stone-500 font-mono">admin@123</span>
                 </div>
                 <div className="relative">
                   <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-stone-400" />
@@ -643,11 +657,10 @@ function AdminStudio() {
             <button
               type="button"
               onClick={() => setActiveTab("slides")}
-              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-semibold transition-all ${
-                activeTab === "slides"
+              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-semibold transition-all ${activeTab === "slides"
                   ? "bg-white text-stone-900 shadow-sm font-bold"
                   : "text-stone-600 hover:text-stone-900"
-              }`}
+                }`}
             >
               <Sparkles className="size-4 text-amber-500" />
               <span>Hero Slideshow ({slides.length})</span>
@@ -656,11 +669,10 @@ function AdminStudio() {
             <button
               type="button"
               onClick={() => setActiveTab("gallery")}
-              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-semibold transition-all ${
-                activeTab === "gallery"
+              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs sm:text-sm font-semibold transition-all ${activeTab === "gallery"
                   ? "bg-white text-stone-900 shadow-sm font-bold"
                   : "text-stone-600 hover:text-stone-900"
-              }`}
+                }`}
             >
               <Layers className="size-4 text-amber-500" />
               <span>Portfolio Gallery ({projects.length})</span>
@@ -702,6 +714,56 @@ function AdminStudio() {
               </p>
             </div>
 
+            {/* Showcase Fit Mode Selector */}
+            <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-amber-50/70 border border-amber-200/80">
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-wider text-stone-900">
+                  Homepage Image Display Mode
+                </h3>
+                <p className="text-[11px] text-stone-600 mt-0.5">
+                  Choose how photos fit the hero showcase on desktop and mobile.
+                </p>
+              </div>
+              <div className="flex items-center gap-1.5 p-1 rounded-xl bg-white border border-stone-200 shadow-2xs">
+                <button
+                  type="button"
+                  onClick={() => handleUpdateHeroFitMode("cover")}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    heroFitMode === "cover"
+                      ? "bg-stone-900 text-white shadow-xs"
+                      : "text-stone-600 hover:text-stone-900 hover:bg-stone-100"
+                  }`}
+                  title="Fills frame completely edge-to-edge without empty space"
+                >
+                  Fit to Layout
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleUpdateHeroFitMode("contain")}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    heroFitMode === "contain"
+                      ? "bg-stone-900 text-white shadow-xs"
+                      : "text-stone-600 hover:text-stone-900 hover:bg-stone-100"
+                  }`}
+                  title="Shows full uncropped photo with ambient glow"
+                >
+                  Contain
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleUpdateHeroFitMode("fill")}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    heroFitMode === "fill"
+                      ? "bg-stone-900 text-white shadow-xs"
+                      : "text-stone-600 hover:text-stone-900 hover:bg-stone-100"
+                  }`}
+                  title="Stretches photo to fill exact dimensions"
+                >
+                  Stretch
+                </button>
+              </div>
+            </div>
+
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {slides.map((slide, idx) => (
                 <div
@@ -719,14 +781,6 @@ function AdminStudio() {
                       <span className="absolute top-2.5 left-2.5 rounded-md bg-stone-900/85 backdrop-blur-md px-2 py-0.5 text-[10px] font-bold text-amber-300">
                         Slide #{idx + 1}
                       </span>
-                    </div>
-
-                    {/* Location Badge */}
-                    <div className="mt-3.5 flex items-center justify-between">
-                      <div className="flex items-center gap-1.5 text-xs text-stone-900 font-bold">
-                        <MapPin className="size-3.5 text-amber-500 shrink-0" />
-                        <span>{slide.location}</span>
-                      </div>
                     </div>
                   </div>
 
@@ -803,11 +857,10 @@ function AdminStudio() {
                       key={c.id}
                       type="button"
                       onClick={() => setGalleryFilter(c.id)}
-                      className={`shrink-0 whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all ${
-                        isSelected
+                      className={`shrink-0 whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all ${isSelected
                           ? "bg-amber-500 text-stone-950 shadow-xs font-bold"
                           : "bg-white border border-stone-200 text-stone-600 hover:bg-stone-100"
-                      }`}
+                        }`}
                     >
                       {c.label} ({count})
                     </button>
@@ -834,7 +887,7 @@ function AdminStudio() {
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search projects, materials, location..."
+                  placeholder="Search projects, materials..."
                   className="w-full rounded-xl border border-stone-200 bg-white pl-9 pr-4 py-2 text-xs text-stone-900 placeholder:text-stone-400 outline-none focus:border-amber-500 transition-colors shadow-2xs"
                 />
               </div>
@@ -858,14 +911,6 @@ function AdminStudio() {
                       <span className="absolute top-2.5 right-2.5 rounded-md bg-stone-900/85 backdrop-blur-md px-2 py-0.5 text-[10px] font-semibold text-white">
                         {proj.images.length} {proj.images.length === 1 ? "Photo" : "Photos"}
                       </span>
-                    </div>
-
-                    {/* Location Badge */}
-                    <div className="mt-3.5 flex items-center justify-between">
-                      <div className="flex items-center gap-1.5 text-xs text-stone-900 font-bold">
-                        <MapPin className="size-3.5 text-amber-500 shrink-0" />
-                        <span>{proj.location}</span>
-                      </div>
                     </div>
                   </div>
 
@@ -995,27 +1040,6 @@ function AdminStudio() {
                 </div>
               </div>
 
-              {/* Location */}
-              <div className="flex flex-col gap-1.5">
-                <div className="flex items-center justify-between">
-                  <label className="text-xs font-bold text-stone-800">
-                    Installation Location <span className="text-amber-600">*</span>
-                  </label>
-                  <span className="text-[10px] font-mono text-stone-400">
-                    {editingSlide.location.length}/40
-                  </span>
-                </div>
-                <input
-                  required
-                  type="text"
-                  maxLength={40}
-                  value={editingSlide.location}
-                  onChange={(e) => setEditingSlide({ ...editingSlide, location: e.target.value })}
-                  placeholder="e.g. Avinashi Road, Coimbatore"
-                  className="rounded-xl border border-stone-300/90 bg-white px-4 py-3 text-sm font-semibold text-stone-900 outline-none focus:border-amber-500 shadow-2xs"
-                />
-              </div>
-
               {/* Submit / Cancel Action Bar */}
               <div className="mt-4 flex items-center justify-end gap-3 border-t border-stone-100 pt-5">
                 <button
@@ -1113,29 +1137,6 @@ function AdminStudio() {
                     <span className="text-[11px] mt-1 font-bold">Add Photo</span>
                   </button>
                 </div>
-              </div>
-
-              {/* Location */}
-              <div className="flex flex-col gap-1.5">
-                <div className="flex items-center justify-between">
-                  <label className="text-xs font-bold text-stone-800">
-                    Installation Location / Landmark <span className="text-amber-600">*</span>
-                  </label>
-                  <span className="text-[10px] font-mono text-stone-400">
-                    {editingProject.location.length}/50
-                  </span>
-                </div>
-                <input
-                  required
-                  type="text"
-                  maxLength={50}
-                  value={editingProject.location}
-                  onChange={(e) =>
-                    setEditingProject({ ...editingProject, location: e.target.value })
-                  }
-                  placeholder="e.g. RS Puram, Coimbatore"
-                  className="rounded-xl border border-stone-300/90 bg-white px-4 py-3 text-sm font-semibold text-stone-900 outline-none focus:border-amber-500 shadow-2xs"
-                />
               </div>
 
               {/* Submit / Cancel Action Bar */}
@@ -1253,13 +1254,12 @@ function AdminStudio() {
                         e.preventDefault();
                       }}
                       onDrop={() => !isAll && handleCategoryDrop(idx)}
-                      className={`group flex items-center justify-between rounded-xl border p-2.5 sm:p-3 transition-all ${
-                        isBeingDragged
+                      className={`group flex items-center justify-between rounded-xl border p-2.5 sm:p-3 transition-all ${isBeingDragged
                           ? "border-amber-400 bg-amber-50/60 opacity-50 shadow-inner"
                           : isAll
-                          ? "border-stone-200 bg-stone-50/80"
-                          : "border-stone-200 bg-white hover:border-amber-300 hover:bg-stone-50/50 shadow-2xs cursor-grab active:cursor-grabbing"
-                      }`}
+                            ? "border-stone-200 bg-stone-50/80"
+                            : "border-stone-200 bg-white hover:border-amber-300 hover:bg-stone-50/50 shadow-2xs cursor-grab active:cursor-grabbing"
+                        }`}
                     >
                       {/* Left: Drag Handle & Name */}
                       <div className="flex items-center gap-2.5 min-w-0">

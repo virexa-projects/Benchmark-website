@@ -27,6 +27,9 @@ export default defineConfig(async ({ command }) => {
     server: {
       host: "::",
       port: 8080,
+      watch: {
+        ignored: ["**/.output/**", "**/.tanstack/**"],
+      },
     },
     resolve: {
       alias: {

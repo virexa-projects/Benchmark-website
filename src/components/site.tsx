@@ -123,9 +123,9 @@ export function SiteHeader({ className }: { className?: string } = {}) {
                 <Link
                   key={item.to}
                   to={item.to}
-                  className={`rounded-full px-3.5 py-1.5 text-sm leading-relaxed  font-medium transition-all duration-200 ${isActive
+                  className={`rounded-full px-3.5 py-1.5 text-sm leading-relaxed font-medium transition-all duration-200 ${isActive
                     ? "bg-[#5D5D5D] font-bold text-white shadow-2xs"
-                    : "text-muted-foreground hover:bg-secondary/40 hover:text-foreground"
+                    : "text-muted-foreground hover:bg-stone-200/70 hover:text-foreground"
                     }`}
                 >
                   {item.label}
@@ -187,7 +187,7 @@ export function SiteHeader({ className }: { className?: string } = {}) {
                   onClick={() => setOpen(false)}
                   className={`rounded-lg px-3 py-2 font-display text-base font-semibold tracking-[0.08em] transition-colors ${isActive
                     ? "bg-[#5D5D5D] font-bold text-white"
-                    : "text-foreground hover:bg-secondary/50"
+                    : "text-foreground hover:bg-stone-200/70"
                     }`}
                 >
                   {item.label}
@@ -281,7 +281,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={item.name}
-                    className="flex size-9 items-center justify-center rounded-xl bg-white/10 text-white transition-all hover:bg-white/20 active:scale-95"
+                    className="flex size-9 items-center justify-center rounded-xl bg-white/10 text-white transition-all hover:bg-white/20 hover:text-[#E8CA5C] active:scale-95"
                   >
                     <Icon className="size-4.5" />
                   </a>
@@ -314,7 +314,7 @@ export function SiteFooter() {
           <div className="grid grid-cols-2 gap-6 border-t border-white/15 pt-5">
             {/* Quick Navigation */}
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider text-white">
+              <p className="text-xs font-bold uppercase tracking-wider text-white transition-colors hover:text-[#E8CA5C] cursor-default">
                 Explore
               </p>
               <ul className="mt-3 flex flex-col gap-2.5">
@@ -322,7 +322,7 @@ export function SiteFooter() {
                   <li key={item.to}>
                     <Link
                       to={item.to}
-                      className="text-sm font-medium text-stone-200 transition-colors hover:text-white"
+                      className="text-sm font-medium text-stone-200 transition-colors hover:text-[#E8CA5C]"
                     >
                       {item.label}
                     </Link>
@@ -334,17 +334,17 @@ export function SiteFooter() {
             {/* Showroom & Contact Details */}
             <div className="flex flex-col gap-3.5">
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-white">
+                <p className="text-xs font-bold uppercase tracking-wider text-white transition-colors hover:text-[#E8CA5C] cursor-default">
                   Showroom
                 </p>
-                <p className="mt-2 text-xs leading-relaxed font-medium text-stone-200">
+                <p className="mt-2 text-xs leading-relaxed font-medium text-stone-200 transition-colors hover:text-[#E8CA5C]">
                   {ADDRESS}
                 </p>
                 <a
                   href={GOOGLE_MAPS_LINK}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-white underline underline-offset-2 hover:text-stone-200"
+                  className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-white underline underline-offset-2 transition-colors hover:text-[#E8CA5C]"
                 >
                   <MapPin className="size-3 text-stone-300" />
                   <span>Directions →</span>
@@ -352,18 +352,18 @@ export function SiteFooter() {
               </div>
 
               <div className="border-t border-white/10 pt-3">
-                <p className="text-xs font-bold uppercase tracking-wider text-white">
+                <p className="text-xs font-bold uppercase tracking-wider text-white transition-colors hover:text-[#E8CA5C] cursor-default">
                   Contact
                 </p>
                 <a
                   href={PHONE_LINK}
-                  className="mt-1.5 block text-xs font-medium text-stone-200 hover:text-white"
+                  className="mt-1.5 block text-xs font-medium text-stone-200 transition-colors hover:text-[#E8CA5C]"
                 >
                   {PHONE}
                 </a>
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="mt-1 block text-xs font-medium text-stone-200 hover:text-white break-all"
+                  className="mt-1 block text-xs font-medium text-stone-200 transition-colors hover:text-[#E8CA5C] break-all"
                 >
                   {EMAIL}
                 </a>
@@ -393,7 +393,7 @@ export function SiteFooter() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={item.name}
-                    className="flex size-8.5 items-center justify-center text-[#FFFFFF] transition-all hover:text-[#ffffff] hover:scale-115 active:scale-95"
+                    className="flex size-8.5 items-center justify-center text-[#FFFFFF] transition-all hover:text-[#E8CA5C] hover:scale-115 active:scale-95"
                   >
                     <Icon className="size-4.5" />
                   </a>
@@ -404,7 +404,7 @@ export function SiteFooter() {
 
           {/* Quick Navigation */}
           <div className="md:col-span-2">
-            <p className="text-base font-bold uppercase leading-relaxed text-[#FFFFFF]">
+            <p className="text-base font-bold uppercase leading-relaxed text-[#FFFFFF] transition-colors hover:text-[#E8CA5C] cursor-default">
               Explore
             </p>
 
@@ -413,7 +413,7 @@ export function SiteFooter() {
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="transition-colors font-medium hover:text-[#FFFFFF]"
+                    className="transition-colors font-medium hover:text-[#E8CA5C]"
                   >
                     {item.label}
                   </Link>
@@ -424,11 +424,11 @@ export function SiteFooter() {
 
           {/* Workshop Location */}
           <div className="md:col-span-3">
-            <p className="text-base font-bold uppercase leading-relaxed text-[#FFFFFF]">
+            <p className="text-base font-bold uppercase leading-relaxed text-[#FFFFFF] transition-colors hover:text-[#E8CA5C] cursor-default">
               Location
             </p>
 
-            <p className="mt-4 text-sm leading-relaxed font-medium text-[#FFFFFF]">
+            <p className="mt-4 text-sm leading-relaxed font-medium text-[#FFFFFF] transition-colors hover:text-[#E8CA5C]">
               {ADDRESS}
             </p>
 
@@ -436,7 +436,7 @@ export function SiteFooter() {
               href={GOOGLE_MAPS_LINK}
               target="_blank"
               rel="noreferrer"
-              className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#FFFFFF] hover:underline"
+              className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#FFFFFF] transition-colors hover:text-[#E8CA5C] hover:underline"
             >
               <MapPin className="size-3" />
               <span>Get Directions →</span>
@@ -445,20 +445,20 @@ export function SiteFooter() {
 
           {/* Direct Contact */}
           <div className="md:col-span-3">
-            <p className="text-base font-bold uppercase leading-relaxed text-[#FFFFFF]">
+            <p className="text-base font-bold uppercase leading-relaxed text-[#FFFFFF] transition-colors hover:text-[#E8CA5C] cursor-default">
               Contact Us
             </p>
 
             <a
               href={PHONE_LINK}
-              className="mt-4 block whitespace-nowrap font-display text-sm font-medium tracking-tight text-[#FFFFFF] transition-colors hover:text-[#FFFFFF]"
+              className="mt-4 block whitespace-nowrap font-display text-sm font-medium tracking-tight text-[#FFFFFF] transition-colors hover:text-[#E8CA5C]"
             >
               {PHONE}
             </a>
 
             <a
               href={`mailto:${EMAIL}`}
-              className="mt-2 block text-sm text-[#FFFFFF] font-medium transition-colors"
+              className="mt-2 block text-sm text-[#FFFFFF] font-medium transition-colors hover:text-[#E8CA5C]"
             >
               {EMAIL}
             </a>
@@ -481,8 +481,11 @@ export function SiteFooter() {
         {/* Bottom Credits */}
         <div className="mt-6 md:mt-7 flex flex-col gap-2 border-t border-stone-200/40 pt-3 md:pt-4 text-sm text-[#FFFFFF] items-center justify-between text-center">
           <span>
-            © {new Date().getFullYear()} Benchmark Name Boards. All rights
-            reserved.
+            © {new Date().getFullYear()}{" "}
+            <Link to="/" className="transition-colors hover:text-[#E8CA5C]">
+              Benchmark Name Boards
+            </Link>
+            . All rights reserved.
           </span>
         </div>
       </div>
