@@ -71,83 +71,85 @@ function Home() {
       <SiteHeader />
 
       {/* Main Home Showcase Section — Matches header width with visible soft shadow */}
-      <main className="flex-1 flex flex-col items-center justify-center px-12 py-3 sm:py-4 min-h-0 overflow-hidden">
-        <div className="mx-auto w-full max-w-7xl flex flex-col items-center px-10 justify-center min-h-0 py-2">
-          {/* Rounded Showcase Image Card with #FEF644 golden glow & floating shadow */}
-          <div
-            className="relative w-full aspect-[16/10] sm:aspect-[16/9] max-h-[calc(100vh-7.5rem)] rounded-2xl sm:rounded-3xl lg:rounded-[32px] overflow-hidden bg-stone-950 border border-[#FEF644]/40 select-none group"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-            onTouchStart={(e) => {
-              const touch = e.touches[0];
-              if (touch) {
-                touchStartX.current = touch.clientX;
-              }
-            }}
-            onTouchEnd={(e) => {
-              const changedTouch = e.changedTouches[0];
-              if (touchStartX.current !== null && changedTouch) {
-                const diff = touchStartX.current - changedTouch.clientX;
-                if (diff > 50) nextSlide();
-                else if (diff < -50) prevSlide();
-              }
-              touchStartX.current = null;
-            }}
-          >
-            {/* Photographic Slides: Image fits completely to container without cropping */}
-            {activeSlides.map((slide, index) => {
-              const isActive = index === safeIndex;
-              return (
-                <div
-                  key={slide.id || index}
-                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${isActive
-                    ? "opacity-100 z-10 pointer-events-auto"
-                    : "opacity-0 z-0 pointer-events-none"
-                    }`}
-                >
-                  {/* Subtle ambient blurred backdrop matching image colors */}
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <main className="flex-1 flex flex-col items-center justify-center px-4 sm:px-8 md:px-12 py-3 sm:py-4 pb-18 md:pb-4 min-h-0 overflow-hidden">
+        <div className="mx-auto w-full max-w-7xl flex flex-col items-center px-0 sm:px-4 md:px-10 justify-center min-h-0 py-2">
+          {/* Showcase Card Wrapper with white border/space like portfolio card */}
+          <div className="w-full aspect-[4/5] sm:aspect-[16/10] md:aspect-[16/9] max-h-[calc(100dvh-10rem)] md:max-h-[calc(100vh-7.5rem)] rounded-2xl sm:rounded-3xl lg:rounded-[32px] bg-white p-2 sm:p-2.5 md:p-2 border border-stone-200/90 shadow-2xs">
+            <div
+              className="relative size-full rounded-xl sm:rounded-2xl lg:rounded-[24px] overflow-hidden bg-stone-950 select-none group"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
+              onTouchStart={(e) => {
+                const touch = e.touches[0];
+                if (touch) {
+                  touchStartX.current = touch.clientX;
+                }
+              }}
+              onTouchEnd={(e) => {
+                const changedTouch = e.changedTouches[0];
+                if (touchStartX.current !== null && changedTouch) {
+                  const diff = touchStartX.current - changedTouch.clientX;
+                  if (diff > 50) nextSlide();
+                  else if (diff < -50) prevSlide();
+                }
+                touchStartX.current = null;
+              }}
+            >
+              {/* Photographic Slides: Image fits completely to container without cropping */}
+              {activeSlides.map((slide, index) => {
+                const isActive = index === safeIndex;
+                return (
+                  <div
+                    key={slide.id || index}
+                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${isActive
+                      ? "opacity-100 z-10 pointer-events-auto"
+                      : "opacity-0 z-0 pointer-events-none"
+                      }`}
+                  >
+                    {/* Subtle ambient blurred backdrop matching image colors */}
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                      <img
+                        src={slide.img}
+                        alt=""
+                        className="size-full object-cover blur-3xl opacity-35 scale-125"
+                        aria-hidden="true"
+                      />
+                    </div>
+
+                    {/* Main image fits container completely with no cropping */}
                     <img
                       src={slide.img}
-                      alt=""
-                      className="size-full object-cover blur-3xl opacity-35 scale-125"
-                      aria-hidden="true"
+                      alt={slide.title || "Benchmark Signage"}
+                      className="relative z-10 size-full object-contain object-center"
+                      loading={index === 0 ? "eager" : "lazy"}
                     />
+
+                    {/* Gentle base gradient for contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none z-10" />
                   </div>
+                );
+              })}
 
-                  {/* Main image fits container completely with no cropping */}
-                  <img
-                    src={slide.img}
-                    alt={slide.title || "Benchmark Signage"}
-                    className="relative z-10 size-full object-contain object-center"
-                    loading={index === 0 ? "eager" : "lazy"}
-                  />
+              {/* Prev and Next Buttons INSIDE slide show at the bottom center */}
+              <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center gap-3">
+                <button
+                  type="button"
+                  aria-label="Previous slide"
+                  onClick={prevSlide}
+                  className="flex size-11 sm:size-12 items-center justify-center rounded-full bg-black/85 text-white hover:bg-black border border-white/20 transition-all hover:scale-110 active:scale-95 shadow-2xl cursor-pointer backdrop-blur-md"
+                >
+                  <ChevronLeft className="size-5 sm:size-6" />
+                </button>
 
-                  {/* Gentle base gradient for contrast */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none z-10" />
-                </div>
-              );
-            })}
-
-            {/* Prev and Next Buttons INSIDE slide show at the bottom center */}
-            <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center gap-3">
-              <button
-                type="button"
-                aria-label="Previous slide"
-                onClick={prevSlide}
-                className="flex size-11 sm:size-12 items-center justify-center rounded-full bg-black/85 text-white hover:bg-black border border-white/20 transition-all hover:scale-110 active:scale-95 shadow-2xl cursor-pointer backdrop-blur-md"
-              >
-                <ChevronLeft className="size-5 sm:size-6" />
-              </button>
-
-              <button
-                type="button"
-                aria-label="Next slide"
-                onClick={nextSlide}
-                className="flex size-11 sm:size-12 items-center justify-center rounded-full bg-black/85 text-white hover:bg-black border border-white/20 transition-all hover:scale-110 active:scale-95 shadow-2xl cursor-pointer backdrop-blur-md"
-              >
-                <ChevronRight className="size-5 sm:size-6" />
-              </button>
+                <button
+                  type="button"
+                  aria-label="Next slide"
+                  onClick={nextSlide}
+                  className="flex size-11 sm:size-12 items-center justify-center rounded-full bg-black/85 text-white hover:bg-black border border-white/20 transition-all hover:scale-110 active:scale-95 shadow-2xl cursor-pointer backdrop-blur-md"
+                >
+                  <ChevronRight className="size-5 sm:size-6" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

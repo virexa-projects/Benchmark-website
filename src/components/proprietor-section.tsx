@@ -7,26 +7,20 @@ export function ProprietorSection() {
       {/* Exact max-w-7xl px-5 lg:px-10 container matching top nav */}
       <div className="mx-auto max-w-7xl  ">
         <div className="grid items-center gap-12 lg:gap-16 lg:grid-cols-12">
-           {/* Right Column: Single High-End Proprietor Image Showcase */}
-          <div className="lg:col-span-6 xl:col-span-6">
-            <ScrollReveal direction="up" delay={150}>
-              <div className="relative group overflow-hidden rounded-2xl sm:rounded-3xl border  shadow-2xl transition-all duration-300 ">
-                <img
-                  src={w4}
-                  alt="B. Kannan, MBA — Founder & Master Craftsman at Benchmark Name Boards"
-                  className="w-full h-[600px] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  loading="lazy"
-                />
-                {/* Subtle gradient overlay at base for luxury feel */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
-                
-                {/* Proprietor Identification Label */}
-                {/* <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 pointer-events-none">
-                  <div className="rounded-xl border border-stone-700/60 bg-black/70 backdrop-blur-md px-4 py-2.5">
-                    <p className="text-xs font-semibold text-white tracking-tight">B. Kannan, MBA</p>
-                    <p className="text-[11px] text-[#D6B981] font-medium">Founder & Proprietor · Est. 2015</p>
-                  </div>
-                </div> */}
+          {/* Right Column: Single High-End Proprietor Image Showcase */}
+          <div className="lg:col-span-6 xl:col-span-6 flex justify-center lg:justify-start">
+            <ScrollReveal direction="up" delay={150} className="w-full max-w-[460px]">
+              <div className="rounded-2xl sm:rounded-3xl bg-white p-2 sm:p-2.5 border border-stone-200/90 shadow-2xs">
+                <div className="relative group overflow-hidden rounded-xl sm:rounded-2xl">
+                  <img
+                    src={w4}
+                    alt="B. Kannan, MBA — Founder & Master Craftsman at Benchmark Name Boards"
+                    className="w-full h-[480px] sm:h-[500px] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  {/* Subtle gradient overlay at base for luxury feel */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
+                </div>
               </div>
             </ScrollReveal>
           </div>

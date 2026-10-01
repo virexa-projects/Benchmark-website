@@ -505,11 +505,10 @@ export function PortfolioSection({ limit }: { limit?: number }) {
                 setSelectedCategory(cat.id);
                 setActiveProjectIndex(null);
               }}
-              className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-xs font-semibold leading-relaxed transition-all ${
-                selectedCategory === cat.id
-                  ? "bg-stone-900 text-white shadow-sm"
-                  : "bg-[#EFE8DC]/80 text-stone-700 hover:bg-[#E4DCCE] hover:text-stone-950 border border-stone-300/40 active:bg-[#DCD3C3]"
-              }`}
+              className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-xs font-semibold leading-relaxed transition-all ${selectedCategory === cat.id
+                ? "bg-[#5D5D5D] text-white shadow-sm"
+                : "bg-[#EFE8DC]/80 text-stone-700 hover:bg-[#E4DCCE] hover:text-stone-950 border border-stone-300/40 active:bg-[#DCD3C3]"
+                }`}
             >
               {cat.label}
             </button>
@@ -575,11 +574,11 @@ export function PortfolioSection({ limit }: { limit?: number }) {
             </button>
 
             {/* Enlarged Modal Image */}
-            <div className="relative flex items-center justify-center bg-black max-h-[72vh] sm:max-h-[76vh] w-full overflow-hidden">
+            <div className="relative flex items-center justify-center bg-black max-h-[85vh] sm:max-h-[88vh] w-full overflow-hidden">
               <img
                 src={activeProject.images[modalImgIndex] || activeProject.images[0]}
                 alt={activeProject.title}
-                className="max-h-[72vh] sm:max-h-[76vh] w-full object-contain"
+                className="max-h-[85vh] sm:max-h-[88vh] w-full object-contain"
               />
 
               {/* Arrow Controls for Multi-Image Projects in Modal */}
@@ -610,24 +609,6 @@ export function PortfolioSection({ limit }: { limit?: number }) {
                   </button>
                 </>
               )}
-            </div>
-
-            {/* Bottom Bar: ONLY Location & Enquiry Now */}
-            <div className="p-4 sm:p-5 bg-stone-900 border-t border-stone-800 flex items-center justify-between gap-4">
-              <div className="flex items-center gap-2 text-white">
-                <MapPin className="size-4 text-[#EBB036] shrink-0" />
-                <span className="font-semibold text-sm sm:text-base text-white">{activeProject.location}</span>
-              </div>
-
-              <a
-                href={getWhatsAppForProject(activeProject)}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 rounded-full bg-[#EBB036] hover:bg-[#D4972B] px-5 py-2.5 text-xs sm:text-sm font-bold text-stone-950 shadow-md transition-all active:scale-95 shrink-0"
-              >
-                <span>Enquire Now</span>
-                <ArrowRight className="size-3.5 text-stone-950" />
-              </a>
             </div>
           </div>
         </div>

@@ -14,6 +14,7 @@ import {
 import { MobileDock } from "@/components/mobile-dock";
 import { WhatsAppIcon } from "@/components/floating-actions";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { submitContactToGoogleSheet } from "@/utils/apiConfig";
 import {
   Phone,
   MessageCircle,
@@ -56,6 +57,7 @@ function Contact() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined" && (window.location.hash === "#quote-form" || window.location.hash === "#enquire" || window.location.hash === "#form")) {
@@ -66,23 +68,29 @@ function Contact() {
     }
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
 
-    const clientName = `${firstName} ${lastName}`.trim();
-    const msg = `Hello B. Kannan (Benchmark Name Boards),%0A%0AI am requesting a Quote from your website:%0A%0A` +
-      `• *Name:* ${encodeURIComponent(clientName)}%0A` +
-      `• *Phone / WhatsApp:* ${encodeURIComponent(phone)}%0A` +
-      (email ? `• *Email:* ${encodeURIComponent(email)}%0A` : "") +
-      (message ? `• *Wording / Dimensions:* ${encodeURIComponent(message)}%0A` : "") +
-      `%0APlease share material options and a 3D digital design render.`;
-
-    window.open(`https://wa.me/919842767222?text=${msg}`, "_blank");
+    // Dispatch contact inquiry to Google Sheets Web App endpoint
+    setIsSubmitting(true);
+    try {
+      await submitContactToGoogleSheet({
+        firstName,
+        lastName,
+        phone,
+        email,
+        message,
+      });
+    } catch (err) {
+      console.error("Failed to record entry in Google Sheet:", err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-[#FFFDF4] text-stone-900 antialiased pb-14 md:pb-0">
+    <div className="min-h-screen bg-[#FFFDF4] text-stone-900 antialiased">
       <SiteHeader />
 
       {/* Main Hero & Form Section: Exact max-w-7xl px-5 lg:px-10 aligned with top nav */}
@@ -107,7 +115,7 @@ function Contact() {
                 <p className="mt-4 text-sm leading-relaxed text-stone-600">
                   Founder B. Kannan, MBA, will personally review your requirements and get in touch with you within 24 hours.
                 </p>
-                
+
 
                 {/* Minimalist Contact Direct Cards */}
                 <div className="mt-7 flex flex-col gap-3">
@@ -159,14 +167,21 @@ function Contact() {
                       <CheckCircle2 className="size-8" />
                     </div>
                     <h3 className="mt-5 font-display text-2xl font-bold tracking-tight text-stone-950">
-                      Thank You! Request Dispatched.
+                      Enquiry Submitted Successfully!
                     </h3>
-                    <p className="mx-auto mt-2 max-w-sm text-sm text-stone-600">
-                      WhatsApp has opened with your inquiry. Founder B. Kannan, MBA will review your details and reply shortly.
+                    <p className="mx-auto mt-2 max-w-sm text-sm text-stone-600 leading-relaxed">
+                      Thank you for contacting Benchmark Name Boards. We have received your details.
                     </p>
                     <button
                       type="button"
-                      onClick={() => setSubmitted(false)}
+                      onClick={() => {
+                        setSubmitted(false);
+                        setFirstName("");
+                        setLastName("");
+                        setPhone("");
+                        setEmail("");
+                        setMessage("");
+                      }}
                       className="mt-6 inline-flex items-center gap-2 text-xs font-semibold text-stone-950 underline hover:text-[#8A6D00]"
                     >
                       <span>Submit another requirement</span>
@@ -176,7 +191,7 @@ function Contact() {
                   <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                     <div>
                       <h2 className="font-display text-2xl  font-bold leading-relaxed text-black">
-                        Contact Us 
+                        Contact Us
                       </h2>
                     </div>
 
@@ -245,7 +260,7 @@ function Contact() {
                     {/* Message / Board text */}
                     <div className="flex flex-col gap-1.5">
                       <label htmlFor="project-notes" className="text-xs font-medium text-stone-700">
-                        Message 
+                        Message
                       </label>
                       <textarea
                         id="project-notes"
@@ -261,9 +276,10 @@ function Contact() {
                     <div className="flex flex-col gap-3 pt-2">
                       <button
                         type="submit"
-                        className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#5d5d5d] px-6 py-4 text-center text-sm font-bold text-[#ffffff] shadow-md shadow-[#D6B981]/25 transition-all active:scale-[0.99]"
+                        disabled={isSubmitting}
+                        className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#5d5d5d] px-6 py-4 text-center text-sm font-bold text-[#ffffff] shadow-md shadow-[#D6B981]/25 transition-all active:scale-[0.99] disabled:opacity-75 disabled:cursor-not-allowed"
                       >
-                        <span>Submit Enquiry</span>
+                        <span>{isSubmitting ? "Submitting..." : "Submit Enquiry"}</span>
                         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                       </button>
                     </div>
@@ -282,9 +298,9 @@ function Contact() {
             {/* Left Description */}
             <div className="lg:col-span-5">
               <ScrollReveal direction="up" delay={50}>
-               
+
                 <h2 className="mt-2 font-display text-2xl sm:text-3xl font-bold tracking-tight text-stone-950">
-                  
+
                   Benchmark
                 </h2>
                 <p className="mt-3 text-sm text-stone-600 leading-relaxed">

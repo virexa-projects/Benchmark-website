@@ -29,7 +29,7 @@ export const Route = createFileRoute("/portfolio")({
 
 function Gallery() {
   return (
-    <div className="min-h-screen bg-[#FFFDF4] text-stone-900 pb-14 md:pb-0">
+    <div className="min-h-screen bg-[#FFFDF4] text-stone-900">
       <SiteHeader />
 
       {/* Gallery Header — Exact max-w-7xl px-5 lg:px-10 alignment with top nav */}

@@ -129,20 +129,22 @@ const ABOUT_STATS = [
 
 function About() {
   return (
-    <div className="min-h-screen bg-[#FFFDF4] text-stone-900 pb-14 md:pb-0">
+    <div className="min-h-screen bg-[#FFFDF4] text-stone-900">
       <SiteHeader />
 
       {/* Hero: Centered About Us & Four Stat Cards Matching Image */}
       <section className="mx-auto max-w-7xl px-5 pt-16 pb-16 lg:px-10 lg:pt-22">
         <div className="grid gap-12 md:grid-cols-12 md:items-center">
-          {/* Image - 8 Columns */}
-          <div className="overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-x md:col-span-8">
-            <img
-              src={BM}
-              alt="Benchmark workshop floor with 3D letters being fabricated"
-              className="aspect-[6/3] w-full object-fit transition-transform duration-700 hover:scale-105"
-              loading="lazy"
-            />
+          {/* Hero Image - 8 Columns with white border framing */}
+          <div className="rounded-2xl sm:rounded-3xl bg-white p-2 sm:p-2.5 border border-stone-200/90 shadow-2xs md:col-span-8">
+            <div className="overflow-hidden rounded-xl sm:rounded-2xl">
+              <img
+                src={BM}
+                alt="Benchmark workshop floor with 3D letters being fabricated"
+                className="aspect-[6/3] w-full object-cover transition-transform duration-700 hover:scale-105"
+                loading="lazy"
+              />
+            </div>
           </div>
 
           {/* Content - 4 Columns */}
@@ -185,10 +187,8 @@ function About() {
           </div>
         </div>
         <div className="grid gap-12 md:grid-cols-12 md:items-center pt-24">
-          {/* Image - 8 Columns */}
-
           {/* Content - 4 Columns */}
-          <div className="flex flex-col items-start justify-center md:col-span-4">
+          <div className="flex flex-col items-start justify-center md:col-span-4 order-2 md:order-1">
             <ScrollReveal direction="up" delay={120}>
               <div className="mt-1 space-y-1 text-sm leading-relaxed text-stone-600">
                 <h1 className="font-display text-2xl font-bold leading-relaxed text-stone-950">
@@ -242,13 +242,16 @@ function About() {
               </div>
             </ScrollReveal>
           </div>
-          <div className="overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-x md:col-span-8">
-            <img
-              src={Shop}
-              alt="Benchmark workshop floor with 3D letters being fabricated"
-              className="aspect-[6/3] w-full object-cover transition-transform duration-700 hover:scale-105"
-              loading="lazy"
-            />
+          {/* Shop Image - 8 Columns with white border framing */}
+          <div className="rounded-2xl sm:rounded-3xl bg-white p-2 sm:p-2.5 border border-stone-200/90 shadow-2xs md:col-span-8 order-1 md:order-2">
+            <div className="overflow-hidden rounded-xl sm:rounded-2xl">
+              <img
+                src={Shop}
+                alt="Benchmark showroom floor with signage displays"
+                className="aspect-[6/3] w-full object-cover transition-transform duration-700 hover:scale-105"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
 
@@ -291,9 +294,9 @@ function About() {
 
       {/* Vision & Mission Cards */}
       <section className="mx-auto max-w-7xl px-5 pb-16 lg:px-10">
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-8 lg:gap-10 md:grid-cols-2">
           <ScrollReveal direction="up" delay={100}>
-            <div className="h-full rounded-3xl  bg-white p-8 lg:p-10 shadow-xs hover:shadow-xs">
+            <div className="h-full rounded-3xl border border-stone-200/80 bg-white p-8 lg:p-10 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all hover:shadow-md hover:border-stone-200">
               <div className="flex size-12 items-center justify-center rounded-2xl bg-[#D6B981]/20 text-[#8A6D00] mb-6">
                 <Eye className="size-6" />
               </div>
@@ -312,7 +315,7 @@ function About() {
           </ScrollReveal>
 
           <ScrollReveal direction="up" delay={200}>
-            <div className="h-full rounded-3xl  bg-white p-8 lg:p-10 shadow-xs hover:shadow-xs">
+            <div className="h-full rounded-3xl border border-stone-200/80 bg-white p-8 lg:p-10 shadow-[0_2px_12px_rgba(0,0,0,0.03)] transition-all hover:shadow-md hover:border-stone-200">
               <div className="flex size-12 items-center justify-center rounded-2xl bg-[#D6B981]/20 text-[#8A6D00] mb-6">
                 <Target className="size-6" />
               </div>

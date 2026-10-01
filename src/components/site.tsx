@@ -6,8 +6,11 @@ import {
   ShieldCheck,
   Sparkles,
   ChevronDown,
+  Menu,
+  X,
 } from "lucide-react";
-import { FaWhatsapp, FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaYoutube, FaWhatsapp } from "react-icons/fa";
+import { RiWhatsappFill, RiInstagramFill } from "react-icons/ri";
 
 import { BenchmarkLogo } from "@/components/benchmark-logo";
 import { WhatsAppIcon } from "@/components/floating-actions";
@@ -60,12 +63,12 @@ export const SOCIAL_LINKS = [
   {
     name: "WhatsApp",
     href: WHATSAPP_LINK,
-    icon: FaWhatsapp,
+    icon: RiWhatsappFill,
   },
   {
     name: "Instagram",
     href: "https://www.instagram.com/benchmark_coimbatore/",
-    icon: FaInstagram,
+    icon: RiInstagramFill,
   },
   {
     name: "Facebook",
@@ -120,11 +123,10 @@ export function SiteHeader({ className }: { className?: string } = {}) {
                 <Link
                   key={item.to}
                   to={item.to}
-                  className={`rounded-full px-3.5 py-1.5 text-sm leading-relaxed  font-medium transition-all duration-200 ${
-                    isActive
-                      ? "bg-secondary/80 font-bold text-foreground shadow-2xs"
-                      : "text-muted-foreground hover:bg-secondary/40 hover:text-foreground"
-                  }`}
+                  className={`rounded-full px-3.5 py-1.5 text-sm leading-relaxed  font-medium transition-all duration-200 ${isActive
+                    ? "bg-[#5D5D5D] font-bold text-white shadow-2xs"
+                    : "text-muted-foreground hover:bg-secondary/40 hover:text-foreground"
+                    }`}
                 >
                   {item.label}
                 </Link>
@@ -160,23 +162,13 @@ export function SiteHeader({ className }: { className?: string } = {}) {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((value) => !value)}
-            className="flex size-9.5 items-center justify-center rounded-xl border border-border bg-card md:hidden"
+            className="flex size-9.5 items-center justify-center rounded-xl border border-border bg-card text-foreground transition-all hover:bg-secondary active:scale-95 md:hidden"
           >
-            <span className="relative block h-3.5 w-5">
-              {/* Top line */}
-              <span
-                className={`absolute left-0 top-0 h-0.5 w-full bg-foreground transition-transform duration-300 ${
-                  open ? "translate-y-1.5 rotate-45" : ""
-                }`}
-              />
-
-              {/* Bottom line */}
-              <span
-                className={`absolute bottom-0 left-0 h-0.5 w-full bg-foreground transition-transform duration-300 ${
-                  open ? "-translate-y-1.5 -rotate-45" : ""
-                }`}
-              />
-            </span>
+            {open ? (
+              <X className="size-5" />
+            ) : (
+              <Menu className="size-5" />
+            )}
           </button>
         </div>
       </div>
@@ -193,11 +185,10 @@ export function SiteHeader({ className }: { className?: string } = {}) {
                   key={item.to}
                   to={item.to}
                   onClick={() => setOpen(false)}
-                  className={`rounded-lg px-3 py-2 font-display text-base font-semibold tracking-[0.08em] transition-colors ${
-                    isActive
-                      ? "bg-secondary font-bold text-[#B38800]"
-                      : "text-foreground hover:bg-secondary/50"
-                  }`}
+                  className={`rounded-lg px-3 py-2 font-display text-base font-semibold tracking-[0.08em] transition-colors ${isActive
+                    ? "bg-[#5D5D5D] font-bold text-white"
+                    : "text-foreground hover:bg-secondary/50"
+                    }`}
                 >
                   {item.label}
                 </Link>
@@ -231,7 +222,7 @@ export function SiteHeader({ className }: { className?: string } = {}) {
                 to="/contact"
                 hash="quote-form"
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-center gap-2 rounded-xl bg-[#D6B981] py-3 text-sm font-bold text-stone-950 shadow-md transition-all hover:bg-[#E5B700] active:scale-98"
+                className="flex items-center justify-center gap-2 rounded-xl bg-[#5D5D5D] py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-[#4E4E4E] active:scale-98"
               >
                 <span>Enquire Now</span>
               </Link>
@@ -268,22 +259,128 @@ export function SiteHeader({ className }: { className?: string } = {}) {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-stone-200 bg-[#5D5D5D]  text-stone-300">
-      <div className="mx-auto max-w-7xl px-5 py-16 lg:px-10">
-        <div className="grid gap-12 md:grid-cols-12">
+    <footer className="border-t border-stone-200 bg-[#5D5D5D] text-stone-300">
+      <div className="mx-auto max-w-7xl px-5 py-6 md:py-8 lg:py-8 lg:px-10">
+        {/* ============================================================ */}
+        {/* MOBILE FOOTER (Mobile Best Practice: Fast CTAs + 2-Col Grid) */}
+        {/* ============================================================ */}
+        <div className="flex flex-col gap-6 md:hidden">
+          {/* Brand & Socials Header */}
+          <div className="flex flex-col items-start gap-3.5">
+            <Link to="/" className="inline-block">
+              <BenchmarkLogo showSubtitle />
+            </Link>
+
+            <div className="flex items-center gap-2.5">
+              {SOCIAL_LINKS.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={item.name}
+                    className="flex size-9 items-center justify-center rounded-xl bg-white/10 text-white transition-all hover:bg-white/20 active:scale-95"
+                  >
+                    <Icon className="size-4.5" />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Instant Action CTA Buttons (Thumb-friendly tap targets) */}
+          <div className="grid grid-cols-2 gap-2.5">
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-[#25D366] px-3 text-xs font-bold text-white shadow-sm transition-all hover:bg-[#20BD5A] active:scale-95"
+            >
+              <FaWhatsapp className="size-4" />
+              <span>WhatsApp</span>
+            </a>
+            <a
+              href={PHONE_LINK}
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-white/10 px-3 text-xs font-semibold text-white border border-white/15 transition-all hover:bg-white/20 active:scale-95"
+            >
+              <Phone className="size-3.5 text-stone-200" />
+              <span>Call Us</span>
+            </a>
+          </div>
+
+          {/* 2-Column Info Architecture: Explore + Showroom/Contact */}
+          <div className="grid grid-cols-2 gap-6 border-t border-white/15 pt-5">
+            {/* Quick Navigation */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-white">
+                Explore
+              </p>
+              <ul className="mt-3 flex flex-col gap-2.5">
+                {NAV.map((item) => (
+                  <li key={item.to}>
+                    <Link
+                      to={item.to}
+                      className="text-sm font-medium text-stone-200 transition-colors hover:text-white"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Showroom & Contact Details */}
+            <div className="flex flex-col gap-3.5">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-wider text-white">
+                  Showroom
+                </p>
+                <p className="mt-2 text-xs leading-relaxed font-medium text-stone-200">
+                  {ADDRESS}
+                </p>
+                <a
+                  href={GOOGLE_MAPS_LINK}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-white underline underline-offset-2 hover:text-stone-200"
+                >
+                  <MapPin className="size-3 text-stone-300" />
+                  <span>Directions →</span>
+                </a>
+              </div>
+
+              <div className="border-t border-white/10 pt-3">
+                <p className="text-xs font-bold uppercase tracking-wider text-white">
+                  Contact
+                </p>
+                <a
+                  href={PHONE_LINK}
+                  className="mt-1.5 block text-xs font-medium text-stone-200 hover:text-white"
+                >
+                  {PHONE}
+                </a>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="mt-1 block text-xs font-medium text-stone-200 hover:text-white break-all"
+                >
+                  {EMAIL}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ============================================================ */}
+        {/* DESKTOP FOOTER VIEW (md and up - Preserved exactly as is)    */}
+        {/* ============================================================ */}
+        <div className="hidden md:grid md:gap-12 md:grid-cols-12">
           {/* Brand Column */}
           <div className="md:col-span-4">
             <Link to="/" className="inline-block">
               <BenchmarkLogo showSubtitle />
             </Link>
-
-            {/* <p className="mt-5 text-sm leading-relaxed text-stone-400">
-              Coimbatore&apos;s specialized atelier in premium customized name
-              boards. Crafted in SS 304, PVD Gold, Copper, ACP and Cast Acrylic
-              — with or without LED halo illumination.
-            </p> */}
-
-        
 
             {/* Social Media */}
             <div className="mt-6 flex items-center gap-3.5">
@@ -307,7 +404,7 @@ export function SiteFooter() {
 
           {/* Quick Navigation */}
           <div className="md:col-span-2">
-            <p className="text-base font-bold uppercase leading-relaxed  text-[#FFFFFF]">
+            <p className="text-base font-bold uppercase leading-relaxed text-[#FFFFFF]">
               Explore
             </p>
 
@@ -327,7 +424,7 @@ export function SiteFooter() {
 
           {/* Workshop Location */}
           <div className="md:col-span-3">
-            <p className="text-base font-bold uppercase leading-relaxed  text-[#FFFFFF]">
+            <p className="text-base font-bold uppercase leading-relaxed text-[#FFFFFF]">
               Location
             </p>
 
@@ -335,13 +432,11 @@ export function SiteFooter() {
               {ADDRESS}
             </p>
 
-            
-
             <a
               href={GOOGLE_MAPS_LINK}
               target="_blank"
               rel="noreferrer"
-              className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-[#FFFFFF] hover:underline"
+              className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#FFFFFF] hover:underline"
             >
               <MapPin className="size-3" />
               <span>Get Directions →</span>
@@ -350,7 +445,7 @@ export function SiteFooter() {
 
           {/* Direct Contact */}
           <div className="md:col-span-3">
-            <p className="text-base font-bold uppercase leading-relaxed  text-[#FFFFFF]">
+            <p className="text-base font-bold uppercase leading-relaxed text-[#FFFFFF]">
               Contact Us
             </p>
 
@@ -363,7 +458,7 @@ export function SiteFooter() {
 
             <a
               href={`mailto:${EMAIL}`}
-              className="mt-2 block text-sm text-[#FFFFFF] font-medium transition-colors hover:text-black"
+              className="mt-2 block text-sm text-[#FFFFFF] font-medium transition-colors"
             >
               {EMAIL}
             </a>
@@ -376,7 +471,7 @@ export function SiteFooter() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-xl bg-[#25D366] px-4 py-2.5 text-xs font-bold text-white shadow-sm transition-all hover:bg-[#20BD5A] active:scale-95"
               >
-                <WhatsAppIcon className="size-3.5 fill-current" />
+                <FaWhatsapp className="size-4" />
                 <span>WhatsApp</span>
               </a>
             </div>
@@ -384,13 +479,11 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom Credits */}
-        <div className="mt-16 flex flex-col gap-3 border-t border-stone-200 pt-6 text-sm  text-[#FFFFFF]  items-center justify-between">
+        <div className="mt-6 md:mt-7 flex flex-col gap-2 border-t border-stone-200/40 pt-3 md:pt-4 text-sm text-[#FFFFFF] items-center justify-between text-center">
           <span>
             © {new Date().getFullYear()} Benchmark Name Boards. All rights
             reserved.
           </span>
-
-        
         </div>
       </div>
     </footer>
@@ -449,7 +542,7 @@ export function FAQSection() {
         </ScrollReveal>
 
         {/* FAQ List */}
-       
+
       </div>
     </section>
   );
