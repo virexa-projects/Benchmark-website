@@ -222,7 +222,7 @@ export function SiteHeader({ className }: { className?: string } = {}) {
                 to="/contact"
                 hash="quote-form"
                 onClick={() => setOpen(false)}
-                className="flex items-center justify-center gap-2 rounded-xl bg-[#5D5D5D] py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-[#4E4E4E] active:scale-98"
+                className="flex items-center justify-center gap-2 rounded-xl bg-amber-500 py-3 text-sm font-bold text-stone-950 shadow-md transition-all hover:bg-amber-400 active:scale-98"
               >
                 <span>Enquire Now</span>
               </Link>
