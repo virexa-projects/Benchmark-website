@@ -337,34 +337,6 @@ var Eye = createLucideIcon("eye", [["path", {
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
-var FileText = createLucideIcon("file-text", [
-	["path", {
-		d: "M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z",
-		key: "1oefj6"
-	}],
-	["path", {
-		d: "M14 2v5a1 1 0 0 0 1 1h5",
-		key: "wfsgrz"
-	}],
-	["path", {
-		d: "M10 9H8",
-		key: "b1mrlr"
-	}],
-	["path", {
-		d: "M16 13H8",
-		key: "t4e002"
-	}],
-	["path", {
-		d: "M16 17H8",
-		key: "z1uh3a"
-	}]
-]);
-/**
-* @license lucide-react v0.575.0 - ISC
-*
-* This source code is licensed under the ISC license.
-* See the LICENSE file in the root directory of this source tree.
-*/
 var GripVertical = createLucideIcon("grip-vertical", [
 	["circle", {
 		cx: "9",
@@ -867,4 +839,4 @@ var Zap = createLucideIcon("zap", [["path", {
 	key: "1xq2db"
 }]]);
 //#endregion
-export { ExternalLink as A, ArrowRight as B, Lock as C, FileText as D, GripVertical as E, ChevronUp as F, ArrowDown as H, ChevronRight as I, ChevronLeft as L, CircleCheck as M, CircleCheckBig as N, Eye as O, CircleAlert as P, ChevronDown as R, LogOut as S, Image as T, ArrowLeft as V, Navigation as _, TriangleAlert as a, MapPin as b, Sparkles as c, ShieldCheck as d, Search as f, PenLine as g, Phone as h, Truck as i, Clock as j, EyeOff as k, SlidersHorizontal as l, Plus as m, X as n, Trash2 as o, RotateCcw as p, Upload as r, Target as s, Zap as t, Shield as u, MessageSquare as v, Layers as w, Mail as x, Menu as y, ArrowUp as z };
+export { Clock as A, ArrowLeft as B, Lock as C, Eye as D, GripVertical as E, ChevronRight as F, ChevronLeft as I, ChevronDown as L, CircleCheckBig as M, CircleAlert as N, EyeOff as O, ChevronUp as P, ArrowUp as R, LogOut as S, Image as T, ArrowDown as V, Navigation as _, TriangleAlert as a, MapPin as b, Sparkles as c, ShieldCheck as d, Search as f, PenLine as g, Phone as h, Truck as i, CircleCheck as j, ExternalLink as k, SlidersHorizontal as l, Plus as m, X as n, Trash2 as o, RotateCcw as p, Upload as r, Target as s, Zap as t, Shield as u, MessageSquare as v, Layers as w, Mail as x, Menu as y, ArrowRight as z };
