@@ -12,7 +12,7 @@ import {
   FAQSection,
 } from "@/components/site";
 import { MobileDock } from "@/components/mobile-dock";
-import { WhatsAppIcon } from "@/components/floating-actions";
+import { FaWhatsapp } from "react-icons/fa";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { submitContactToGoogleSheet } from "@/utils/apiConfig";
 import {
@@ -143,7 +143,7 @@ function Contact() {
                   >
                     <div className="flex items-center gap-3.5">
                       <div className="flex size-11 items-center justify-center rounded-xl bg-emerald-50 text-[#25D366]">
-                        <WhatsAppIcon className="size-5.5 fill-current" />
+                        <FaWhatsapp className="size-6 text-[#25D366]" />
                       </div>
                       <div>
                         <p className="text-xs text-stone-500 font-medium">WhatsApp Desk</p>

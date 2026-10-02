@@ -1,0 +1,317 @@
+[
+  {
+    "index": 1,
+    "original": "1000003130.jpg.jpeg",
+    "cleanName": "bm_01_landscape.jpg",
+    "publicUrl": "/benchmark/bm_01_landscape.jpg",
+    "width": 4000,
+    "height": 1800,
+    "orientation": "landscape"
+  },
+  {
+    "index": 2,
+    "original": "1000003992.jpg.jpeg",
+    "cleanName": "bm_02_landscape.jpg",
+    "publicUrl": "/benchmark/bm_02_landscape.jpg",
+    "width": 4000,
+    "height": 1800,
+    "orientation": "landscape"
+  },
+  {
+    "index": 3,
+    "original": "1000004067.jpg.jpeg",
+    "cleanName": "bm_03_landscape.jpg",
+    "publicUrl": "/benchmark/bm_03_landscape.jpg",
+    "width": 3595,
+    "height": 1800,
+    "orientation": "landscape"
+  },
+  {
+    "index": 4,
+    "original": "1000008620.jpg.jpeg",
+    "cleanName": "bm_04_landscape.jpg",
+    "publicUrl": "/benchmark/bm_04_landscape.jpg",
+    "width": 4000,
+    "height": 1848,
+    "orientation": "landscape"
+  },
+  {
+    "index": 5,
+    "original": "1000011683.jpg.jpeg",
+    "cleanName": "bm_05_landscape.jpg",
+    "publicUrl": "/benchmark/bm_05_landscape.jpg",
+    "width": 4000,
+    "height": 1848,
+    "orientation": "landscape"
+  },
+  {
+    "index": 6,
+    "original": "1000011685.jpg.jpeg",
+    "cleanName": "bm_06_landscape.jpg",
+    "publicUrl": "/benchmark/bm_06_landscape.jpg",
+    "width": 4000,
+    "height": 1848,
+    "orientation": "landscape"
+  },
+  {
+    "index": 7,
+    "original": "1000033421.jpg.jpeg",
+    "cleanName": "bm_07_landscape.jpg",
+    "publicUrl": "/benchmark/bm_07_landscape.jpg",
+    "width": 4000,
+    "height": 1848,
+    "orientation": "landscape"
+  },
+  {
+    "index": 8,
+    "original": "1000038064.jpg (1).jpeg",
+    "cleanName": "bm_08_landscape.jpg",
+    "publicUrl": "/benchmark/bm_08_landscape.jpg",
+    "width": 1152,
+    "height": 864,
+    "orientation": "landscape"
+  },
+  {
+    "index": 9,
+    "original": "1000038071.jpg (1).jpeg",
+    "cleanName": "bm_09_portrait.jpg",
+    "publicUrl": "/benchmark/bm_09_portrait.jpg",
+    "width": 960,
+    "height": 1280,
+    "orientation": "portrait"
+  },
+  {
+    "index": 10,
+    "original": "1000038073.jpg (1).jpeg",
+    "cleanName": "bm_10_landscape.jpg",
+    "publicUrl": "/benchmark/bm_10_landscape.jpg",
+    "width": 1040,
+    "height": 480,
+    "orientation": "landscape"
+  },
+  {
+    "index": 11,
+    "original": "1000038085.jpg (1).jpeg",
+    "cleanName": "bm_11_portrait.jpg",
+    "publicUrl": "/benchmark/bm_11_portrait.jpg",
+    "width": 1800,
+    "height": 4000,
+    "orientation": "portrait"
+  },
+  {
+    "index": 12,
+    "original": "1000098713.jpg (1).jpeg",
+    "cleanName": "bm_12_landscape.jpg",
+    "publicUrl": "/benchmark/bm_12_landscape.jpg",
+    "width": 4000,
+    "height": 1848,
+    "orientation": "landscape"
+  },
+  {
+    "index": 13,
+    "original": "1000098716.jpg (1).jpeg",
+    "cleanName": "bm_13_landscape.jpg",
+    "publicUrl": "/benchmark/bm_13_landscape.jpg",
+    "width": 4000,
+    "height": 1848,
+    "orientation": "landscape"
+  },
+  {
+    "index": 14,
+    "original": "1000331144.jpg (1).jpeg",
+    "cleanName": "bm_14_landscape.jpg",
+    "publicUrl": "/benchmark/bm_14_landscape.jpg",
+    "width": 4000,
+    "height": 1848,
+    "orientation": "landscape"
+  },
+  {
+    "index": 15,
+    "original": "1000342891.jpg (1).jpeg",
+    "cleanName": "bm_15_landscape.jpg",
+    "publicUrl": "/benchmark/bm_15_landscape.jpg",
+    "width": 4000,
+    "height": 1848,
+    "orientation": "landscape"
+  },
+  {
+    "index": 16,
+    "original": "1000360351.jpg (1).jpeg",
+    "cleanName": "bm_16_landscape.jpg",
+    "publicUrl": "/benchmark/bm_16_landscape.jpg",
+    "width": 8160,
+    "height": 3768,
+    "orientation": "landscape"
+  },
+  {
+    "index": 17,
+    "original": "1000469287.jpg.jpeg",
+    "cleanName": "bm_17_landscape.jpg",
+    "publicUrl": "/benchmark/bm_17_landscape.jpg",
+    "width": 4000,
+    "height": 1848,
+    "orientation": "landscape"
+  },
+  {
+    "index": 18,
+    "original": "1000638510.jpg.jpeg",
+    "cleanName": "bm_18_landscape.jpg",
+    "publicUrl": "/benchmark/bm_18_landscape.jpg",
+    "width": 4000,
+    "height": 1848,
+    "orientation": "landscape"
+  },
+  {
+    "index": 19,
+    "original": "1000722345.jpg.jpeg",
+    "cleanName": "bm_19_landscape.jpg",
+    "publicUrl": "/benchmark/bm_19_landscape.jpg",
+    "width": 4000,
+    "height": 1848,
+    "orientation": "landscape"
+  },
+  {
+    "index": 20,
+    "original": "1000804329.jpg (1).jpeg",
+    "cleanName": "bm_20_landscape.jpg",
+    "publicUrl": "/benchmark/bm_20_landscape.jpg",
+    "width": 2744,
+    "height": 1848,
+    "orientation": "landscape"
+  },
+  {
+    "index": 21,
+    "original": "1000813035.jpg.jpeg",
+    "cleanName": "bm_21_landscape.jpg",
+    "publicUrl": "/benchmark/bm_21_landscape.jpg",
+    "width": 4000,
+    "height": 1848,
+    "orientation": "landscape"
+  },
+  {
+    "index": 22,
+    "original": "1000834481.jpg.jpeg",
+    "cleanName": "bm_22_landscape.jpg",
+    "publicUrl": "/benchmark/bm_22_landscape.jpg",
+    "width": 2048,
+    "height": 922,
+    "orientation": "landscape"
+  },
+  {
+    "index": 23,
+    "original": "1000908930.jpg.jpeg",
+    "cleanName": "bm_23_landscape.jpg",
+    "publicUrl": "/benchmark/bm_23_landscape.jpg",
+    "width": 4000,
+    "height": 2252,
+    "orientation": "landscape"
+  },
+  {
+    "index": 24,
+    "original": "WhatsApp Image 2026-09-29 at 5.26.48 PM.jpeg",
+    "cleanName": "bm_24_landscape.jpg",
+    "publicUrl": "/benchmark/bm_24_landscape.jpg",
+    "width": 2048,
+    "height": 922,
+    "orientation": "landscape"
+  },
+  {
+    "index": 25,
+    "original": "WhatsApp Image 2026-09-29 at 6.11.34 PM (1).jpeg",
+    "cleanName": "bm_25_landscape.jpg",
+    "publicUrl": "/benchmark/bm_25_landscape.jpg",
+    "width": 1280,
+    "height": 591,
+    "orientation": "landscape"
+  },
+  {
+    "index": 26,
+    "original": "WhatsApp Image 2026-09-29 at 6.11.34 PM (2).jpeg",
+    "cleanName": "bm_26_portrait.jpg",
+    "publicUrl": "/benchmark/bm_26_portrait.jpg",
+    "width": 985,
+    "height": 1200,
+    "orientation": "portrait"
+  },
+  {
+    "index": 27,
+    "original": "WhatsApp Image 2026-09-29 at 6.11.34 PM (3).jpeg",
+    "cleanName": "bm_27_landscape.jpg",
+    "publicUrl": "/benchmark/bm_27_landscape.jpg",
+    "width": 1600,
+    "height": 720,
+    "orientation": "landscape"
+  },
+  {
+    "index": 28,
+    "original": "WhatsApp Image 2026-09-29 at 6.11.34 PM.jpeg",
+    "cleanName": "bm_28_landscape.jpg",
+    "publicUrl": "/benchmark/bm_28_landscape.jpg",
+    "width": 1280,
+    "height": 591,
+    "orientation": "landscape"
+  },
+  {
+    "index": 29,
+    "original": "WhatsApp Image 2026-09-29 at 6.30.12 PM (2).jpeg",
+    "cleanName": "bm_29_portrait.jpg",
+    "publicUrl": "/benchmark/bm_29_portrait.jpg",
+    "width": 1864,
+    "height": 4096,
+    "orientation": "portrait"
+  },
+  {
+    "index": 30,
+    "original": "WhatsApp Image 2026-09-29 at 6.30.13 PM (1).jpeg",
+    "cleanName": "bm_30_portrait.jpg",
+    "publicUrl": "/benchmark/bm_30_portrait.jpg",
+    "width": 739,
+    "height": 1600,
+    "orientation": "portrait"
+  },
+  {
+    "index": 31,
+    "original": "WhatsApp Image 2026-09-29 at 6.30.13 PM.jpeg",
+    "cleanName": "bm_31_landscape.jpg",
+    "publicUrl": "/benchmark/bm_31_landscape.jpg",
+    "width": 1600,
+    "height": 786,
+    "orientation": "landscape"
+  },
+  {
+    "index": 32,
+    "original": "WhatsApp Image 2026-09-29 at 6.30.14 PM (1).jpeg",
+    "cleanName": "bm_32_landscape.jpg",
+    "publicUrl": "/benchmark/bm_32_landscape.jpg",
+    "width": 1600,
+    "height": 739,
+    "orientation": "landscape"
+  },
+  {
+    "index": 33,
+    "original": "WhatsApp Image 2026-09-29 at 6.30.15 PM (1).jpeg",
+    "cleanName": "bm_33_landscape.jpg",
+    "publicUrl": "/benchmark/bm_33_landscape.jpg",
+    "width": 1600,
+    "height": 885,
+    "orientation": "landscape"
+  },
+  {
+    "index": 34,
+    "original": "WhatsApp Image 2026-09-29 at 6.30.16 PM (1).jpeg",
+    "cleanName": "bm_34_landscape.jpg",
+    "publicUrl": "/benchmark/bm_34_landscape.jpg",
+    "width": 1600,
+    "height": 739,
+    "orientation": "landscape"
+  },
+  {
+    "index": 35,
+    "original": "WhatsApp Image 2026-09-29 at 6.30.20 PM.jpeg",
+    "cleanName": "bm_35_portrait.jpg",
+    "publicUrl": "/benchmark/bm_35_portrait.jpg",
+    "width": 960,
+    "height": 1280,
+    "orientation": "portrait"
+  }
+]

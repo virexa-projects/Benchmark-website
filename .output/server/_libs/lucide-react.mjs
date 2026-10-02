@@ -235,6 +235,19 @@ var CircleAlert = createLucideIcon("circle-alert", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var CircleCheckBig = createLucideIcon("circle-check-big", [["path", {
+	d: "M21.801 10A10 10 0 1 1 17 3.335",
+	key: "yps3ct"
+}], ["path", {
+	d: "m9 11 3 3L22 4",
+	key: "1pflzl"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var CircleCheck = createLucideIcon("circle-check", [["circle", {
 	cx: "12",
 	cy: "12",
@@ -318,6 +331,34 @@ var Eye = createLucideIcon("eye", [["path", {
 	r: "3",
 	key: "1v7zrd"
 }]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var FileText = createLucideIcon("file-text", [
+	["path", {
+		d: "M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z",
+		key: "1oefj6"
+	}],
+	["path", {
+		d: "M14 2v5a1 1 0 0 0 1 1h5",
+		key: "wfsgrz"
+	}],
+	["path", {
+		d: "M10 9H8",
+		key: "b1mrlr"
+	}],
+	["path", {
+		d: "M16 13H8",
+		key: "t4e002"
+	}],
+	["path", {
+		d: "M16 17H8",
+		key: "z1uh3a"
+	}]
+]);
 /**
 * @license lucide-react v0.575.0 - ISC
 *
@@ -505,6 +546,16 @@ var Menu = createLucideIcon("menu", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var MessageSquare = createLucideIcon("message-square", [["path", {
+	d: "M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z",
+	key: "18887p"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Navigation = createLucideIcon("navigation", [["polygon", {
 	points: "3 11 22 2 13 21 11 13 3 11",
 	key: "1ltx0t"
@@ -585,6 +636,16 @@ var ShieldCheck = createLucideIcon("shield-check", [["path", {
 }], ["path", {
 	d: "m9 12 2 2 4-4",
 	key: "dzmm74"
+}]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var Shield = createLucideIcon("shield", [["path", {
+	d: "M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
+	key: "oel41y"
 }]]);
 /**
 * @license lucide-react v0.575.0 - ISC
@@ -736,6 +797,38 @@ var TriangleAlert = createLucideIcon("triangle-alert", [
 * This source code is licensed under the ISC license.
 * See the LICENSE file in the root directory of this source tree.
 */
+var Truck = createLucideIcon("truck", [
+	["path", {
+		d: "M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2",
+		key: "wrbu53"
+	}],
+	["path", {
+		d: "M15 18H9",
+		key: "1lyqi6"
+	}],
+	["path", {
+		d: "M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14",
+		key: "lysw3i"
+	}],
+	["circle", {
+		cx: "17",
+		cy: "18",
+		r: "2",
+		key: "332jqn"
+	}],
+	["circle", {
+		cx: "7",
+		cy: "18",
+		r: "2",
+		key: "19iecd"
+	}]
+]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
 var Upload = createLucideIcon("upload", [
 	["path", {
 		d: "M12 3v12",
@@ -763,5 +856,15 @@ var X = createLucideIcon("x", [["path", {
 	d: "m6 6 12 12",
 	key: "d8bk6v"
 }]]);
+/**
+* @license lucide-react v0.575.0 - ISC
+*
+* This source code is licensed under the ISC license.
+* See the LICENSE file in the root directory of this source tree.
+*/
+var Zap = createLucideIcon("zap", [["path", {
+	d: "M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z",
+	key: "1xq2db"
+}]]);
 //#endregion
-export { ChevronRight as A, Eye as C, CircleCheck as D, Clock as E, ArrowLeft as F, ArrowDown as I, ChevronDown as M, ArrowUp as N, CircleAlert as O, ArrowRight as P, GripVertical as S, ExternalLink as T, Mail as _, Target as a, Layers as b, ShieldCheck as c, Plus as d, Phone as f, MapPin as g, Menu as h, Trash2 as i, ChevronLeft as j, ChevronUp as k, Search as l, Navigation as m, Upload as n, Sparkles as o, PenLine as p, TriangleAlert as r, SlidersHorizontal as s, X as t, RotateCcw as u, LogOut as v, EyeOff as w, Image as x, Lock as y };
+export { ExternalLink as A, ArrowRight as B, Lock as C, FileText as D, GripVertical as E, ChevronUp as F, ArrowDown as H, ChevronRight as I, ChevronLeft as L, CircleCheck as M, CircleCheckBig as N, Eye as O, CircleAlert as P, ChevronDown as R, LogOut as S, Image as T, ArrowLeft as V, Navigation as _, TriangleAlert as a, MapPin as b, Sparkles as c, ShieldCheck as d, Search as f, PenLine as g, Phone as h, Truck as i, Clock as j, EyeOff as k, SlidersHorizontal as l, Plus as m, X as n, Trash2 as o, RotateCcw as p, Upload as r, Target as s, Zap as t, Shield as u, MessageSquare as v, Layers as w, Mail as x, Menu as y, ArrowUp as z };

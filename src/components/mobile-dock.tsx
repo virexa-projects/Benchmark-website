@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Phone, Sparkles } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { PHONE, PHONE_LINK, WHATSAPP_LINK } from "./site";
-import { WhatsAppIcon } from "./floating-actions";
+import { FaWhatsapp } from "react-icons/fa";
 
 export function MobileDock() {
   const [isFooterVisible, setIsFooterVisible] = useState(false);
@@ -69,7 +69,7 @@ export function MobileDock() {
           rel="noreferrer"
           className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-[#25D366] py-2.5 text-xs font-bold text-white shadow-xs transition-transform active:scale-95"
         >
-          <WhatsAppIcon className="size-3.5 fill-current" />
+          <FaWhatsapp className="size-4 shrink-0 text-white" />
           <span>WhatsApp</span>
         </a>
 

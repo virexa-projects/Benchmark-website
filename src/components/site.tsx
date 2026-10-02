@@ -13,7 +13,6 @@ import { FaFacebook, FaYoutube, FaWhatsapp } from "react-icons/fa";
 import { RiWhatsappFill, RiInstagramFill } from "react-icons/ri";
 
 import { BenchmarkLogo } from "@/components/benchmark-logo";
-import { WhatsAppIcon } from "@/components/floating-actions";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { cn } from "@/lib/utils";
 
@@ -213,7 +212,7 @@ export function SiteHeader({ className }: { className?: string } = {}) {
                 rel="noreferrer"
                 className="flex items-center justify-center gap-2 rounded-xl bg-[#25D366] py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-[#20BD5A] active:scale-98"
               >
-                <WhatsAppIcon className="size-4.5 fill-current" />
+                <FaWhatsapp className="size-4.5" />
                 <span>Chat on WhatsApp</span>
               </a>
 
@@ -328,6 +327,22 @@ export function SiteFooter() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    to="/privacy-policy"
+                    className="text-sm font-medium text-stone-200 transition-colors hover:text-[#E8CA5C]"
+                  >
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/terms-and-conditions"
+                    className="text-sm font-medium text-stone-200 transition-colors hover:text-[#E8CA5C]"
+                  >
+                    Terms & Conditions
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -419,6 +434,22 @@ export function SiteFooter() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/privacy-policy"
+                  className="transition-colors font-medium hover:text-[#E8CA5C]"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/terms-and-conditions"
+                  className="transition-colors font-medium hover:text-[#E8CA5C]"
+                >
+                  Terms & Conditions
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -479,7 +510,7 @@ export function SiteFooter() {
         </div>
 
         {/* Bottom Credits */}
-        <div className="mt-6 md:mt-7 flex flex-col gap-2 border-t border-stone-200/40 pt-3 md:pt-4 text-sm text-[#FFFFFF] items-center justify-between text-center">
+        <div className="mt-6 md:mt-7 flex flex-col sm:flex-row gap-2.5 border-t border-stone-200/40 pt-3 md:pt-4 text-xs sm:text-sm text-[#FFFFFF] items-center justify-between text-center">
           <span>
             © {new Date().getFullYear()}{" "}
             <Link to="/" className="transition-colors hover:text-[#E8CA5C]">
@@ -487,6 +518,15 @@ export function SiteFooter() {
             </Link>
             . All rights reserved.
           </span>
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-stone-200">
+            <Link to="/privacy-policy" className="transition-colors hover:text-[#E8CA5C]">
+              Privacy Policy
+            </Link>
+            <span>•</span>
+            <Link to="/terms-and-conditions" className="transition-colors hover:text-[#E8CA5C]">
+              Terms & Conditions
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

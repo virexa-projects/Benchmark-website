@@ -26,7 +26,8 @@ export interface SlideItem {
 export const SLIDES: SlideItem[] = [
   {
     id: "s1",
-    img: slide1,
+    img: "/benchmark/bm_08_landscape.jpg",
+    mobileImg: "/benchmark/bm_29_portrait.jpg",
     title: "வாழ்க வளமுடன் — VR Illam",
     category: "Residential & Villas",
     materials: "3D Mirror Gold PVD",
@@ -35,7 +36,8 @@ export const SLIDES: SlideItem[] = [
   },
   {
     id: "s2",
-    img: slide2,
+    img: "/benchmark/bm_10_landscape.jpg",
+    mobileImg: "/benchmark/bm_09_portrait.jpg",
     title: "Fliqzo Sign",
     category: "Retail & Showrooms",
     materials: "PVD Brass Gold Rim",
@@ -44,26 +46,29 @@ export const SLIDES: SlideItem[] = [
   },
   {
     id: "s3",
-    img: slide3,
-    title: "Dr. Vibhavari / The Pearl",
-    category: "Residential & Villas",
-    materials: "3D PVD Mirror Gold",
+    img: "/benchmark/bm_02_landscape.jpg",
+    mobileImg: "/benchmark/bm_11_portrait.jpg",
+    title: "Dr. Kind's Clinic & Medical Care",
+    category: "Hospitals & Healthcare",
+    materials: "3D High-Gloss Acrylic Letters",
     location: "Avinashi Road, Coimbatore",
     lighting: "Non-Illuminated Daylight",
   },
   {
     id: "s4",
-    img: slide4,
-    title: "Shanthi Villa",
-    category: "Residential & Villas",
-    materials: "Matte Black Laser-Cut Metal",
-    location: "Vadavalli, Coimbatore",
+    img: "/benchmark/bm_04_landscape.jpg",
+    mobileImg: "/benchmark/bm_26_portrait.jpg",
+    title: "Sri Siddhartha Convention Center (SSCC)",
+    category: "Hotels & Convention Halls",
+    materials: "Warm Golden Backlit Monument",
+    location: "Salem — Coimbatore Highway",
     lighting: "Warm Halo Diffused",
   },
   {
     id: "s5",
-    img: slide5,
-    title: "STRUZON Technologies",
+    img: "/benchmark/bm_05_landscape.jpg",
+    mobileImg: "/benchmark/bm_30_portrait.jpg",
+    title: "Gainup & Tech Park Monolith",
     category: "Corporate & Offices",
     materials: "3D Precision Channel Letters",
     location: "Saravanampatti Tech Zone, Coimbatore",
@@ -71,48 +76,33 @@ export const SLIDES: SlideItem[] = [
   },
   {
     id: "s6",
-    img: slide6,
-    title: "EVS Illam",
-    category: "Residential & Villas",
-    materials: "Cast Gloss White Acrylic",
-    location: "Ramanathapuram, Coimbatore",
-    lighting: "Non-Illuminated Daylight",
+    img: "/benchmark/bm_06_landscape.jpg",
+    mobileImg: "/benchmark/bm_35_portrait.jpg",
+    title: "Spintex & Textile Monument",
+    category: "Garments & Textiles",
+    materials: "Weatherproof ACP & 3D Titanium Gold",
+    location: "Tiruppur — Coimbatore Textile Hub",
+    lighting: "Illuminated Halo Glow",
   },
   {
     id: "s7",
-    img: slide7,
-    title: "Vivalayam",
-    category: "Residential & Villas",
-    materials: "Natural Walnut Finish",
+    img: "/benchmark/bm_07_landscape.jpg",
+    mobileImg: "/benchmark/bm_09_portrait.jpg",
+    title: "Heritage Emblem Sign",
+    category: "Temple & Heritage",
+    materials: "Natural Brass & Gold Finish",
     location: "Kovaipudur, Coimbatore",
     lighting: "Warm Golden Backlit",
   },
   {
     id: "s8",
-    img: slide8,
-    title: "Giripriya",
+    img: "/benchmark/bm_12_landscape.jpg",
+    mobileImg: "/benchmark/bm_29_portrait.jpg",
+    title: "Giripriya Teakwood & Gold",
     category: "Residential & Villas",
-    materials: "Teakwood Finish",
+    materials: "Teakwood Finish & PVD Gold",
     location: "Saibaba Colony, Coimbatore",
     lighting: "Non-Illuminated Daylight",
-  },
-  {
-    id: "s9",
-    img: slide9,
-    title: "அன்னை இல்லம் — Travertine Marble",
-    category: "Residential & Villas",
-    materials: "3D High-Gloss Jet Black Acrylic",
-    location: "Kalapatti, Coimbatore",
-    lighting: "Non-Illuminated Daylight",
-  },
-  {
-    id: "s10",
-    img: slide10,
-    title: "Sreelakam — Scalloped Wood & Gold",
-    category: "Residential & Villas",
-    materials: "3D Mirror Gold & Teakwood",
-    location: "Peelamedu, Coimbatore",
-    lighting: "Warm Ambient Daylight",
   },
 ];
 
@@ -196,13 +186,18 @@ export function HeroSlideshow({ isNight = false }: HeroSlideshowProps) {
               isActive ? "opacity-100 z-10 pointer-events-auto" : "opacity-0 z-0 pointer-events-none"
             }`}
           >
-            <img
-              src={slide.img}
-              alt={slide.location || "Benchmark Signage"}
-              className={`size-full object-cover transition-transform duration-7000 ease-out brightness-100 contrast-[1.04] saturate-[1.08] ${
-                isActive ? "scale-105" : "scale-100"
-              }`}
-            />
+            <picture className="size-full">
+              {slide.mobileImg && (
+                <source media="(max-width: 768px)" srcSet={slide.mobileImg} />
+              )}
+              <img
+                src={slide.img}
+                alt={slide.location || slide.title || "Benchmark Signage"}
+                className={`size-full object-cover transition-transform duration-7000 ease-out brightness-100 contrast-[1.04] saturate-[1.08] ${
+                  isActive ? "scale-105" : "scale-100"
+                }`}
+              />
+            </picture>
 
             {/* Subtle Cinematic Vignette at Base */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent pointer-events-none" />
